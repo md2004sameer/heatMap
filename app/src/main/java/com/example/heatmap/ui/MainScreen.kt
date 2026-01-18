@@ -97,22 +97,40 @@ fun DualBottomNavigation(
             .padding(bottom = 8.dp)
     ) {
         // Top Bar: Dynamic Sub-sections
-        AnimatedVisibility(visible = currentScreen is Screen.Profile) {
+        AnimatedVisibility(visible = currentScreen is Screen.Profile || currentScreen is Screen.Problems) {
+            val tabs = when (currentScreen) {
+                is Screen.Profile -> ProfileSection.all.map { it.title to { onNavigate(Screen.Profile(it)) } }
+                is Screen.Problems -> ProblemsSection.all.map { it.title to { onNavigate(Screen.Problems(it)) } }
+                else -> emptyList()
+            }
+            
+            val selectedIndex = when (currentScreen) {
+                is Screen.Profile -> ProfileSection.all.indexOfFirst { currentScreen.section == it }
+                is Screen.Problems -> ProblemsSection.all.indexOfFirst { currentScreen.section == it }
+                else -> 0
+            }.coerceAtLeast(0)
+
             ScrollableTabRow(
-                selectedTabIndex = ProfileSection.all.indexOfFirst { (currentScreen as? Screen.Profile)?.section == it }.coerceAtLeast(0),
+                selectedTabIndex = selectedIndex,
                 containerColor = Color.Transparent,
                 contentColor = LeetCodeOrange,
                 edgePadding = 16.dp,
                 divider = {},
                 indicator = {}
             ) {
-                ProfileSection.all.forEach { section ->
-                    val isSelected = (currentScreen as? Screen.Profile)?.section == section
+                val currentIcons = when (currentScreen) {
+                    is Screen.Profile -> ProfileSection.all.map { it.icon }
+                    is Screen.Problems -> ProblemsSection.all.map { it.icon }
+                    else -> emptyList()
+                }
+
+                tabs.forEachIndexed { index, (title, onClick) ->
+                    val isSelected = selectedIndex == index
                     NavigationItem(
-                        label = section.title,
-                        icon = section.icon,
+                        label = title,
+                        icon = currentIcons[index],
                         isSelected = isSelected,
-                        onClick = { onNavigate(Screen.Profile(section)) }
+                        onClick = onClick
                     )
                 }
             }
@@ -131,7 +149,6 @@ fun DualBottomNavigation(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Profile Hub
             MainHubItem(
                 label = "Profile",
                 icon = Icons.Default.Person,
@@ -139,7 +156,6 @@ fun DualBottomNavigation(
                 onClick = { onNavigate(Screen.Profile(ProfileSection.Details)) }
             )
 
-            // Problems Hub
             MainHubItem(
                 label = "Problems",
                 icon = Icons.Default.Search,
@@ -147,7 +163,6 @@ fun DualBottomNavigation(
                 onClick = { onNavigate(Screen.Problems(ProblemsSection.Explore)) }
             )
 
-            // Productivity Hub
             MainHubItem(
                 label = "Tools",
                 icon = Icons.Default.Build,
@@ -234,7 +249,7 @@ fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainVi
         Column(modifier = Modifier.fillMaxSize()) {
             when (screen) {
                 is Screen.Profile -> ProfileContent(data, screen.section)
-                is Screen.Problems -> ProblemsHubContent(viewModel)
+                is Screen.Problems -> ProblemsHubContent(viewModel, screen.section)
                 is Screen.Productivity -> ProductivityHubContent(screen.section, viewModel, data)
             }
         }
@@ -242,19 +257,27 @@ fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainVi
 }
 
 @Composable
-fun ProblemsHubContent(viewModel: MainViewModel) {
+fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
     val problems by viewModel.problems.collectAsState()
+    val striverProblems by viewModel.striverProblems.collectAsState()
     val selectedProblem by viewModel.selectedProblem.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Explore Problems", style = Typography.headlineMedium, color = Color.White)
+        Text(section.title, style = Typography.headlineMedium, color = Color.White)
         Spacer(Modifier.height(16.dp))
         
-        ProblemsScreen(
-            problems = problems,
-            onProblemClick = { viewModel.selectProblem(it) },
-            onSearch = { viewModel.searchProblems(it) }
-        )
+        when (section) {
+            ProblemsSection.Explore -> {
+                ProblemsScreen(
+                    problems = problems,
+                    onProblemClick = { viewModel.selectProblem(it) },
+                    onSearch = { viewModel.searchProblems(it) }
+                )
+            }
+            ProblemsSection.Striver -> {
+                StriverSheetScreen(problems = striverProblems)
+            }
+        }
     }
 
     if (selectedProblem != null) {
@@ -335,7 +358,6 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
                         }
                         SubmissionStatsCard(user, submissionByDate)
                         StreakStatusCard(data.streakCounter, submissionByDate[LocalDate.now()] ?: 0)
-                        WallpaperModule(data)
                     }
                 }
             }
@@ -356,7 +378,12 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
                 }
             }
             ProfileSection.Info -> {
-                item { ProfileInfoCard(user) }
+                item {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        ProfileInfoCard(user)
+                        WallpaperModule(data)
+                    }
+                }
             }
         }
     }

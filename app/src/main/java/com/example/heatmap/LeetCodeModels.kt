@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class GraphQLRequest(
     val query: String,
-    val variables: Map<String, Any> = emptyMap()
+    val variables: Map<String, Any?> = emptyMap(),
+    val operationName: String? = null
 )
 
 data class LeetCodeResponse(
@@ -24,6 +25,8 @@ data class LeetCodeData(
     val activeDailyCodingChallengeQuestion: DailyChallenge?,
     val upcomingContests: List<Contest>?,
     val recentSubmissionList: List<RecentSubmission>?,
+    // Mapping for problem list queries
+    @SerializedName("problemsetQuestionList", alternate = ["questionList"])
     val problemsetQuestionList: ProblemsetQuestionList?,
     val question: QuestionDetail?
 )
@@ -112,8 +115,8 @@ data class UserContestRanking(
 
 // Problems List Models
 data class ProblemsetQuestionList(
-    val total: Int,
-    val questions: List<ProblemSummary>
+    @SerializedName("totalNum") val total: Int,
+    @SerializedName("questions", alternate = ["data"]) val questions: List<ProblemSummary>
 )
 
 data class ProblemsetTag(
@@ -122,13 +125,13 @@ data class ProblemsetTag(
 )
 
 data class ProblemSummary(
-    val questionId: String,
-    val questionFrontendId: String,
+    val questionId: String?,
+    @SerializedName("questionFrontendId") val frontendQuestionId: String,
     val title: String,
     val titleSlug: String,
     val difficulty: String,
     val isPaidOnly: Boolean,
-    val acRate: Double,
+    val acRate: Double?,
     val topicTags: List<ProblemsetTag>?
 )
 

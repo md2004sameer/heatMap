@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.heatmap.*
 import com.example.heatmap.domain.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -50,6 +51,13 @@ class MainViewModel(
     private val _selectedProblem = MutableStateFlow<Problem?>(null)
     val selectedProblem: StateFlow<Problem?> = _selectedProblem
 
+    private val _isProblemsSyncing = MutableStateFlow(false)
+    val isProblemsSyncing: StateFlow<Boolean> = _isProblemsSyncing
+
+    // Striver Sheet State
+    private val _striverProblems = MutableStateFlow<List<StriverProblem>>(emptyList())
+    val striverProblems: StateFlow<List<StriverProblem>> = _striverProblems
+
     // Notes State
     private val notesDao by lazy { LeetCodeDatabase.getDatabase(context).notesDao() }
     private val _folders = MutableStateFlow<List<Folder>>(emptyList())
@@ -69,6 +77,7 @@ class MainViewModel(
         loadTrainingPlan()
         loadFolders()
         loadProblems()
+        loadStriverSheet()
     }
 
     fun navigateTo(screen: Screen) {
@@ -76,10 +85,26 @@ class MainViewModel(
     }
 
     // Problems Operations
-    private fun loadProblems() {
+    fun loadProblems(forceRefresh: Boolean = false) {
         viewModelScope.launch {
-            getAllProblemsUseCase().collectLatest {
+            _isProblemsSyncing.value = true
+            getAllProblemsUseCase(forceRefresh).collectLatest {
                 _problems.value = it
+                _isProblemsSyncing.value = false
+            }
+        }
+    }
+
+    private fun loadStriverSheet() {
+        viewModelScope.launch {
+            try {
+                val jsonString = context.assets.open("striver_sheet.json").bufferedReader().use { it.readText() }
+                val type = object : TypeToken<List<StriverProblem>>() {}.type
+                val problems: List<StriverProblem> = gson.fromJson(jsonString, type)
+                _striverProblems.value = problems
+            } catch (e: Exception) {
+                // If it's not in assets but in package, use different way. 
+                // But for now assuming it should be in assets for simplicity.
             }
         }
     }
@@ -87,7 +112,9 @@ class MainViewModel(
     fun searchProblems(query: String) {
         viewModelScope.launch {
             if (query.isEmpty()) {
-                loadProblems()
+                repository.getAllProblems(false).collectLatest {
+                    _problems.value = it.map { entity -> entity.toDomain() }
+                }
             } else {
                 _problems.value = searchProblemsUseCase(query)
             }

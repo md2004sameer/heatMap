@@ -3,6 +3,7 @@ package com.example.heatmap
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.OkHttpClient
@@ -18,17 +19,17 @@ class LeetCodeRepository private constructor(context: Context) {
     private val gson = Gson()
     
     private val client = OkHttpClient.Builder()
-        .connectTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(20, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
                 .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
-                .header("Referer", "https://leetcode.com/")
+                .header("Referer", "https://leetcode.com/problemset/all/")
                 .build()
             chain.proceed(request)
         }
         .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.HEADERS
+            level = HttpLoggingInterceptor.Level.BASIC
         })
         .build()
 
@@ -40,7 +41,7 @@ class LeetCodeRepository private constructor(context: Context) {
         .create(LeetCodeService::class.java)
 
     private val profileQuery = """
-        query(${"$"}username: String!, ${"$"}year: Int!) {
+        query getProfile(${"$"}username: String!, ${"$"}year: Int!) {
             activeDailyCodingChallengeQuestion {
                 date
                 userStatus
@@ -108,32 +109,6 @@ class LeetCodeRepository private constructor(context: Context) {
         }
     """.trimIndent()
 
-    private val problemsQuery = """
-        query problemsetQuestionList(${"$"}categorySlug: String, ${"$"}limit: Int, ${"$"}skip: Int, ${"$"}filters: QuestionListFilterInput) {
-          problemsetQuestionList(
-            categorySlug: ${"$"}categorySlug
-            limit: ${"$"}limit
-            skip: ${"$"}skip
-            filters: ${"$"}filters
-          ) {
-            total: totalNum
-            questions: questions {
-              acRate
-              difficulty
-              isPaidOnly
-              questionFrontendId
-              questionId
-              title
-              titleSlug
-              topicTags {
-                name
-                slug
-              }
-            }
-          }
-        }
-    """.trimIndent()
-
     private val questionDetailQuery = """
         query questionData(${"$"}titleSlug: String!) {
           question(titleSlug: ${"$"}titleSlug) {
@@ -189,35 +164,50 @@ class LeetCodeRepository private constructor(context: Context) {
         }
     }
 
+    /**
+     * Uses the LeetCode REST API to fetch all problems in a single call.
+     * This is often more reliable than manual pagination via GraphQL for the initial sync.
+     */
     fun getAllProblems(refresh: Boolean = false): Flow<List<ProblemEntity>> = flow {
         val cached = problemsDao.getAllProblems()
         if (cached.isNotEmpty()) emit(cached)
 
         if (refresh || cached.isEmpty()) {
             try {
-                val response = service.getProfile(
-                    GraphQLRequest(
-                        query = problemsQuery,
-                        variables = mapOf("categorySlug" to "", "skip" to 0, "limit" to 50) // Adjust limit as needed
-                    )
-                )
-                val questions = response.data?.problemsetQuestionList?.questions ?: emptyList()
-                val entities = questions.map { q ->
+                Log.d("LeetCodeRepository", "Fetching all problems via REST API")
+                val response = service.getAllProblemsRest()
+                
+                val entities = response.stat_status_pairs.map { pair ->
+                    val difficultyStr = when (pair.difficulty.level) {
+                        1 -> "Easy"
+                        2 -> "Medium"
+                        3 -> "Hard"
+                        else -> "Unknown"
+                    }
+                    
+                    val acRate = if (pair.stat.total_submitted > 0) {
+                        (pair.stat.total_acs.toDouble() / pair.stat.total_submitted.toDouble()) * 100.0
+                    } else 0.0
+
                     ProblemEntity(
-                        questionId = q.questionId,
-                        questionFrontendId = q.questionFrontendId,
-                        title = q.title,
-                        titleSlug = q.titleSlug,
-                        difficulty = q.difficulty,
-                        isPaidOnly = q.isPaidOnly,
-                        acRate = q.acRate,
-                        tags = q.topicTags?.joinToString(",") { it.name } ?: ""
+                        questionId = pair.stat.question_id.toString(),
+                        questionFrontendId = pair.stat.frontend_question_id.toString(),
+                        title = pair.stat.question__title,
+                        titleSlug = pair.stat.question__title_slug,
+                        difficulty = difficultyStr,
+                        isPaidOnly = pair.paid_only,
+                        acRate = acRate,
+                        tags = "" // REST API doesn't provide tags in this call, can be updated later if needed
                     )
                 }
-                problemsDao.insertProblems(entities)
-                emit(entities)
+
+                if (entities.isNotEmpty()) {
+                    problemsDao.insertProblems(entities)
+                    Log.d("LeetCodeRepository", "Successfully synced ${entities.size} problems.")
+                    emit(problemsDao.getAllProblems())
+                }
             } catch (e: Exception) {
-                Log.e("LeetCodeRepository", "Failed to fetch problems", e)
+                Log.e("LeetCodeRepository", "Failed to fetch problems via REST", e)
             }
         }
     }

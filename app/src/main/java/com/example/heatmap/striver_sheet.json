@@ -1,0 +1,5930 @@
+[
+  {
+    "id": 1,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "User Input / Output",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 2,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "Data Types",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 3,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "If Else statements",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 4,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "Switch Statement",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 5,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "What are arrays, strings?",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 6,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "For loops",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 7,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "While loops",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 8,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "Functions (Pass by Reference and Value)",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 9,
+    "section": "Learn the basics",
+    "subSection": "Things to Know in C++/Java/Python or any language",
+    "title": "Time Complexity [Learn Basics, and then analyse in next Steps]",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 10,
+    "section": "Build-up Logical Thinking",
+    "subSection": "",
+    "title": "Patterns",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 11,
+    "section": "Learn STL/Java-Collections or similar thing in your language",
+    "subSection": "",
+    "title": "C++ STL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 12,
+    "section": "Learn STL/Java-Collections or similar thing in your language",
+    "subSection": "",
+    "title": "Java Collections",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 13,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Count Digits",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 14,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Reverse a Number",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 15,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Check Palindrome",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 16,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "GCD Or HCF",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 17,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Armstrong Numbers",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 18,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Print all Divisors",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 19,
+    "section": "Know Basic Maths",
+    "subSection": "",
+    "title": "Check for Prime",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 20,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Understand recursion by print something N times",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 21,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Print name N times using recursion",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 22,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Print 1 to N using recursion",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 23,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Print N to 1 using recursion",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 24,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Sum of first N numbers",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 25,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Factorial of N numbers",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 26,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Reverse an array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 27,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Check if a string is palindrome or not",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 28,
+    "section": "Learn Basic Recursion",
+    "subSection": "",
+    "title": "Fibonacci Number",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 29,
+    "section": "Learn Basic Hashing",
+    "subSection": "",
+    "title": "Hashing Theory",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 30,
+    "section": "Learn Basic Hashing",
+    "subSection": "",
+    "title": "Counting frequencies of array elements",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 31,
+    "section": "Learn Basic Hashing",
+    "subSection": "",
+    "title": "Find the highest/lowest frequency element",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 32,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-I",
+    "title": "Selection Sort",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 33,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-I",
+    "title": "Bubble Sort",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 34,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-I",
+    "title": "Insertion Sort",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 35,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-II",
+    "title": "Merge Sort",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 36,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-II",
+    "title": "Recursive Bubble Sort",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 37,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-II",
+    "title": "Recursive Insertion Sort",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 38,
+    "section": "Learn Important Sorting Techniques",
+    "subSection": "Sorting-II",
+    "title": "Quick Sort",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 39,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Largest Element in an Array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 40,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Second Largest Element in an Array without sorting",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 41,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Check if the array is sorted",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 42,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Remove duplicates from Sorted array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 43,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Left Rotate an array by one place",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 44,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Left rotate an array by D places",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 45,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Move Zeros to end",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 46,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Linear Search",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 47,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Find the Union",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 48,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Find missing number in an array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 49,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Maximum Consecutive Ones",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 50,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Find the number that appears once, and other numbers twice.",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 51,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Longest subarray with given sum K(positives)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 52,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Easy",
+    "title": "Longest subarray with sum K (Positives + Negatives)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 53,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "2Sum Problem",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 54,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Sort an array of 0's 1's and 2's",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 55,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Majority Element (>n/2 times)",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 56,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Kadane's Algorithm, maximum subarray sum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 57,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Print subarray with maximum subarray sum (extended version of above problem)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 58,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Stock Buy and Sell",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 59,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Rearrange the array in alternating positive and negative items",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 60,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Next Permutation",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 61,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Leaders in an Array problem",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 62,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Longest Consecutive Sequence in an Array",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 63,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Set Matrix Zeros",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 64,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Rotate Matrix by 90 degrees",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 65,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Print the matrix in spiral manner",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 66,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Medium",
+    "title": "Count subarrays with given sum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 67,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Pascal's Triangle",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 68,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Majority Element (n/3 times)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 69,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "3-Sum Problem",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 70,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "4-Sum Problem",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 71,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Largest Subarray with 0 Sum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 72,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Count number of subarrays with given xor K",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 73,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Merge Overlapping Subintervals",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 74,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Merge two sorted arrays without extra space",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 75,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Find the repeating and missing number",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 76,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Count Inversions",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 77,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Reverse Pairs",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 78,
+    "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
+    "subSection": "Hard",
+    "title": "Maximum Product Subarray",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 79,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Binary Search to find X in sorted array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 80,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Implement Lower Bound",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 81,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Implement Upper Bound",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 82,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Search Insert Position",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 83,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Floor/Ceil in Sorted Array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 84,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Find the first or last occurrence of a given number in a sorted array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 85,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Count occurrences of a number in a sorted array with duplicates",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 86,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Search in Rotated Sorted Array I",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 87,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Search in Rotated Sorted Array II",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 88,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Find minimum in Rotated Sorted Array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 89,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Find out how many times has an array been rotated",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 90,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Single element in a Sorted Array",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 91,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 1D Arrays",
+    "title": "Find peak element",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 92,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Find square root of a number in log n",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 93,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Find the Nth root of a number using binary search",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 94,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Koko Eating Bananas",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 95,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Minimum days to make M bouquets",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 96,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Find the smallest Divisor",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 97,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Capacity to Ship Packages within D Days",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 98,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Kth Missing Positive Number",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 99,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Aggressive Cows",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 100,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Book Allocation Problem",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 101,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Split array - Largest Sum",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 102,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Painter's partition",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 103,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Minimize Max Distance to Gas Station",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 104,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Median of 2 sorted arrays",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 105,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on Answers",
+    "title": "Kth element of 2 sorted arrays",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 106,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 2D Arrays",
+    "title": "Find the row with maximum number of 1's",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 107,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 2D Arrays",
+    "title": "Search in a 2 D matrix",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 108,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 2D Arrays",
+    "title": "Search in a row and column wise sorted matrix",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 109,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 2D Arrays",
+    "title": "Find Peak Element (2D Matrix)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 110,
+    "section": "Binary Search [1D, 2D Arrays, Search Space]",
+    "subSection": "BS on 2D Arrays",
+    "title": "Matrix Median",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 111,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Remove outermost Paranthesis",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 112,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Reverse words in a given string / Palindrome Check",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 113,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Largest odd number in a string",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 114,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Longest Common Prefix",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 115,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Isomorphic String",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 116,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "check whether one string is a rotation of another",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 117,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Basic and Easy String Problems",
+    "title": "Check if two strings are anagram of each other",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 118,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Sort Characters by frequency",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 119,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Maximum Nesting Depth of Paranthesis",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 120,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Roman Number to Integer and vice versa",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 121,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Implement Atoi",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 122,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Count Number of Substrings",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 123,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Longest Palindromic Substring[Do it without DP]",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 124,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Sum of Beauty of all substring",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 125,
+    "section": "Strings [Basic and Medium]",
+    "subSection": "Medium String Problems",
+    "title": "Reverse Every Word in A String",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 126,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn 1D LinkedList",
+    "title": "Introduction to LinkedList, learn about struct, and how is node represented",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 127,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn 1D LinkedList",
+    "title": "Inserting a node in LinkedList",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 128,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn 1D LinkedList",
+    "title": "Deleting a node in LinkedList",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 129,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn 1D LinkedList",
+    "title": "Find the length of the linkedlist [learn traversal]",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 130,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn 1D LinkedList",
+    "title": "Search an element in the LL",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 131,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn Doubly LinkedList",
+    "title": "Introduction to DLL, learn about struct, and how is node represented",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 132,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn Doubly LinkedList",
+    "title": "Insert a node in DLL",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 133,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn Doubly LinkedList",
+    "title": "Delete a node in DLL",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 134,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Learn Doubly LinkedList",
+    "title": "Reverse a DLL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 135,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Middle of a LinkedList [TortoiseHare Method]",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 136,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Reverse a LinkedList [Iterative]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 137,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Reverse a LL [Recursive]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 138,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Detect a loop in LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 139,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Find the starting point in LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 140,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Length of Loop in LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 141,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Check if LL is palindrome or not",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 142,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Segrregate odd and even nodes in LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 143,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Remove Nth node from the back of the LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 144,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Delete the middle node of LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 145,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Sort LL",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 146,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Sort a LL of 0's 1's and 2's by changing links",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 147,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Find the intersection point of Y LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 148,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Add 1 to a number represented by LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 149,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of LL",
+    "title": "Add 2 numbers in LL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 150,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of DLL",
+    "title": "Delete all occurrences of a key in DLL",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 151,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of DLL",
+    "title": "Find pairs with given sum in DLL",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 152,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Medium Problems of DLL",
+    "title": "Remove duplicates from sorted DLL",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 153,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Hard Problems of LL",
+    "title": "Reverse LL in group of given size K",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 154,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Hard Problems of LL",
+    "title": "Rotate a LL",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 155,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Hard Problems of LL",
+    "title": "Flattening of LL",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 156,
+    "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
+    "subSection": "Hard Problems of LL",
+    "title": "Clone a Linked List with random and next pointer",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 157,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Get a Strong Hold",
+    "title": "Recursive Implementation of atoi()",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 158,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Get a Strong Hold",
+    "title": "Pow(x, n)",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 159,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Get a Strong Hold",
+    "title": "Count Good numbers",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 160,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Get a Strong Hold",
+    "title": "Sort a stack using recursion",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 161,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Get a Strong Hold",
+    "title": "Reverse a stack using recursion",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 162,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Generate all binary strings",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 163,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Generate Paranthesis",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 164,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Print all subsequences/Power Set",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 165,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Learn All Patterns of Subsequences (Theory)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 166,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Count all subsequences with sum K",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 167,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Check if there exists a subsequence with sum K",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 168,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Combination Sum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 169,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Combination Sum-II",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 170,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Subset Sum-I",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 171,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Subset Sum-II",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 172,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Combination Sum - III",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 173,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Subsequences Pattern",
+    "title": "Letter Combinations of a Phone number",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 174,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Palindrome Partitioning",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 175,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Word Search",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 176,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "N Queen",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 177,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Rat in a Maze",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 178,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Word Break",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 179,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "M Coloring Problem",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 180,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Sudoko Solver",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 181,
+    "section": "Recursion [PatternWise]",
+    "subSection": "Trying out all Combos / Hard",
+    "title": "Expression Add Operators",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 182,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Introduction to Bit Manipulation [Theory]",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 183,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Check if the i-th bit is set or not",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 184,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Check if a number is odd or not",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 185,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Check if a number is power of 2 or not",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 186,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Count the number of set bits",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 187,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Set/Unset the rightmost unset bit",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 188,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Swap two numbers",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 189,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Learn Bit Manipulation",
+    "title": "Divide two integers without using multiplication, division and mod operator",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 190,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Interview Problems",
+    "title": "Count number of bits to be flipped to convert A to B",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 191,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Interview Problems",
+    "title": "Find the number that appears odd number of times",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 192,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Interview Problems",
+    "title": "Power Set",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 193,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Interview Problems",
+    "title": "Find xor of numbers from L to R",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 194,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Interview Problems",
+    "title": "Find the two numbers appearing odd number of times",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 195,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Advanced Maths",
+    "title": "Print Prime Factors of a Number",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 196,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Advanced Maths",
+    "title": "All Divisors of a Number",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 197,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Advanced Maths",
+    "title": "Sieve of Eratosthenes",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 198,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Advanced Maths",
+    "title": "Find Prime Factorisation of a Number using Sieve",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 199,
+    "section": "Bit Manipulation [Concepts & Problems]",
+    "subSection": "Advanced Maths",
+    "title": "Power(n, x)",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 200,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement Stack using Arrays",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 201,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement Queue using Arrays",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 202,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement Stack using Queue",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 203,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement Queue using Stack",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 204,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement stack using Linkedlist",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 205,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement queue using Linkedlist",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 206,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Check for balanced paranthesis",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 207,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Learning",
+    "title": "Implement Min Stack",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 208,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Infix to Postfix Conversion using Stack",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 209,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Prefix to Infix Conversion",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 210,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Prefix to Postfix Conversion",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 211,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Postfix to Prefix Conversion",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 212,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Postfix to Infix",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 213,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Prefix, Infix, PostFix Conversion Problems",
+    "title": "Convert Infix To Prefix Notation",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 214,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Next Greater Element",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 215,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Next Greater Element 2",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 216,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Next Smaller Element",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 217,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Number of NGEs to the right",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 218,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Trapping Rainwater",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 219,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Sum of subarray minimum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 220,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Asteroid Collision",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 221,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Sum of subarray ranges",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 222,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Remove k Digits",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 223,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Largest rectangle in a histogram",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 224,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
+    "title": "Maximal Rectangles",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 225,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Implementation Problems",
+    "title": "Sliding Window maximum",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 226,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Implementation Problems",
+    "title": "Stock span problem",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 227,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Implementation Problems",
+    "title": "The Celebrity Problem",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 228,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Implementation Problems",
+    "title": "LRU cache (IMPORTANT)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 229,
+    "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
+    "subSection": "Implementation Problems",
+    "title": "LFU cache",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 230,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 231,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Max Consecutive Ones III",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 232,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Fruit Into Baskets",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 233,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "longest repeating character replacement",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 234,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Binary subarray with sum",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 235,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Count number of nice subarrays",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 236,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Number of substring containing all three characters",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 237,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Medium Problems",
+    "title": "Maximum point you can obtain from cards",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 238,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Hard Problems",
+    "title": "Longest Substring with At Most K Distinct Characters",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 239,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Hard Problems",
+    "title": "Subarray with k different integers",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 240,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Hard Problems",
+    "title": "Minimum Window Substring",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 241,
+    "section": "Sliding Window & Two Pointer Combined Problems",
+    "subSection": "Hard Problems",
+    "title": "Minimum Window Subsequence",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 242,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Learning",
+    "title": "Introduction to Priority Queues using Binary Heaps",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 243,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Learning",
+    "title": "Min Heap and Max Heap Implementation",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 244,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Learning",
+    "title": "Check if an array represents a min-heap or not",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 245,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Learning",
+    "title": "Convert min Heap to max Heap",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 246,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Kth largest element in an array [use priority queue]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 247,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Kth smallest element in an array [use priority queue]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 248,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Sort K sorted array",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 249,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Merge M sorted Lists",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 250,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Replace each array element by its corresponding rank",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 251,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Task Scheduler",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 252,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Hands of Straights",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 253,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Design twitter",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 254,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Connect `n` ropes with minimal cost",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 255,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Kth largest element in a stream of running integers",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 256,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Maximum Sum Combination",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 257,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Find Median from Data Stream",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 258,
+    "section": "Heaps [Learning, Medium, Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "K most frequent elements",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 259,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Easy Problems",
+    "title": "Assign Cookies",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 260,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Easy Problems",
+    "title": "Fractional Knapsack Problem",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 261,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Easy Problems",
+    "title": "Greedy algorithm to find minimum number of coins",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 262,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Easy Problems",
+    "title": "Lemonade Change",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 263,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Easy Problems",
+    "title": "Valid Paranthesis Checker",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 264,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "N meetings in one room",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 265,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Jump Game",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 266,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Jump Game 2",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 267,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Minimum number of platforms required for a railway",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 268,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Job sequencing Problem",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 269,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Candy",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 270,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Program for Shortest Job First (or SJF) CPU Scheduling",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 271,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Program for Least Recently Used (LRU) Page Replacement Algorithm",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 272,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Insert Interval",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 273,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Merge Intervals",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 274,
+    "section": "Greedy Algorithms [Easy, Medium/Hard]",
+    "subSection": "Medium/Hard",
+    "title": "Non-overlapping Intervals",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 275,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Introduction to Trees",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 276,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Binary Tree Representation in C++",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 277,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Binary Tree Representation in Java",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 278,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Binary Tree Traversals in Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 279,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Preorder Traversal of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 280,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Inorder Traversal of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 281,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Post-order Traversal of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 282,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Level order Traversal / Level order traversal in spiral form",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 283,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Iterative Preorder Traversal of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 284,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Iterative Inorder Traversal of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 285,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Post-order Traversal of Binary Tree using 2 stack",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 286,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Post-order Traversal of Binary Tree using 1 stack",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 287,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Traversals",
+    "title": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 288,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Height of a Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 289,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Check if the Binary tree is height-balanced or not",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 290,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Diameter of Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 291,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Maximum path sum",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 292,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Check if two trees are identical or not",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 293,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Zig Zag Traversal of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 294,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Boundary Traversal of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 295,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Vertical Order Traversal of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 296,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Top View of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 297,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Bottom View of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 298,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Right/Left View of Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 299,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Medium Problems",
+    "title": "Symmetric Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 300,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Root to Node Path in Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 301,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "LCA in Binary Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 302,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Maximum width of a Binary Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 303,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Check for Children Sum Property",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 304,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Print all the Nodes at a distance of K in a Binary Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 305,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Minimum time taken to BURN the Binary Tree from a Node",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 306,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Count total Nodes in a COMPLETE Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 307,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Requirements needed to construct a Unique Binary Tree | Theory",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 307,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Construct Binary Tree from inorder and preorder",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 308,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Construct the Binary Tree from Postorder and Inorder Traversal",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 309,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Serialize and deserialize Binary Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 310,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Morris Preorder Traversal of a Binary Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 311,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Morris Inorder Traversal of a Binary Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 312,
+    "section": "Binary Trees [Traversals, Medium and Hard Problems]",
+    "subSection": "Hard Problems",
+    "title": "Flatten Binary Tree to LinkedList",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 313,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Concepts",
+    "title": "Introduction to Binary Search Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 314,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Concepts",
+    "title": "Search in a Binary Search Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 315,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Concepts",
+    "title": "Find Min/Max in BST",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 316,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Ceil in a Binary Search Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 317,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Floor in a Binary Search Tree",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 318,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Insert a given Node in Binary Search Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 319,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Delete a Node in Binary Search Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 320,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Find K-th smallest/largest element in BST",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 321,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Check if a tree is a BST or BT",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 322,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "LCA in Binary Search Tree",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 323,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Construct a BST from a preorder traversal",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 324,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Inorder Successor/Predecessor in BST",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 325,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Merge 2 BST's",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 326,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Two Sum In BST | Check if there exists a pair with Sum K",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 327,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Recover BST | Correct BST with two nodes swapped",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 328,
+    "section": "Binary Search Trees [Concept and Problems]",
+    "subSection": "Practice Problems",
+    "title": "Largest BST in Binary Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 329,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "Graph and Types",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 330,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "Graph Representation | C++",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 331,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "Graph Representation | Java",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 332,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "Connected Components | Logic Explanation",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 333,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "BFS",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 334,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Learning",
+    "title": "DFS",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 335,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Number of provinces (leetcode)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 336,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Connected Components Problem in Matrix",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 337,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Rotten Oranges",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 338,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Flood fill",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 339,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Cycle Detection in Undirected Graph (bfs)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 340,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Cycle Detection in Undirected Graph (dfs)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 341,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "0/1 Matrix (Bfs Problem)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 342,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Surrounded Regions (dfs)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 343,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Number of Enclaves [flood fill implementation - multisource]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 344,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Word ladder - 1",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 345,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Word ladder - 2",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 346,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Number of Distinct Islands [dfs multisource]",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 347,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Bipartite Graph (DFS)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 348,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Problems on BFS/DFS",
+    "title": "Cycle Detection in Directed Graph (DFS)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 349,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Topo Sort",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 350,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Kahn's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 351,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Cycle Detection in Directed Graph (BFS)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 352,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Course Schedule - I",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 353,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Course Schedule - II",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 354,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Find eventual safe states",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 355,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Topo Sort and Problems",
+    "title": "Alien dictionary",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 356,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Shortest Path in UG with unit weights",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 357,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Shortest Path in DAG",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 358,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Djisktra's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 359,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Why priority Queue is used in Djisktra's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 360,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Shortest path in a binary maze",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 361,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Path with minimum effort",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 362,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Cheapest flights within k stops",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 363,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Network Delay time",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 364,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Number of ways to arrive at destination",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 365,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Minimum steps to reach end from start by performing multiplication and mod operations with array elements",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 366,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Bellman Ford Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 367,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Floyd Warshal Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 368,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Shortest Path Algorithms and Problems",
+    "title": "Find the city with the smallest number of neighbors in a threshold distance",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 369,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Minimum Spanning Tree",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 370,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Prim's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 371,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Disjoint Set [Union by Rank]",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 372,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Disjoint Set [Union by Size]",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 373,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Kruskal's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 374,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Number of operations to make network connected",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 375,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Most stones removed with same rows or columns",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 376,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Accounts merge",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 377,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Number of island II",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 378,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Making a Large Island",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 379,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
+    "title": "Swim in rising water",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 380,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Other Algorithms",
+    "title": "Bridges in Graph",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 381,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Other Algorithms",
+    "title": "Articulation Point",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 382,
+    "section": "Graphs [Concepts & Problems]",
+    "subSection": "Other Algorithms",
+    "title": "Kosaraju's Algorithm",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 383,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "Introduction to DP",
+    "title": "Dynamic Programming Introduction",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 384,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "1D DP",
+    "title": "Climbing Stars",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 385,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "1D DP",
+    "title": "Frog Jump(DP-3)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 386,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "1D DP",
+    "title": "Frog Jump with k distances(DP-4)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 387,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "1D DP",
+    "title": "Maximum sum of non-adjacent elements (DP 5)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 388,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "1D DP",
+    "title": "House Robber (DP 6)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 389,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Ninja's Training (DP 7)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 390,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Grid Unique Paths : DP on Grids (DP8)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 391,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Grid Unique Paths 2 (DP 9)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 392,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Minimum path sum in Grid (DP 10)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 393,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Minimum path sum in Triangular Grid (DP 11)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 394,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "Minimum/Maximum Falling Path Sum (DP-12)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 395,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "2D/3D DP and DP on Grids",
+    "title": "3-d DP : Ninja and his friends (DP-13)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 396,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Subset sum equal to target (DP- 14)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 397,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Partition Equal Subset Sum (DP- 15)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 398,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 399,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Count Subsets with Sum K (DP - 17)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 400,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Count Partitions with Given Difference (DP - 18)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 401,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Assign Cookies",
+    "difficulty": "Easy",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 402,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Minimum Coins (DP - 20)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 403,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Target Sum (DP - 21)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 404,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Coin Change 2 (DP - 22)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 405,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Unbounded Knapsack (DP - 23)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 406,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Subsequences",
+    "title": "Rod Cutting Problem | (DP - 24)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 407,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Longest Common Subsequence | (DP - 25)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 408,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Print Longest Common Subsequence | (DP - 26)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 409,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Longest Common Substring | (DP - 27)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 410,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Longest Palindromic Subsequence | (DP-28)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 411,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Minimum insertions to make string palindrome | DP-29",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 412,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Minimum Insertions/Deletions to Convert String | (DP- 30)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 413,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Shortest Common Supersequence | (DP - 31)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 414,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Distinct Subsequences| (DP-32)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 415,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Edit Distance | (DP-33)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 416,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Strings",
+    "title": "Wildcard Matching | (DP-34)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 417,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Best Time to Buy and Sell Stock |(DP-35)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 418,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Buy and Sell Stock - II|(DP-36)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 419,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Buy and Sell Stocks III|(DP-37)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 420,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Buy and Stock Sell IV |(DP-38)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 421,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Buy and Sell Stocks With Cooldown|(DP-39)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 422,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Stocks",
+    "title": "Buy and Sell Stocks With Transaction Fee|(DP-40)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 423,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Longest Increasing Subsequence |(DP-41)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 424,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Printing Longest Increasing Subsequence|(DP-42)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 425,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Longest Increasing Subsequence |(DP-43)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 426,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Largest Divisible Subset|(DP-44)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 427,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Longest String Chain|(DP-45)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 428,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Longest Bitonic Subsequence |(DP-46)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 429,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on LIS",
+    "title": "Number of Longest Increasing Subsequences|(DP-47)",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 430,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Matrix Chain Multiplication|(DP-48)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 431,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Matrix Chain Multiplication | Bottom-Up|(DP-49)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 432,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Minimum Cost to Cut the Stick|(DP-50)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 433,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Burst Balloons|(DP-51)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 434,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Evaluate Boolean Expression to True|(DP-52)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 435,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Palindrome Partitioning - II|(DP-53)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 436,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Partition Array for Maximum Sum|(DP-54)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 437,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Squares",
+    "title": "Maximum Rectangle Area with all 1's|(DP-55)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 438,
+    "section": "Dynamic Programming [Patterns and Problems]",
+    "subSection": "DP on Squares",
+    "title": "Count Square Submatrices with All Ones|(DP-56)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 439,
+    "section": "Tries",
+    "subSection": "Theory",
+    "title": "Implement TRIE | INSERT | SEARCH | STARTSWITH",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 440,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Implement Trie - 2 (Prefix Tree)",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 441,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Longest String with All Prefixes",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 442,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Number of Distinct Substrings in a String",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 443,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Bit PreRequisites for TRIE Problems",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 444,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Maximum XOR of two numbers in an array",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 445,
+    "section": "Tries",
+    "subSection": "Problems",
+    "title": "Maximum XOR With an Element From Array",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 446,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Minimum number of bracket reversals needed to make an expression balanced",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 447,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Count and say",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 448,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Hashing In Strings | Theory",
+    "difficulty": "Medium",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 449,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Rabin Karp",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 450,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Z-Function",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 451,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "KMP algo / LPS(pi) array",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 452,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Shortest Palindrome",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 453,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Longest happy prefix",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 454,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Count palindromic subsequence in given string",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  },
+  {
+    "id": 455,
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Count palindromic subsequence in given string",
+    "difficulty": "Hard",
+    "resources": {
+      "solve": "",
+      "editorial": "",
+      "postLink": "",
+      "youtube": ""
+    }
+  }
+]
