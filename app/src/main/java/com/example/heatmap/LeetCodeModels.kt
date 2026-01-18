@@ -22,7 +22,16 @@ data class LeetCodeData(
     val userContestRanking: UserContestRanking?,
     val streakCounter: StreakCounter?,
     val activeDailyCodingChallengeQuestion: DailyChallenge?,
-    val upcomingContests: List<Contest>?
+    val upcomingContests: List<Contest>?,
+    val recentSubmissionList: List<RecentSubmission>?
+)
+
+data class RecentSubmission(
+    val title: String,
+    val titleSlug: String,
+    val timestamp: String,
+    val statusDisplay: String,
+    val lang: String
 )
 
 data class Contest(
@@ -35,17 +44,17 @@ data class Contest(
 )
 
 data class DailyChallenge(
-    val date: String,
-    val userStatus: String,
-    val link: String,
-    val question: ChallengeQuestion
+    val date: String?,
+    val userStatus: String?,
+    val link: String?,
+    val question: ChallengeQuestion?
 )
 
 data class ChallengeQuestion(
-    val questionId: String,
-    val title: String,
-    val difficulty: String,
-    val titleSlug: String
+    val questionId: String?,
+    val title: String?,
+    val difficulty: String?,
+    val titleSlug: String?
 )
 
 data class StreakCounter(
@@ -55,40 +64,41 @@ data class StreakCounter(
 )
 
 data class DifficultyCount(
-    val difficulty: String,
+    val difficulty: String?,
     val count: Int
 )
 
 data class MatchedUser(
-    val username: String,
-    val profile: UserProfile,
-    val submitStats: SubmitStats,
-    val userCalendar: UserCalendar
+    val username: String?,
+    val profile: UserProfile?,
+    val submitStats: SubmitStats?,
+    val userCalendar: UserCalendar?
 )
 
 data class UserProfile(
     val realName: String?,
+    val userAvatar: String?,
     val countryName: String?,
     val ranking: Int,
     val skillTags: List<String>?
 )
 
 data class SubmitStats(
-    val acSubmissionNum: List<SubmissionNum>,
-    val totalSubmissionNum: List<SubmissionNum>
+    val acSubmissionNum: List<SubmissionNum>?,
+    val totalSubmissionNum: List<SubmissionNum>?
 )
 
 data class SubmissionNum(
-    val difficulty: String,
+    val difficulty: String?,
     val count: Int,
     val submissions: Int
 )
 
 data class UserCalendar(
-    val activeYears: List<Int>,
+    val activeYears: List<Int>?,
     val streak: Int,
     val totalActiveDays: Int,
-    val submissionCalendar: String // This is a JSON string of {timestamp: count}
+    val submissionCalendar: String? // This is a JSON string of {timestamp: count}
 )
 
 data class UserContestRanking(
@@ -97,3 +107,24 @@ data class UserContestRanking(
     val totalParticipants: Int,
     val topPercentage: Double
 )
+
+// Training Plan Models
+data class DailyTrainingPlan(
+    val date: String,
+    val tasks: List<TrainingTask>
+)
+
+data class TrainingTask(
+    val id: String,
+    val title: String,
+    val description: String,
+    val category: String,
+    val difficulty: String,
+    val estimatedTime: Int, // in minutes
+    val type: TaskType,
+    var isCompleted: Boolean = false
+)
+
+enum class TaskType {
+    NEW_SOLVE, RE_SOLVE, REVIEW, DRILL, CUSTOM
+}

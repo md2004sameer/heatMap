@@ -51,13 +51,20 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    // UI - Google Material Components (Required for XML Themes)
+    implementation(libs.google.material)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+
+    // Image Loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     // WorkManager for real-time updates
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation(libs.androidx.compose.foundation)
 
     // Room Database for Offline Support
     val room_version = "2.6.1"

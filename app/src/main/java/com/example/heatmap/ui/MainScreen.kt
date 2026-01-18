@@ -1,0 +1,380 @@
+package com.example.heatmap.ui
+
+import android.content.Context
+import androidx.activity.ComponentActivity
+import androidx.compose.animation.*
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.core.content.edit
+import androidx.lifecycle.lifecycleScope
+import com.example.heatmap.*
+import com.example.heatmap.ui.theme.LeetCodeOrange
+import com.example.heatmap.ui.theme.Typography
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+
+@Composable
+fun MainScreen(viewModel: MainViewModel) {
+    val uiState by viewModel.uiState.collectAsState()
+    val currentScreen by viewModel.currentScreen.collectAsState()
+
+    Scaffold(
+        bottomBar = {
+            if (uiState is UiState.Success) {
+                DualBottomNavigation(
+                    currentScreen = currentScreen,
+                    onNavigate = { viewModel.navigateTo(it) }
+                )
+            }
+        },
+        containerColor = Color(0xFF0d1117)
+    ) { paddingValues ->
+        Box(modifier = Modifier.padding(paddingValues)) {
+            when (val state = uiState) {
+                is UiState.Loading -> {
+                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(color = LeetCodeOrange)
+                    }
+                }
+                is UiState.Error -> {
+                    Box(Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = Color(0xFF442727)),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(state.message, color = Color(0xFFFF8A8A))
+                                Spacer(Modifier.height(12.dp))
+                                Button(
+                                    onClick = { viewModel.resetToOnboarding() },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.Red.copy(alpha = 0.5f)),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Text("Try Another Username")
+                                }
+                            }
+                        }
+                    }
+                }
+                is UiState.Success -> {
+                    ContentSwitcher(state.data, currentScreen, viewModel)
+                }
+                else -> {}
+            }
+        }
+    }
+}
+
+@Composable
+fun DualBottomNavigation(
+    currentScreen: Screen,
+    onNavigate: (Screen) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color(0xFF161b22).copy(alpha = 0.95f))
+            .navigationBarsPadding()
+            .padding(bottom = 8.dp)
+    ) {
+        // First Bar: Identity + Performance
+        ScrollableTabRow(
+            selectedTabIndex = ProfileSection.all.indexOfFirst { (currentScreen as? Screen.Profile)?.section == it }.coerceAtLeast(0),
+            containerColor = Color.Transparent,
+            contentColor = LeetCodeOrange,
+            edgePadding = 16.dp,
+            divider = {},
+            indicator = {}
+        ) {
+            ProfileSection.all.forEach { section ->
+                val isSelected = (currentScreen as? Screen.Profile)?.section == section
+                NavigationItem(
+                    label = section.title,
+                    icon = section.icon,
+                    isSelected = isSelected,
+                    onClick = { onNavigate(Screen.Profile(section)) }
+                )
+            }
+        }
+
+        Spacer(Modifier.height(4.dp))
+
+        // Second Bar: Productivity
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .height(56.dp)
+                .background(Color(0xFF21262d), RoundedCornerShape(28.dp))
+                .padding(horizontal = 4.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            ProductivitySection.all.forEach { section ->
+                val isSelected = (currentScreen as? Screen.Productivity)?.section == section
+                Row(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .clip(RoundedCornerShape(24.dp))
+                        .clickable { onNavigate(Screen.Productivity(section)) }
+                        .padding(horizontal = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        section.icon,
+                        contentDescription = section.title,
+                        tint = if (isSelected) LeetCodeOrange else Color.Gray,
+                        modifier = Modifier.size(24.dp)
+                    )
+                    if (isSelected) {
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            section.title,
+                            color = LeetCodeOrange,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun NavigationItem(
+    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .minimumInteractiveComponentSize()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(
+            icon,
+            contentDescription = label,
+            tint = if (isSelected) LeetCodeOrange else Color.Gray,
+            modifier = Modifier.size(24.dp)
+        )
+        Text(
+            label,
+            color = if (isSelected) LeetCodeOrange else Color.Gray,
+            fontSize = 10.sp,
+            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+        )
+    }
+}
+
+@Composable
+fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainViewModel) {
+    AnimatedContent(
+        targetState = currentScreen,
+        transitionSpec = {
+            fadeIn() togetherWith fadeOut()
+        },
+        label = "ContentTransition"
+    ) { screen ->
+        Column(modifier = Modifier.fillMaxSize()) {
+            when (screen) {
+                is Screen.Profile -> ProfileContent(data, screen.section)
+                is Screen.Productivity -> ProductivityContent(screen.section, viewModel, data)
+            }
+        }
+    }
+}
+
+@Composable
+fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
+    val user = data.matchedUser ?: return
+    val submissionCalendar = user.userCalendar?.submissionCalendar
+    val submissionByDate = remember(submissionCalendar) {
+        try {
+            if (submissionCalendar == null) {
+                emptyMap<LocalDate, Int>()
+            } else {
+                val type = object : TypeToken<Map<String, Int>>() {}.type
+                val rawMap = Gson().fromJson<Map<String, Int>>(submissionCalendar, type)
+                rawMap.entries.associate { (tsStr, count) ->
+                    val ts = tsStr.toLong()
+                    val date = if (tsStr.length > 10) {
+                        Instant.ofEpochMilli(ts).atZone(ZoneId.systemDefault()).toLocalDate()
+                    } else {
+                        Instant.ofEpochSecond(ts).atZone(ZoneId.systemDefault()).toLocalDate()
+                    }
+                    date to count
+                }
+            }
+        } catch (_: Exception) {
+            emptyMap<LocalDate, Int>()
+        }
+    }
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item {
+            ProfileHeader(user)
+        }
+
+        when (section) {
+            ProfileSection.Details -> {
+                item {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        data.activeDailyCodingChallengeQuestion?.let { challenge ->
+                            DailyChallengeCard(challenge)
+                        }
+                        SubmissionStatsCard(user, submissionByDate)
+                        WallpaperModule(data)
+                        ProblemsSolvedCard(user, data.allQuestionsCount ?: emptyList())
+                        RecentSubmissionsSection(data.recentSubmissionList ?: emptyList())
+                    }
+                }
+            }
+            ProfileSection.Info -> {
+                item { ProfileInfoCard(user) }
+                item { UpcomingContestsSection(data.upcomingContests ?: emptyList()) }
+                data.userContestRanking?.let { item { ContestRankingCard(it) } }
+            }
+        }
+    }
+}
+
+@Composable
+fun WallpaperModule(data: LeetCodeData) {
+    val showWallpaperOptions = remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
+    if (showWallpaperOptions.value) {
+        WallpaperSelectionDialog(
+            onDismiss = { showWallpaperOptions.value = false },
+            onApply = { flag ->
+                showWallpaperOptions.value = false
+                (context as? ComponentActivity)?.lifecycleScope?.launch {
+                    WallpaperUtils.applyWallpaper(context, data, flag)
+                    WallpaperWorker.enqueue(context)
+                }
+            }
+        )
+    }
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Column(Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Icon(imageVector = Icons.Default.Build, contentDescription = null, tint = LeetCodeOrange, modifier = Modifier.size(48.dp))
+            Spacer(Modifier.height(16.dp))
+            Text("Set as Wallpaper", style = Typography.headlineSmall, color = Color.White)
+            Spacer(Modifier.height(8.dp))
+            Text(
+                "Keep your LeetCode heatmap as your wallpaper to stay motivated and track your daily streak.",
+                style = Typography.bodyMedium,
+                color = Color.Gray,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+            )
+            Spacer(Modifier.height(24.dp))
+            Button(
+                onClick = { showWallpaperOptions.value = true },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text("Customize & Apply", fontWeight = FontWeight.Bold)
+            }
+        }
+    }
+}
+
+@Composable
+fun ProductivityContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
+    val trainingPlan by viewModel.trainingPlan.collectAsState()
+
+    Box(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        when (section) {
+            ProductivitySection.Todo -> {
+                TrainingPlanSection(
+                    plan = trainingPlan,
+                    onGenerate = { viewModel.generateTrainingPlan(data) },
+                    onToggleTask = { taskId -> viewModel.toggleTaskCompletion(taskId) },
+                    onAddTask = { title, desc, cat, time -> viewModel.addCustomTask(title, desc, cat, time) },
+                    onDeleteTask = { taskId -> viewModel.removeTask(taskId) }
+                )
+            }
+            ProductivitySection.Notes -> {
+                NotesModuleSection(viewModel)
+            }
+        }
+    }
+}
+
+@Composable
+fun WallpaperSelectionDialog(onDismiss: () -> Unit, onApply: (Int) -> Unit) {
+    val context = LocalContext.current
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = Color(0xFF161b22),
+        titleContentColor = Color.White,
+        textContentColor = Color.White,
+        title = { Text("Apply Wallpaper", fontWeight = FontWeight.Bold) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("Select where to apply the heatmap wallpaper:")
+                Spacer(Modifier.height(8.dp))
+
+                val targets = listOf(
+                    "Home Screen" to android.app.WallpaperManager.FLAG_SYSTEM,
+                    "Lock Screen" to android.app.WallpaperManager.FLAG_LOCK,
+                    "Both" to (android.app.WallpaperManager.FLAG_SYSTEM or android.app.WallpaperManager.FLAG_LOCK)
+                )
+
+                targets.forEach { (label, flag) ->
+                    Button(
+                        onClick = {
+                            val prefs = context.getSharedPreferences("leetcode_prefs", Context.MODE_PRIVATE)
+                            prefs.edit { putInt("wallpaper_target", flag) }
+                            onApply(flag)
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(label, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel", color = LeetCodeOrange)
+            }
+        }
+    )
+}

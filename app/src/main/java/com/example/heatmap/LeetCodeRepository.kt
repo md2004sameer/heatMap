@@ -1,6 +1,7 @@
 package com.example.heatmap
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,10 +17,17 @@ class LeetCodeRepository private constructor(context: Context) {
     private val gson = Gson()
     
     private val client = OkHttpClient.Builder()
-        .connectTimeout(15, TimeUnit.SECONDS)
-        .readTimeout(15, TimeUnit.SECONDS)
+        .connectTimeout(20, TimeUnit.SECONDS)
+        .readTimeout(20, TimeUnit.SECONDS)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36")
+                .header("Referer", "https://leetcode.com/")
+                .build()
+            chain.proceed(request)
+        }
         .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
+            level = HttpLoggingInterceptor.Level.HEADERS
         })
         .build()
 
@@ -55,10 +63,18 @@ class LeetCodeRepository private constructor(context: Context) {
                 difficulty
                 count
             }
+            recentSubmissionList(username: ${"$"}username, limit: 15) {
+                title
+                titleSlug
+                timestamp
+                statusDisplay
+                lang
+            }
             matchedUser(username: ${"$"}username) {
                 username
                 profile {
                     realName
+                    userAvatar
                     countryName
                     ranking
                     skillTags
@@ -88,11 +104,6 @@ class LeetCodeRepository private constructor(context: Context) {
                 totalParticipants
                 topPercentage
             }
-            streakCounter {
-                streakCount
-                daysSkipped
-                currentDayCompleted
-            }
         }
     """.trimIndent()
 
@@ -100,7 +111,12 @@ class LeetCodeRepository private constructor(context: Context) {
         // 1. Emit cached data immediately if available
         val cached = dao.getCachedData(username)
         if (cached != null) {
-            emit(gson.fromJson(cached.jsonData, LeetCodeData::class.java))
+            try {
+                val data = gson.fromJson(cached.jsonData, LeetCodeData::class.java)
+                emit(data)
+            } catch (e: Exception) {
+                Log.e("LeetCodeRepository", "Error parsing cached data", e)
+            }
         }
 
         // 2. Fetch from network and update cache
@@ -112,13 +128,18 @@ class LeetCodeRepository private constructor(context: Context) {
                     variables = mapOf("username" to username, "year" to currentYear)
                 )
             )
+            
             val newData = response.data
             if (newData?.matchedUser != null) {
                 dao.insertData(CachedLeetCodeData(username, gson.toJson(newData)))
                 emit(newData)
+            } else {
+                Log.e("LeetCodeRepository", "No matched user in response: ${response.errors}")
+                if (cached == null) emit(null)
             }
         } catch (e: Exception) {
-            // Keep existing cache on failure
+            Log.e("LeetCodeRepository", "Network fetch failed", e)
+            if (cached == null) emit(null)
         }
     }
 

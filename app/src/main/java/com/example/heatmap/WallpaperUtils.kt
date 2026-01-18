@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -56,17 +57,31 @@ object WallpaperUtils {
                     }
                     
                     try {
-                        wm.setBitmap(bitmap, null, true, flag)
-                        Log.d(TAG, "Wallpaper set successfully")
+                        if (flag == (WallpaperManager.FLAG_SYSTEM or WallpaperManager.FLAG_LOCK)) {
+                            try {
+                                wm.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
+                            } catch (e: Exception) {
+                                Log.e(TAG, "Failed to apply to FLAG_SYSTEM", e)
+                            }
+                            try {
+                                wm.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
+                            } catch (e: Exception) {
+                                Log.e(TAG, "Failed to apply to FLAG_LOCK", e)
+                            }
+                        } else {
+                            wm.setBitmap(bitmap, null, true, flag)
+                        }
+                        
+                        Log.d(TAG, "Wallpaper set successfully with flag $flag")
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(context, "Wallpaper set successfully", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Wallpaper updated", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: Exception) {
                         Log.e(TAG, "Failed to apply wallpaper with flags $flag", e)
-                        wm.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
-                        Log.d(TAG, "Wallpaper set successfully (fallback to system)")
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(context, "Wallpaper set successfully", Toast.LENGTH_SHORT).show()
+                        try {
+                            wm.setBitmap(bitmap)
+                        } catch (e2: Exception) {
+                            Log.e(TAG, "Final fallback failed", e2)
                         }
                     }
                 } catch (e: OutOfMemoryError) {
@@ -79,16 +94,18 @@ object WallpaperUtils {
     }
 
     private fun renderToBitmap(data: LeetCodeData, width: Int, height: Int): Bitmap {
-        val bitmap = createBitmap(width, height, Bitmap.Config.RGB_565)
+        val bitmap = try {
+            createBitmap(width, height, Bitmap.Config.RGB_565)
+        } catch (e: Exception) {
+            createBitmap(720, 1280, Bitmap.Config.RGB_565)
+        }
         val canvas = Canvas(bitmap)
 
-        // 1. Solid Black Background
         canvas.drawColor(Color.BLACK)
 
         val user = data.matchedUser ?: return bitmap
         val today = LocalDate.now()
 
-        // 2. Main Box (Dark Gray Card)
         val boxWidth = width * 0.85f
         val boxHeight = height * 0.42f
         val boxLeft = (width - boxWidth) / 2f
@@ -100,7 +117,7 @@ object WallpaperUtils {
         }
         val boxBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
-            alpha = 15 // Very subtle border
+            alpha = 15
             style = Paint.Style.STROKE
             strokeWidth = 2f
         }
@@ -109,7 +126,6 @@ object WallpaperUtils {
         canvas.drawRoundRect(boxLeft, boxTop, boxLeft + boxWidth, boxTop + boxHeight, cornerRadius, cornerRadius, boxPaint)
         canvas.drawRoundRect(boxLeft, boxTop, boxLeft + boxWidth, boxTop + boxHeight, cornerRadius, cornerRadius, boxBorderPaint)
 
-        // 3. "MONTHLY PROGRESS" Label
         val labelPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
             color = Color.WHITE
             alpha = 80
@@ -120,19 +136,17 @@ object WallpaperUtils {
         }
         canvas.drawText("MONTHLY PROGRESS", width / 2f, boxTop + 80f, labelPaint)
 
-        // 4. Heatmap
         val hPadding = 60f
         val vPadding = 130f
         drawHeatMap(
             canvas, 
-            user.userCalendar.submissionCalendar, 
+            user.userCalendar?.submissionCalendar ?: "{}", 
             boxLeft + hPadding, 
             boxTop + vPadding, 
             boxWidth - (hPadding * 2), 
             boxHeight - vPadding - 40f
         )
 
-        // 5. Date and Countdown
         var currentY = boxTop + boxHeight + 110f
         
         val datePaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -186,7 +200,7 @@ object WallpaperUtils {
         val lastOfMonth = today.with(TemporalAdjusters.lastDayOfMonth())
 
         var gridStart = firstOfMonth
-        while (gridStart.dayOfWeek != java.time.DayOfWeek.SUNDAY) {
+        while (gridStart.dayOfWeek != DayOfWeek.SUNDAY) {
             gridStart = gridStart.minusDays(1)
         }
 

@@ -79,11 +79,12 @@ class ReminderWorker(
 
     private fun sendDailyChallengeReminder(data: LeetCodeData) {
         val challenge = data.activeDailyCodingChallengeQuestion ?: return
+        val question = challenge.question
         val title = "🌙 Evening Check-in"
-        val message = "You haven’t attempted today’s daily challenge yet: \"${challenge.question.title}\"."
+        val message = "You haven’t attempted today’s daily challenge yet: \"${question?.title ?: "Daily Challenge"}\"."
         val bigText = "$message\n\nDon't let the day end without a small win. Solving the Daily Challenge is the best way to keep your skills sharp and your streak alive!"
         
-        val link = "https://leetcode.com${challenge.link}"
+        val link = "https://leetcode.com${challenge.link ?: ""}"
         sendNotification(title, message, bigText, link)
     }
 

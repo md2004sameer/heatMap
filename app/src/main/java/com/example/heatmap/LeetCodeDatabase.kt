@@ -19,9 +19,10 @@ interface LeetCodeDao {
     suspend fun insertData(data: CachedLeetCodeData)
 }
 
-@Database(entities = [CachedLeetCodeData::class], version = 1)
+@Database(entities = [CachedLeetCodeData::class, Folder::class, Note::class], version = 2, exportSchema = false)
 abstract class LeetCodeDatabase : RoomDatabase() {
     abstract fun leetCodeDao(): LeetCodeDao
+    abstract fun notesDao(): NotesDao
 
     companion object {
         @Volatile
@@ -33,7 +34,9 @@ abstract class LeetCodeDatabase : RoomDatabase() {
                     context.applicationContext,
                     LeetCodeDatabase::class.java,
                     "leetcode_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration() // For development simplicity
+                .build()
                 INSTANCE = instance
                 instance
             }
