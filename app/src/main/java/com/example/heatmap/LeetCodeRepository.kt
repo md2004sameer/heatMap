@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class LeetCodeRepository private constructor(context: Context) {
     private val dao = LeetCodeDatabase.getDatabase(context).leetCodeDao()
+    private val problemsDao = LeetCodeDatabase.getDatabase(context).problemsDao()
     private val gson = Gson()
     
     private val client = OkHttpClient.Builder()
@@ -107,19 +108,68 @@ class LeetCodeRepository private constructor(context: Context) {
         }
     """.trimIndent()
 
+    private val problemsQuery = """
+        query problemsetQuestionList(${"$"}categorySlug: String, ${"$"}limit: Int, ${"$"}skip: Int, ${"$"}filters: QuestionListFilterInput) {
+          problemsetQuestionList(
+            categorySlug: ${"$"}categorySlug
+            limit: ${"$"}limit
+            skip: ${"$"}skip
+            filters: ${"$"}filters
+          ) {
+            total: totalNum
+            questions: questions {
+              acRate
+              difficulty
+              isPaidOnly
+              questionFrontendId
+              questionId
+              title
+              titleSlug
+              topicTags {
+                name
+                slug
+              }
+            }
+          }
+        }
+    """.trimIndent()
+
+    private val questionDetailQuery = """
+        query questionData(${"$"}titleSlug: String!) {
+          question(titleSlug: ${"$"}titleSlug) {
+            questionId
+            questionFrontendId
+            title
+            titleSlug
+            content
+            difficulty
+            isPaidOnly
+            codeSnippets {
+              lang
+              langSlug
+              code
+            }
+            stats
+            hints
+            sampleTestCase
+            topicTags {
+              name
+              slug
+            }
+          }
+        }
+    """.trimIndent()
+
     fun getProfile(username: String): Flow<LeetCodeData?> = flow {
-        // 1. Emit cached data immediately if available
         val cached = dao.getCachedData(username)
         if (cached != null) {
             try {
-                val data = gson.fromJson(cached.jsonData, LeetCodeData::class.java)
-                emit(data)
+                emit(gson.fromJson(cached.jsonData, LeetCodeData::class.java))
             } catch (e: Exception) {
                 Log.e("LeetCodeRepository", "Error parsing cached data", e)
             }
         }
 
-        // 2. Fetch from network and update cache
         try {
             val currentYear = Calendar.getInstance().get(Calendar.YEAR)
             val response = service.getProfile(
@@ -133,15 +183,72 @@ class LeetCodeRepository private constructor(context: Context) {
             if (newData?.matchedUser != null) {
                 dao.insertData(CachedLeetCodeData(username, gson.toJson(newData)))
                 emit(newData)
-            } else {
-                Log.e("LeetCodeRepository", "No matched user in response: ${response.errors}")
-                if (cached == null) emit(null)
             }
         } catch (e: Exception) {
             Log.e("LeetCodeRepository", "Network fetch failed", e)
-            if (cached == null) emit(null)
         }
     }
+
+    fun getAllProblems(refresh: Boolean = false): Flow<List<ProblemEntity>> = flow {
+        val cached = problemsDao.getAllProblems()
+        if (cached.isNotEmpty()) emit(cached)
+
+        if (refresh || cached.isEmpty()) {
+            try {
+                val response = service.getProfile(
+                    GraphQLRequest(
+                        query = problemsQuery,
+                        variables = mapOf("categorySlug" to "", "skip" to 0, "limit" to 50) // Adjust limit as needed
+                    )
+                )
+                val questions = response.data?.problemsetQuestionList?.questions ?: emptyList()
+                val entities = questions.map { q ->
+                    ProblemEntity(
+                        questionId = q.questionId,
+                        questionFrontendId = q.questionFrontendId,
+                        title = q.title,
+                        titleSlug = q.titleSlug,
+                        difficulty = q.difficulty,
+                        isPaidOnly = q.isPaidOnly,
+                        acRate = q.acRate,
+                        tags = q.topicTags?.joinToString(",") { it.name } ?: ""
+                    )
+                }
+                problemsDao.insertProblems(entities)
+                emit(entities)
+            } catch (e: Exception) {
+                Log.e("LeetCodeRepository", "Failed to fetch problems", e)
+            }
+        }
+    }
+
+    fun getProblemDetail(slug: String): Flow<ProblemEntity?> = flow {
+        val cached = problemsDao.getProblemBySlug(slug)
+        if (cached != null) emit(cached)
+
+        if (cached?.content == null) {
+            try {
+                val response = service.getProfile(
+                    GraphQLRequest(
+                        query = questionDetailQuery,
+                        variables = mapOf("titleSlug" to slug)
+                    )
+                )
+                val detail = response.data?.question
+                if (detail != null) {
+                    val content = detail.content ?: "No content available"
+                    problemsDao.updateProblemContent(slug, content, System.currentTimeMillis())
+                    emit(problemsDao.getProblemBySlug(slug))
+                }
+            } catch (e: Exception) {
+                Log.e("LeetCodeRepository", "Failed to fetch problem detail", e)
+            }
+        }
+    }
+
+    suspend fun searchProblems(query: String) = problemsDao.searchProblems(query)
+    suspend fun filterByDifficulty(difficulty: String) = problemsDao.filterByDifficulty(difficulty)
+    suspend fun filterByTag(tag: String) = problemsDao.filterByTag(tag)
 
     companion object {
         @Volatile

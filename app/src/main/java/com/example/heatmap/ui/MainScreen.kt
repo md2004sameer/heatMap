@@ -6,6 +6,7 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -95,67 +96,98 @@ fun DualBottomNavigation(
             .navigationBarsPadding()
             .padding(bottom = 8.dp)
     ) {
-        // First Bar: Identity + Performance
-        ScrollableTabRow(
-            selectedTabIndex = ProfileSection.all.indexOfFirst { (currentScreen as? Screen.Profile)?.section == it }.coerceAtLeast(0),
-            containerColor = Color.Transparent,
-            contentColor = LeetCodeOrange,
-            edgePadding = 16.dp,
-            divider = {},
-            indicator = {}
-        ) {
-            ProfileSection.all.forEach { section ->
-                val isSelected = (currentScreen as? Screen.Profile)?.section == section
-                NavigationItem(
-                    label = section.title,
-                    icon = section.icon,
-                    isSelected = isSelected,
-                    onClick = { onNavigate(Screen.Profile(section)) }
-                )
+        // Top Bar: Dynamic Sub-sections
+        AnimatedVisibility(visible = currentScreen is Screen.Profile) {
+            ScrollableTabRow(
+                selectedTabIndex = ProfileSection.all.indexOfFirst { (currentScreen as? Screen.Profile)?.section == it }.coerceAtLeast(0),
+                containerColor = Color.Transparent,
+                contentColor = LeetCodeOrange,
+                edgePadding = 16.dp,
+                divider = {},
+                indicator = {}
+            ) {
+                ProfileSection.all.forEach { section ->
+                    val isSelected = (currentScreen as? Screen.Profile)?.section == section
+                    NavigationItem(
+                        label = section.title,
+                        icon = section.icon,
+                        isSelected = isSelected,
+                        onClick = { onNavigate(Screen.Profile(section)) }
+                    )
+                }
             }
         }
 
         Spacer(Modifier.height(4.dp))
 
-        // Second Bar: Productivity
+        // Bottom Bar: Main Sections Hub
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
-                .height(56.dp)
-                .background(Color(0xFF21262d), RoundedCornerShape(28.dp))
-                .padding(horizontal = 4.dp),
+                .height(64.dp)
+                .background(Color(0xFF21262d), RoundedCornerShape(32.dp))
+                .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ProductivitySection.all.forEach { section ->
-                val isSelected = (currentScreen as? Screen.Productivity)?.section == section
-                Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .clip(RoundedCornerShape(24.dp))
-                        .clickable { onNavigate(Screen.Productivity(section)) }
-                        .padding(horizontal = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        section.icon,
-                        contentDescription = section.title,
-                        tint = if (isSelected) LeetCodeOrange else Color.Gray,
-                        modifier = Modifier.size(24.dp)
-                    )
-                    if (isSelected) {
-                        Spacer(Modifier.width(8.dp))
-                        Text(
-                            section.title,
-                            color = LeetCodeOrange,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
+            // Profile Hub
+            MainHubItem(
+                label = "Profile",
+                icon = Icons.Default.Person,
+                isSelected = currentScreen is Screen.Profile,
+                onClick = { onNavigate(Screen.Profile(ProfileSection.Details)) }
+            )
+
+            // Problems Hub
+            MainHubItem(
+                label = "Problems",
+                icon = Icons.Default.Search,
+                isSelected = currentScreen is Screen.Problems,
+                onClick = { onNavigate(Screen.Problems(ProblemsSection.Explore)) }
+            )
+
+            // Productivity Hub
+            MainHubItem(
+                label = "Tools",
+                icon = Icons.Default.Build,
+                isSelected = currentScreen is Screen.Productivity,
+                onClick = { onNavigate(Screen.Productivity(ProductivitySection.Todo)) }
+            )
+        }
+    }
+}
+
+@Composable
+fun MainHubItem(
+    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(24.dp))
+            .background(if (isSelected) LeetCodeOrange.copy(alpha = 0.15f) else Color.Transparent)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                icon,
+                contentDescription = label,
+                tint = if (isSelected) LeetCodeOrange else Color.Gray,
+                modifier = Modifier.size(24.dp)
+            )
+            if (isSelected) {
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    label,
+                    color = LeetCodeOrange,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }
@@ -179,7 +211,7 @@ fun NavigationItem(
             icon,
             contentDescription = label,
             tint = if (isSelected) LeetCodeOrange else Color.Gray,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(20.dp)
         )
         Text(
             label,
@@ -202,9 +234,60 @@ fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainVi
         Column(modifier = Modifier.fillMaxSize()) {
             when (screen) {
                 is Screen.Profile -> ProfileContent(data, screen.section)
-                is Screen.Productivity -> ProductivityContent(screen.section, viewModel, data)
+                is Screen.Problems -> ProblemsHubContent(viewModel)
+                is Screen.Productivity -> ProductivityHubContent(screen.section, viewModel, data)
             }
         }
+    }
+}
+
+@Composable
+fun ProblemsHubContent(viewModel: MainViewModel) {
+    val problems by viewModel.problems.collectAsState()
+    val selectedProblem by viewModel.selectedProblem.collectAsState()
+
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Text("Explore Problems", style = Typography.headlineMedium, color = Color.White)
+        Spacer(Modifier.height(16.dp))
+        
+        ProblemsScreen(
+            problems = problems,
+            onProblemClick = { viewModel.selectProblem(it) },
+            onSearch = { viewModel.searchProblems(it) }
+        )
+    }
+
+    if (selectedProblem != null) {
+        ProblemDetailDialog(
+            problem = selectedProblem!!,
+            onDismiss = { viewModel.clearSelectedProblem() }
+        )
+    }
+}
+
+@Composable
+fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        // Sub-tabs for Productivity
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ProductivitySection.all.forEach { s ->
+                val isSelected = section == s
+                FilterChip(
+                    selected = isSelected,
+                    onClick = { viewModel.navigateTo(Screen.Productivity(s)) },
+                    label = { Text(s.title) },
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = LeetCodeOrange.copy(alpha = 0.2f),
+                        selectedLabelColor = LeetCodeOrange
+                    )
+                )
+            }
+        }
+
+        ProductivityContent(section, viewModel, data)
     }
 }
 
@@ -215,7 +298,7 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
     val submissionByDate = remember(submissionCalendar) {
         try {
             if (submissionCalendar == null) {
-                emptyMap<LocalDate, Int>()
+                emptyMap()
             } else {
                 val type = object : TypeToken<Map<String, Int>>() {}.type
                 val rawMap = Gson().fromJson<Map<String, Int>>(submissionCalendar, type)
@@ -230,7 +313,7 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
                 }
             }
         } catch (_: Exception) {
-            emptyMap<LocalDate, Int>()
+            emptyMap()
         }
     }
 
@@ -251,16 +334,29 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
                             DailyChallengeCard(challenge)
                         }
                         SubmissionStatsCard(user, submissionByDate)
+                        StreakStatusCard(data.streakCounter, submissionByDate[LocalDate.now()] ?: 0)
                         WallpaperModule(data)
+                    }
+                }
+            }
+            ProfileSection.Submissions -> {
+                item {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         ProblemsSolvedCard(user, data.allQuestionsCount ?: emptyList())
                         RecentSubmissionsSection(data.recentSubmissionList ?: emptyList())
                     }
                 }
             }
+            ProfileSection.Contest -> {
+                item {
+                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        data.userContestRanking?.let { ContestRankingCard(it) }
+                        UpcomingContestsSection(data.upcomingContests ?: emptyList())
+                    }
+                }
+            }
             ProfileSection.Info -> {
                 item { ProfileInfoCard(user) }
-                item { UpcomingContestsSection(data.upcomingContests ?: emptyList()) }
-                data.userContestRanking?.let { item { ContestRankingCard(it) } }
             }
         }
     }
@@ -317,7 +413,7 @@ fun WallpaperModule(data: LeetCodeData) {
 fun ProductivityContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
     val trainingPlan by viewModel.trainingPlan.collectAsState()
 
-    Box(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Box(modifier = Modifier.fillMaxSize()) {
         when (section) {
             ProductivitySection.Todo -> {
                 TrainingPlanSection(

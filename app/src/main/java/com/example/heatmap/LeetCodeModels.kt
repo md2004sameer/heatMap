@@ -23,7 +23,9 @@ data class LeetCodeData(
     val streakCounter: StreakCounter?,
     val activeDailyCodingChallengeQuestion: DailyChallenge?,
     val upcomingContests: List<Contest>?,
-    val recentSubmissionList: List<RecentSubmission>?
+    val recentSubmissionList: List<RecentSubmission>?,
+    val problemsetQuestionList: ProblemsetQuestionList?,
+    val question: QuestionDetail?
 )
 
 data class RecentSubmission(
@@ -106,6 +108,50 @@ data class UserContestRanking(
     val globalRanking: Int,
     val totalParticipants: Int,
     val topPercentage: Double
+)
+
+// Problems List Models
+data class ProblemsetQuestionList(
+    val total: Int,
+    val questions: List<ProblemSummary>
+)
+
+data class ProblemsetTag(
+    val name: String,
+    val slug: String
+)
+
+data class ProblemSummary(
+    val questionId: String,
+    val questionFrontendId: String,
+    val title: String,
+    val titleSlug: String,
+    val difficulty: String,
+    val isPaidOnly: Boolean,
+    val acRate: Double,
+    val topicTags: List<ProblemsetTag>?
+)
+
+// Problem Detail Models
+data class QuestionDetail(
+    val questionId: String,
+    val questionFrontendId: String,
+    val title: String,
+    val titleSlug: String,
+    val content: String?,
+    val difficulty: String,
+    val isPaidOnly: Boolean,
+    val codeSnippets: List<CodeSnippet>?,
+    val stats: String?, // JSON string containing totalAccepted, totalSubmission
+    val hints: List<String>?,
+    val sampleTestCase: String?,
+    val topicTags: List<ProblemsetTag>?
+)
+
+data class CodeSnippet(
+    val lang: String,
+    val langSlug: String,
+    val code: String
 )
 
 // Training Plan Models

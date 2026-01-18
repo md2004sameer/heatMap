@@ -8,10 +8,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class ProfileSection(val title: String, val icon: ImageVector) {
     object Details : ProfileSection("Details", Icons.Default.Person)
     object Info : ProfileSection("Info", Icons.Default.Info)
+    object Submissions : ProfileSection("Submissions", Icons.Default.CheckCircle)
+    object Contest : ProfileSection("Contest", Icons.Default.Star)
 
     companion object {
         val all: List<ProfileSection> by lazy { 
-            listOf(Details, Info) 
+            listOf(Details, Info, Submissions, Contest) 
         }
     }
 }
@@ -27,7 +29,18 @@ sealed class ProductivitySection(val title: String, val icon: ImageVector) {
     }
 }
 
+sealed class ProblemsSection(val title: String, val icon: ImageVector) {
+    object Explore : ProblemsSection("Explore", Icons.Default.Search)
+
+    companion object {
+        val all: List<ProblemsSection> by lazy { 
+            listOf(Explore) 
+        }
+    }
+}
+
 sealed class Screen {
     data class Profile(val section: ProfileSection) : Screen()
+    data class Problems(val section: ProblemsSection) : Screen()
     data class Productivity(val section: ProductivitySection) : Screen()
 }

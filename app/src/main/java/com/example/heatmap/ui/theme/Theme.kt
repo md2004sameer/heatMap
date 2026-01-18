@@ -40,14 +40,16 @@ fun HeatMapTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else DarkColorScheme // Force dark for premium dev feel
+    // Force dark theme for a premium developer feel, consistent with LeetCode's ecosystem
+    val colorScheme = DarkColorScheme 
 
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.background.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            // With enableEdgeToEdge() in MainActivity, manual statusBarColor is deprecated/redundant.
+            // We only need to control the icon appearance.
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false // Dark background -> Light icons
         }
     }
 

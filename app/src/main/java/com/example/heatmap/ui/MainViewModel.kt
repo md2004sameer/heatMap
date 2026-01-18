@@ -5,8 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.heatmap.*
-import com.example.heatmap.domain.GetProfileUseCase
-import com.example.heatmap.domain.ValidateUsernameUseCase
+import com.example.heatmap.domain.*
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -30,6 +29,11 @@ class MainViewModel(
 ) : AndroidViewModel(application) {
     
     private val context = application.applicationContext
+    private val repository = LeetCodeRepository.getInstance(context)
+    private val getAllProblemsUseCase = GetAllProblemsUseCase(repository)
+    private val searchProblemsUseCase = SearchProblemsUseCase(repository)
+    private val getProblemDetailUseCase = GetProblemDetailUseCase(repository)
+
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState: StateFlow<UiState> = _uiState
 
@@ -38,6 +42,13 @@ class MainViewModel(
 
     private val _trainingPlan = MutableStateFlow<DailyTrainingPlan?>(null)
     val trainingPlan: StateFlow<DailyTrainingPlan?> = _trainingPlan
+
+    // Problems State
+    private val _problems = MutableStateFlow<List<Problem>>(emptyList())
+    val problems: StateFlow<List<Problem>> = _problems
+
+    private val _selectedProblem = MutableStateFlow<Problem?>(null)
+    val selectedProblem: StateFlow<Problem?> = _selectedProblem
 
     // Notes State
     private val notesDao by lazy { LeetCodeDatabase.getDatabase(context).notesDao() }
@@ -57,10 +68,45 @@ class MainViewModel(
         checkOnboarding()
         loadTrainingPlan()
         loadFolders()
+        loadProblems()
     }
 
     fun navigateTo(screen: Screen) {
         _currentScreen.value = screen
+    }
+
+    // Problems Operations
+    private fun loadProblems() {
+        viewModelScope.launch {
+            getAllProblemsUseCase().collectLatest {
+                _problems.value = it
+            }
+        }
+    }
+
+    fun searchProblems(query: String) {
+        viewModelScope.launch {
+            if (query.isEmpty()) {
+                loadProblems()
+            } else {
+                _problems.value = searchProblemsUseCase(query)
+            }
+        }
+    }
+
+    fun selectProblem(problem: Problem) {
+        _selectedProblem.value = problem
+        viewModelScope.launch {
+            getProblemDetailUseCase(problem.slug).collectLatest { detailedProblem ->
+                if (detailedProblem != null) {
+                    _selectedProblem.value = detailedProblem
+                }
+            }
+        }
+    }
+
+    fun clearSelectedProblem() {
+        _selectedProblem.value = null
     }
 
     // Notes Operations
