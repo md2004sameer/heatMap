@@ -6,8 +6,6 @@ import android.graphics.*
 import android.text.TextPaint
 import android.util.Log
 import android.widget.Toast
-import androidx.core.graphics.createBitmap
-import androidx.core.graphics.toColorInt
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +31,7 @@ object WallpaperUtils {
     suspend fun applyWallpaper(context: Context, data: LeetCodeData, target: Int = 0) {
         applyMutex.withLock {
             withContext(Dispatchers.Default) {
+                var bitmap: Bitmap? = null
                 try {
                     val wm = WallpaperManager.getInstance(context)
                     
@@ -48,7 +47,7 @@ object WallpaperUtils {
                         height = screenHeight
                     }
 
-                    val bitmap = renderToBitmap(data, width, height)
+                    bitmap = renderToBitmap(data, width, height)
 
                     val flag = if (target == 0) {
                         WallpaperManager.FLAG_SYSTEM or WallpaperManager.FLAG_LOCK
@@ -58,6 +57,7 @@ object WallpaperUtils {
                     
                     try {
                         if (flag == (WallpaperManager.FLAG_SYSTEM or WallpaperManager.FLAG_LOCK)) {
+                            // Try setting both at once if supported, otherwise separately
                             try {
                                 wm.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
                             } catch (e: Exception) {
@@ -88,16 +88,20 @@ object WallpaperUtils {
                     Log.e(TAG, "OOM while applying wallpaper", e)
                 } catch (e: Exception) {
                     Log.e(TAG, "Failed to apply wallpaper", e)
+                } finally {
+                    // Critical: Free up native memory immediately
+                    bitmap?.recycle()
                 }
             }
         }
     }
 
     private fun renderToBitmap(data: LeetCodeData, width: Int, height: Int): Bitmap {
+        // Use RGB_565 for 50% less memory than ARGB_8888 since we don't need transparency
         val bitmap = try {
-            createBitmap(width, height, Bitmap.Config.RGB_565)
+            Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
         } catch (e: Exception) {
-            createBitmap(720, 1280, Bitmap.Config.RGB_565)
+            Bitmap.createBitmap(720, 1280, Bitmap.Config.RGB_565)
         }
         val canvas = Canvas(bitmap)
 
@@ -112,7 +116,7 @@ object WallpaperUtils {
         val boxTop = height * 0.22f
 
         val boxPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = "#121212".toColorInt()
+            color = Color.parseColor("#121212")
             style = Paint.Style.FILL
         }
         val boxBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {

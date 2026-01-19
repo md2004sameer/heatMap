@@ -24,7 +24,7 @@ class WallpaperWorker(
         
         var latestData: LeetCodeData? = null
         try {
-            // Collecting the first emitted item and then closing the flow to avoid blocking
+            // Collect until we get non-null data or finish
             repository.getProfile(username).collect { data ->
                 if (data != null) {
                     latestData = data
@@ -58,14 +58,21 @@ class WallpaperWorker(
 
     companion object {
         fun enqueue(context: Context) {
+            // Optimization: Add network constraint to save battery and avoid wasted runs
+            val constraints = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresBatteryNotLow(true)
+                .build()
+
             val request = PeriodicWorkRequestBuilder<WallpaperWorker>(4, TimeUnit.HOURS)
+                .setConstraints(constraints)
                 .addTag("wallpaper_update")
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.MINUTES)
                 .build()
 
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(
                 "wallpaper_update",
-                ExistingPeriodicWorkPolicy.UPDATE,
+                ExistingPeriodicWorkPolicy.KEEP, // Use KEEP to avoid resetting the schedule unnecessarily
                 request
             )
         }

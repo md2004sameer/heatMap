@@ -2,16 +2,22 @@ package com.example.heatmap.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.TextView
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.PlayArrow
@@ -21,13 +27,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.text.HtmlCompat
 import com.example.heatmap.domain.Problem
 import com.example.heatmap.domain.StriverProblem
 import com.example.heatmap.ui.theme.LeetCodeGreen
@@ -42,6 +46,7 @@ fun ProblemsScreen(
     onSearch: (String) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
+    val listState = rememberLazyListState()
 
     Column(modifier = Modifier.fillMaxSize()) {
         OutlinedTextField(
@@ -63,10 +68,14 @@ fun ProblemsScreen(
         )
 
         LazyColumn(
+            state = listState,
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(problems) { problem ->
+            items(
+                items = problems,
+                key = { it.id }
+            ) { problem ->
                 ProblemItem(problem = problem, onClick = { onProblemClick(problem) })
             }
         }
@@ -75,11 +84,13 @@ fun ProblemsScreen(
 
 @Composable
 fun ProblemItem(problem: Problem, onClick: () -> Unit) {
-    val difficultyColor = when (problem.difficulty) {
-        "Easy" -> LeetCodeGreen
-        "Medium" -> LeetCodeYellow
-        "Hard" -> LeetCodeRed
-        else -> Color.Gray
+    val difficultyColor = remember(problem.difficulty) {
+        when (problem.difficulty) {
+            "Easy" -> LeetCodeGreen
+            "Medium" -> LeetCodeYellow
+            "Hard" -> LeetCodeRed
+            else -> Color.Gray
+        }
     }
 
     Card(
@@ -100,7 +111,8 @@ fun ProblemItem(problem: Problem, onClick: () -> Unit) {
                     text = "${problem.frontendId}. ${problem.title}",
                     color = Color.White,
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1
                 )
                 Spacer(Modifier.height(4.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -138,21 +150,76 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
         title = { Text(problem.title, color = Color.White) },
         text = {
             Column(horizontalAlignment = Alignment.End) {
-                Box(modifier = Modifier.fillMaxWidth().heightIn(max = 400.dp)) {
+                Box(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(400.dp)
+                    .background(Color(0xFF0d1117), RoundedCornerShape(8.dp))
+                ) {
                     AndroidView(
-                        factory = { context ->
-                            TextView(context).apply {
-                                setTextColor(android.graphics.Color.LTGRAY)
-                                textSize = 14f
+                        factory = { ctx ->
+                            WebView(ctx).apply {
+                                setBackgroundColor(0)
+                                settings.apply {
+                                    javaScriptEnabled = false
+                                    loadWithOverviewMode = true
+                                    useWideViewPort = true
+                                    defaultFontSize = 14
+                                }
+                                webViewClient = WebViewClient()
                             }
                         },
-                        update = { textView ->
-                            textView.text = HtmlCompat.fromHtml(
-                                problem.content ?: "Loading content...",
-                                HtmlCompat.FROM_HTML_MODE_COMPACT
-                            )
+                        update = { webView ->
+                            val content = problem.content ?: "Loading content..."
+                            val styledHtml = """
+                                <!DOCTYPE html>
+                                <html>
+                                <head>
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <style>
+                                    body {
+                                        background-color: #0d1117;
+                                        color: #c9d1d9;
+                                        font-family: -apple-system, system-ui, sans-serif;
+                                        line-height: 1.6;
+                                        margin: 0;
+                                        padding: 12px;
+                                    }
+                                    pre {
+                                        background-color: #161b22;
+                                        padding: 16px;
+                                        border-radius: 8px;
+                                        overflow-x: auto;
+                                        border: 1px solid #30363d;
+                                        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                                    }
+                                    code {
+                                        background-color: #21262d;
+                                        padding: 0.2em 0.4em;
+                                        border-radius: 4px;
+                                        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                                    }
+                                    img {
+                                        max-width: 100%;
+                                        height: auto;
+                                        display: block;
+                                        margin: 16px auto;
+                                        border-radius: 8px;
+                                    }
+                                    p { margin-top: 0; margin-bottom: 16px; }
+                                    ul, ol { padding-left: 20px; margin-bottom: 16px; }
+                                    li { margin-bottom: 8px; }
+                                    strong, b { color: #ffffff; font-weight: 600; }
+                                    * { box-sizing: border-box; }
+                                </style>
+                                </head>
+                                <body>
+                                    $content
+                                </body>
+                                </html>
+                            """.trimIndent()
+                            webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
                         },
-                        modifier = Modifier.verticalScroll(rememberScrollState())
+                        modifier = Modifier.fillMaxSize()
                     )
                 }
                 
@@ -185,44 +252,105 @@ fun StriverSheetScreen(
     problems: List<StriverProblem>
 ) {
     val context = LocalContext.current
-    val groupedProblems = remember(problems) {
-        problems.groupBy { it.section }
+    var selectedSection by remember { mutableStateOf<String?>(null) }
+    var selectedSubSection by remember { mutableStateOf<String?>(null) }
+
+    val sections = remember(problems) { problems.map { it.section }.distinct() }
+
+    val subSections = remember(problems, selectedSection) {
+        if (selectedSection == null) emptyList()
+        else problems.filter { it.section == selectedSection }.map { it.subSection }.distinct()
     }
 
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(bottom = 16.dp)
-    ) {
-        groupedProblems.forEach { (section, sectionProblems) ->
-            item {
+    val filteredProblems = remember(problems, selectedSection, selectedSubSection) {
+        if (selectedSection == null || selectedSubSection == null) emptyList()
+        else problems.filter { it.section == selectedSection && it.subSection == selectedSubSection }
+    }
+
+    BackHandler(enabled = selectedSection != null) {
+        if (selectedSubSection != null) {
+            selectedSubSection = null
+        } else {
+            selectedSection = null
+        }
+    }
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        if (selectedSection != null) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        if (selectedSubSection != null) {
+                            selectedSubSection = null
+                        } else {
+                            selectedSection = null
+                        }
+                    }
+                    .padding(bottom = 16.dp)
+            ) {
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = LeetCodeOrange)
+                Spacer(Modifier.width(8.dp))
                 Text(
-                    text = section,
-                    style = MaterialTheme.typography.titleLarge,
+                    text = if (selectedSubSection != null) selectedSection!! else "Select Topic",
+                    style = MaterialTheme.typography.titleMedium,
                     color = LeetCodeOrange,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(vertical = 8.dp)
+                    fontWeight = FontWeight.Bold
                 )
             }
+        } else {
+            Text(
+                text = "Select Section",
+                style = MaterialTheme.typography.titleMedium,
+                color = LeetCodeOrange,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
 
-            val subGrouped = sectionProblems.groupBy { it.subSection }
-            subGrouped.forEach { (subSection, subProblems) ->
-                if (subSection.isNotEmpty()) {
-                    item {
-                        Text(
-                            text = subSection,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = Color.White,
-                            modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
-                        )
+        when {
+            selectedSection == null -> {
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    items(sections) { section ->
+                        StriverSelectionCard(title = section) {
+                            selectedSection = section
+                        }
                     }
                 }
-
-                items(subProblems) { problem ->
-                    StriverProblemItem(problem = problem) { url ->
-                        if (url.isNotEmpty()) {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            context.startActivity(intent)
+            }
+            selectedSubSection == null -> {
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    items(subSections) { subSection ->
+                        val displayTitle = if (subSection.isEmpty()) "General" else subSection
+                        StriverSelectionCard(title = displayTitle) {
+                            selectedSubSection = subSection
+                        }
+                    }
+                }
+            }
+            else -> {
+                if (!selectedSubSection.isNullOrEmpty()) {
+                    Text(
+                        text = selectedSubSection!!,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = Color.Gray,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                }
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    contentPadding = PaddingValues(bottom = 16.dp)
+                ) {
+                    items(
+                        items = filteredProblems,
+                        key = { it.title }
+                    ) { problem ->
+                        StriverProblemItem(problem = problem) { url ->
+                            if (url.isNotEmpty()) {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                context.startActivity(intent)
+                            }
                         }
                     }
                 }
@@ -232,12 +360,44 @@ fun StriverSheetScreen(
 }
 
 @Composable
+fun StriverSelectionCard(title: String, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = title,
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.weight(1f)
+            )
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = Color.Gray,
+                modifier = Modifier.size(20.dp)
+            )
+        }
+    }
+}
+
+@Composable
 fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
-    val difficultyColor = when (problem.difficulty) {
-        "Easy" -> LeetCodeGreen
-        "Medium" -> LeetCodeYellow
-        "Hard" -> LeetCodeRed
-        else -> Color.Gray
+    val difficultyColor = remember(problem.difficulty) {
+        when (problem.difficulty) {
+            "Easy" -> LeetCodeGreen
+            "Medium" -> LeetCodeYellow
+            "Hard" -> LeetCodeRed
+            else -> Color.Gray
+        }
     }
 
     Card(
