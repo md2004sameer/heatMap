@@ -2,9 +2,7 @@ package com.example.heatmap.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.animation.*
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,14 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.heatmap.DailyTrainingPlan
 import com.example.heatmap.LeetCodeData
-import com.example.heatmap.TaskType
-import com.example.heatmap.TrainingTask
 import com.example.heatmap.domain.GfgPotdEntity
 import com.example.heatmap.ui.theme.LeetCodeGreen
 import com.example.heatmap.ui.theme.LeetCodeOrange

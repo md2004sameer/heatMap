@@ -1,6 +1,5 @@
 package com.example.heatmap.ui
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.ComponentActivity
@@ -8,7 +7,6 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -22,29 +20,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.edit
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.heatmap.*
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.Typography
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
-import java.time.Instant
 import java.time.LocalDate
-import java.time.ZoneId
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
-    val uiState by viewModel.uiState.collectAsState()
-    val currentScreen by viewModel.currentScreen.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val currentScreen by viewModel.currentScreen.collectAsStateWithLifecycle()
+    
+    val onNavigate = remember(viewModel) { { screen: Screen -> viewModel.navigateTo(screen) } }
 
     Scaffold(
         bottomBar = {
             if (uiState is UiState.Success) {
                 DualBottomNavigation(
                     currentScreen = currentScreen,
-                    onNavigate = { viewModel.navigateTo(it) }
+                    onNavigate = onNavigate
                 )
             }
         },
@@ -100,10 +96,12 @@ fun DualBottomNavigation(
     ) {
         // Top Bar: Dynamic Sub-sections
         AnimatedVisibility(visible = currentScreen is Screen.Profile || currentScreen is Screen.Problems) {
-            val tabs = when (currentScreen) {
-                is Screen.Profile -> ProfileSection.all.map { it.title to { onNavigate(Screen.Profile(it)) } }
-                is Screen.Problems -> ProblemsSection.all.map { it.title to { onNavigate(Screen.Problems(it)) } }
-                else -> emptyList()
+            val tabs = remember(currentScreen, onNavigate) {
+                when (currentScreen) {
+                    is Screen.Profile -> ProfileSection.all.map { it.title to { onNavigate(Screen.Profile(it)) } }
+                    is Screen.Problems -> ProblemsSection.all.map { it.title to { onNavigate(Screen.Problems(it)) } }
+                    else -> emptyList()
+                }
             }
             
             val selectedIndex = when (currentScreen) {
@@ -120,17 +118,19 @@ fun DualBottomNavigation(
                 divider = {},
                 indicator = {}
             ) {
-                val currentIcons = when (currentScreen) {
-                    is Screen.Profile -> ProfileSection.all.map { it.icon }
-                    is Screen.Problems -> ProblemsSection.all.map { it.icon }
-                    else -> emptyList()
+                val currentIcons = remember(currentScreen) {
+                    when (currentScreen) {
+                        is Screen.Profile -> ProfileSection.all.map { it.icon }
+                        is Screen.Problems -> ProblemsSection.all.map { it.icon }
+                        else -> emptyList()
+                    }
                 }
 
                 tabs.forEachIndexed { index, (title, onClick) ->
                     val isSelected = selectedIndex == index
                     NavigationItem(
                         label = title,
-                        icon = currentIcons[index],
+                        icon = currentIcons.getOrElse(index) { Icons.Default.Info },
                         isSelected = isSelected,
                         onClick = onClick
                     )
@@ -260,10 +260,14 @@ fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainVi
 
 @Composable
 fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
-    val problems by viewModel.problems.collectAsState()
-    val striverProblems by viewModel.striverProblems.collectAsState()
-    val completedStriverIds by viewModel.completedStriverIds.collectAsState()
-    val selectedProblem by viewModel.selectedProblem.collectAsState()
+    val problems by viewModel.problems.collectAsStateWithLifecycle()
+    val striverProblems by viewModel.striverProblems.collectAsStateWithLifecycle()
+    val completedStriverIds by viewModel.completedStriverIds.collectAsStateWithLifecycle()
+    val selectedProblem by viewModel.selectedProblem.collectAsStateWithLifecycle()
+
+    val onProblemClick = remember(viewModel) { { problem: com.example.heatmap.domain.Problem -> viewModel.selectProblem(problem) } }
+    val onSearch = remember(viewModel) { { query: String -> viewModel.searchProblems(query) } }
+    val onToggleStriver = remember(viewModel) { { id: Int -> viewModel.toggleStriverProblem(id) } }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(section.title, style = Typography.headlineMedium, color = Color.White)
@@ -273,23 +277,25 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
             ProblemsSection.Explore -> {
                 ProblemsScreen(
                     problems = problems,
-                    onProblemClick = { viewModel.selectProblem(it) },
-                    onSearch = { viewModel.searchProblems(it) }
+                    onProblemClick = onProblemClick,
+                    onSearch = onSearch
                 )
             }
             ProblemsSection.Striver -> {
                 StriverProgressScreen(
                     problems = striverProblems,
                     completedIds = completedStriverIds,
-                    onToggleProblem = { viewModel.toggleStriverProblem(it) }
+                    onToggleProblem = onToggleStriver,
+                    onProblemClick = onProblemClick,
+                    viewModel = viewModel
                 )
             }
         }
     }
 
-    if (selectedProblem != null) {
+    selectedProblem?.let { problem ->
         ProblemDetailDialog(
-            problem = selectedProblem!!,
+            problem = problem,
             onDismiss = { viewModel.clearSelectedProblem() }
         )
     }
@@ -297,7 +303,8 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
 
 @Composable
 fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
-    val gfgPotdList by viewModel.gfgPotdList.collectAsState()
+    val gfgPotdList by viewModel.gfgPotdList.collectAsStateWithLifecycle()
+    val trainingPlan by viewModel.trainingPlan.collectAsStateWithLifecycle()
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         // Sub-tabs for Productivity
@@ -321,6 +328,14 @@ fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewMode
 
         when (section) {
             ProductivitySection.Todo -> {
+                TrainingPlanSection(
+                    plan = trainingPlan,
+                    onGenerate = { viewModel.generateTrainingPlan(data) },
+                    onToggleTask = { taskId -> viewModel.toggleTaskCompletion(taskId) },
+                    onAddTask = { title, desc, cat, time -> viewModel.addCustomTask(title, desc, cat, time) },
+                    onDeleteTask = { taskId -> viewModel.removeTask(taskId) }
+                )
+                Spacer(Modifier.height(24.dp))
                 DailyChallengeContent(
                     leetCodeData = data,
                     gfgPotdList = gfgPotdList
@@ -336,31 +351,9 @@ fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewMode
 @Composable
 fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainViewModel) {
     val user = data.matchedUser ?: return
-    val submissionCalendar = user.userCalendar?.submissionCalendar
-    val gfgPotdList by viewModel.gfgPotdList.collectAsState()
+    val gfgPotdList by viewModel.gfgPotdList.collectAsStateWithLifecycle()
+    val submissionByDate by viewModel.submissionByDate.collectAsStateWithLifecycle()
     val context = LocalContext.current
-
-    val submissionByDate = remember(submissionCalendar) {
-        try {
-            if (submissionCalendar == null) {
-                emptyMap()
-            } else {
-                val type = object : TypeToken<Map<String, Int>>() {}.type
-                val rawMap = Gson().fromJson<Map<String, Int>>(submissionCalendar, type)
-                rawMap.entries.associate { (tsStr, count) ->
-                    val ts = tsStr.toLong()
-                    val date = if (tsStr.length > 10) {
-                        Instant.ofEpochMilli(ts).atZone(ZoneId.systemDefault()).toLocalDate()
-                    } else {
-                        Instant.ofEpochSecond(ts).atZone(ZoneId.systemDefault()).toLocalDate()
-                    }
-                    date to count
-                }
-            }
-        } catch (_: Exception) {
-            emptyMap()
-        }
-    }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -417,7 +410,7 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainV
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         ProfileInfoCard(user)
-                        WallpaperModule(data)
+                        WallpaperModule(data, viewModel)
                     }
                 }
             }
@@ -426,7 +419,7 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainV
 }
 
 @Composable
-fun WallpaperModule(data: LeetCodeData) {
+fun WallpaperModule(data: LeetCodeData, viewModel: MainViewModel) {
     val showWallpaperOptions = remember { mutableStateOf(false) }
     val context = LocalContext.current
 
@@ -435,6 +428,7 @@ fun WallpaperModule(data: LeetCodeData) {
             onDismiss = { showWallpaperOptions.value = false },
             onApply = { flag ->
                 showWallpaperOptions.value = false
+                viewModel.setPreference("wallpaper_target", flag.toString())
                 (context as? ComponentActivity)?.lifecycleScope?.launch {
                     WallpaperUtils.applyWallpaper(context, data, flag)
                     WallpaperWorker.enqueue(context)
@@ -473,30 +467,7 @@ fun WallpaperModule(data: LeetCodeData) {
 }
 
 @Composable
-fun ProductivityContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
-    val trainingPlan by viewModel.trainingPlan.collectAsState()
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        when (section) {
-            ProductivitySection.Todo -> {
-                TrainingPlanSection(
-                    plan = trainingPlan,
-                    onGenerate = { viewModel.generateTrainingPlan(data) },
-                    onToggleTask = { taskId -> viewModel.toggleTaskCompletion(taskId) },
-                    onAddTask = { title, desc, cat, time -> viewModel.addCustomTask(title, desc, cat, time) },
-                    onDeleteTask = { taskId -> viewModel.removeTask(taskId) }
-                )
-            }
-            ProductivitySection.Notes -> {
-                NotesModuleSection(viewModel)
-            }
-        }
-    }
-}
-
-@Composable
 fun WallpaperSelectionDialog(onDismiss: () -> Unit, onApply: (Int) -> Unit) {
-    val context = LocalContext.current
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = Color(0xFF161b22),
@@ -517,8 +488,6 @@ fun WallpaperSelectionDialog(onDismiss: () -> Unit, onApply: (Int) -> Unit) {
                 targets.forEach { (label, flag) ->
                     Button(
                         onClick = {
-                            val prefs = context.getSharedPreferences("leetcode_prefs", Context.MODE_PRIVATE)
-                            prefs.edit { putInt("wallpaper_target", flag) }
                             onApply(flag)
                         },
                         modifier = Modifier.fillMaxWidth(),

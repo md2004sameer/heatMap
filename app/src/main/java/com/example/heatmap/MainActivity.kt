@@ -11,9 +11,8 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
+import androidx.compose.animation.*
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
@@ -24,10 +23,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.heatmap.domain.GetProfileUseCase
 import com.example.heatmap.domain.ValidateUsernameUseCase
-import com.example.heatmap.ui.MainScreen
-import com.example.heatmap.ui.MainViewModel
-import com.example.heatmap.ui.OnboardingScreen
-import com.example.heatmap.ui.UiState
+import com.example.heatmap.ui.*
 import com.example.heatmap.ui.theme.HeatMapTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,40 +53,48 @@ class MainActivity : ComponentActivity() {
             HeatMapTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color(0xFF1a1a2e)
+                    color = Color(0xFF0d1117)
                 ) {
                     val uiState by viewModel.uiState.collectAsState()
 
-                    AnimatedVisibility(
-                        visible = uiState is UiState.Onboarding,
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        OnboardingScreen(onJoin = { username ->
-                            viewModel.saveUsernameAndFetch(username)
-                        })
-                    }
+                    Box(Modifier.fillMaxSize()) {
+                        // 1. Creative Splash Screen (Visible during initialization and loading)
+                        AnimatedVisibility(
+                            visible = uiState is UiState.Idle || uiState is UiState.Loading,
+                            enter = fadeIn(),
+                            exit = fadeOut()
+                        ) {
+                            AppSplashScreen()
+                        }
 
-                    AnimatedVisibility(
-                        visible = uiState !is UiState.Onboarding,
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        MainScreen(viewModel)
+                        // 2. Onboarding Screen
+                        AnimatedVisibility(
+                            visible = uiState is UiState.Onboarding,
+                            enter = fadeIn(),
+                            exit = fadeOut()
+                        ) {
+                            OnboardingScreen(onJoin = { username ->
+                                viewModel.saveUsernameAndFetch(username)
+                            })
+                        }
+
+                        // 3. Main Application Content
+                        AnimatedVisibility(
+                            visible = uiState is UiState.Success || uiState is UiState.Error,
+                            enter = fadeIn(),
+                            exit = fadeOut()
+                        ) {
+                            MainScreen(viewModel)
+                        }
                     }
                 }
             }
         }
 
         try {
-            // Initialize background tasks
             ReminderWorker.enqueue(this)
             WallpaperWorker.enqueue(this)
-            
-            // Schedule midnight trigger
             WallpaperTriggerReceiver.scheduleMidnightAlarm(this)
-            
-            // Ensure background reliability
             requestIgnoreBatteryOptimizations()
         } catch (e: Exception) {
             Log.e("MainActivity", "Error during initialization", e)

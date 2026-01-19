@@ -15,8 +15,10 @@ class WallpaperWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
-        val prefs = context.getSharedPreferences("leetcode_prefs", Context.MODE_PRIVATE)
-        val username = prefs.getString("last_username", null) ?: return@withContext Result.success()
+        val db = LeetCodeDatabase.getDatabase(context)
+        val prefDao = db.preferenceDao()
+        
+        val username = prefDao.getPreference("last_username") ?: return@withContext Result.success()
 
         Log.d("WallpaperWorker", "Executing wallpaper update for $username")
 
@@ -37,14 +39,15 @@ class WallpaperWorker(
         val dataToApply = latestData
         if (dataToApply != null) {
             try {
-                val target = prefs.getInt("wallpaper_target", 
+                val targetStr = prefDao.getPreference("wallpaper_target")
+                val target = targetStr?.toIntOrNull() ?: (
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) 
                         WallpaperManager.FLAG_SYSTEM or WallpaperManager.FLAG_LOCK 
                     else 0
                 )
 
                 WallpaperUtils.applyWallpaper(context, dataToApply, target)
-                prefs.edit().putLong("last_update_ts", System.currentTimeMillis()).apply()
+                prefDao.setPreference(AppPreferenceEntity("last_update_ts", System.currentTimeMillis().toString()))
                 
                 return@withContext Result.success()
             } catch (e: Exception) {
@@ -58,7 +61,6 @@ class WallpaperWorker(
 
     companion object {
         fun enqueue(context: Context) {
-            // Optimization: Add network constraint to save battery and avoid wasted runs
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .setRequiresBatteryNotLow(true)
@@ -72,7 +74,7 @@ class WallpaperWorker(
 
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(
                 "wallpaper_update",
-                ExistingPeriodicWorkPolicy.KEEP, // Use KEEP to avoid resetting the schedule unnecessarily
+                ExistingPeriodicWorkPolicy.KEEP,
                 request
             )
         }

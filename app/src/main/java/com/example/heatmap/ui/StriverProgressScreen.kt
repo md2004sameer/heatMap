@@ -7,25 +7,28 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.RadioButtonUnchecked
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
-import com.example.heatmap.domain.StriverProblem
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.heatmap.StriverProblemEntity
+import com.example.heatmap.domain.Problem
+import com.example.heatmap.domain.toLeetCodeProblem
 import com.example.heatmap.ui.theme.LeetCodeGreen
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.LeetCodeRed
@@ -33,219 +36,269 @@ import com.example.heatmap.ui.theme.LeetCodeYellow
 
 @Composable
 fun StriverProgressScreen(
-    problems: List<StriverProblem>,
+    problems: List<StriverProblemEntity>,
     completedIds: Set<Int>,
-    onToggleProblem: (Int) -> Unit
+    onToggleProblem: (Int) -> Unit,
+    onProblemClick: (Problem) -> Unit,
+    viewModel: MainViewModel
 ) {
     val context = LocalContext.current
+    var searchQuery by remember { mutableStateOf("") }
     
-    // Grouping and pre-calculating stats to avoid redundant work during list rendering
-    val groupedProblems = remember(problems) {
-        problems.groupBy { it.section }
-    }
-    
-    val sections = remember(groupedProblems) {
-        groupedProblems.keys.toList()
+    val filteredProblems = remember(problems, searchQuery) {
+        if (searchQuery.isBlank()) problems
+        else problems.filter { 
+            it.title.contains(searchQuery, ignoreCase = true) || 
+            it.section.contains(searchQuery, ignoreCase = true) ||
+            it.subSection.contains(searchQuery, ignoreCase = true)
+        }
     }
 
-    val stats = remember(problems, completedIds) {
-        val total = problems.size
-        val done = completedIds.size
-        val easy = problems.filter { it.difficulty == "Easy" }
-        val medium = problems.filter { it.difficulty == "Medium" }
-        val hard = problems.filter { it.difficulty == "Hard" }
-        
-        val percentage = if (total > 0) (done * 100 / total) else 0
-        val easyTotal = easy.size
-        val easyDone = easy.count { it.id in completedIds }
-        val mediumTotal = medium.size
-        val mediumDone = medium.count { it.id in completedIds }
-        val hardTotal = hard.size
-        val hardDone = hard.count { it.id in completedIds }
-
-        StriverStats(
-            totalCount = total,
-            completedTotal = done,
-            percentage = percentage,
-            easyTotal = easyTotal,
-            easyDone = easyDone,
-            mediumTotal = mediumTotal,
-            mediumDone = mediumDone,
-            hardTotal = hardTotal,
-            hardDone = hardDone
-        )
+    val groupedBySection = remember(filteredProblems) {
+        filteredProblems.groupBy { it.section }
     }
+
+    val stats by viewModel.striverStats.collectAsStateWithLifecycle()
 
     var expandedSections by remember { mutableStateOf(setOf<String>()) }
+    var expandedSubSections by remember { mutableStateOf(setOf<String>()) }
 
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF0d1117)),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        contentPadding = PaddingValues(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        // 1. Prominent Top Summary
+        // 1. Overall Progress Header
         item {
-            Card(
-                colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
-                shape = RoundedCornerShape(16.dp),
-                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
-            ) {
-                Column(
-                    modifier = Modifier.padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "${stats.percentage}%",
-                        fontSize = 64.sp,
-                        fontWeight = FontWeight.Black,
-                        color = LeetCodeOrange
-                    )
-                    Text(
-                        text = "TOTAL PROGRESS",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray,
-                        letterSpacing = 1.5.sp
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                        text = "${stats.completedTotal} / ${stats.totalCount} Problems",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color.White
-                    )
-                    
-                    Spacer(Modifier.height(24.dp))
-                    
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        DifficultyStatVertical("EASY", stats.easyDone, stats.easyTotal, LeetCodeGreen)
-                        DifficultyStatVertical("MEDIUM", stats.mediumDone, stats.mediumTotal, LeetCodeYellow)
-                        DifficultyStatVertical("HARD", stats.hardDone, stats.hardTotal, LeetCodeRed)
-                    }
-                }
-            }
+            StriverSummaryHeader(stats)
         }
 
-        // 2. Expandable Topic Sections
-        sections.forEach { section ->
-            val sectionProblems = groupedProblems[section] ?: emptyList()
-            val completedCount = sectionProblems.count { it.id in completedIds }
-            val isExpanded = section in expandedSections
+        // 2. Search & Filter Bar
+        item {
+            SearchAndFilterBar(
+                query = searchQuery,
+                onQueryChange = { searchQuery = it }
+            )
+        }
 
-            item(key = "header_$section") {
-                LargeTopicHeader(
+        // 3. Section Render
+        groupedBySection.forEach { (section, sectionProblems) ->
+            val completedInSection = sectionProblems.count { it.id in completedIds }
+            val isExpanded = section in expandedSections || searchQuery.isNotEmpty()
+
+            item(key = "section_$section") {
+                SectionAccordionHeader(
                     title = section,
-                    completed = completedCount,
+                    completed = completedInSection,
                     total = sectionProblems.size,
                     isExpanded = isExpanded,
-                    onClick = {
+                    onToggle = {
                         expandedSections = if (isExpanded) expandedSections - section else expandedSections + section
                     }
                 )
             }
 
             if (isExpanded) {
-                items(sectionProblems, key = { "striver_${it.id}" }) { problem ->
-                    LargeStriverProblemCard(
-                        problem = problem,
-                        isCompleted = problem.id in completedIds,
-                        onToggle = { onToggleProblem(problem.id) },
-                        onSolve = {
-                            if (problem.resources.solve.isNotEmpty()) {
-                                val intent = Intent(Intent.ACTION_VIEW, problem.resources.solve.toUri())
-                                context.startActivity(intent)
-                            }
+                val subGrouped = sectionProblems.groupBy { it.subSection }
+                subGrouped.forEach { (subSection, subProblems) ->
+                    val isGeneral = subSection.equals("General", ignoreCase = true)
+                    val subSectionKey = "${section}_$subSection"
+                    val isSubExpanded = isGeneral || subSectionKey in expandedSubSections || searchQuery.isNotEmpty()
+
+                    if (!isGeneral) {
+                        item(key = "sub_${section}_$subSection") {
+                            SubSectionHeader(
+                                title = subSection,
+                                isExpanded = isSubExpanded,
+                                onToggle = {
+                                    expandedSubSections = if (isSubExpanded) {
+                                        expandedSubSections - subSectionKey
+                                    } else {
+                                        expandedSubSections + subSectionKey
+                                    }
+                                }
+                            )
                         }
-                    )
+                    }
+
+                    if (isSubExpanded) {
+                        items(subProblems, key = { it.id }) { problem ->
+                            TopicRow(
+                                problem = problem,
+                                isCompleted = problem.id in completedIds,
+                                onToggle = { onToggleProblem(problem.id) },
+                                onProblemClick = { 
+                                    problem.toLeetCodeProblem()?.let { onProblemClick(it) } ?: run {
+                                        if (problem.solveUrl.isNotEmpty()) {
+                                            context.startActivity(Intent(Intent.ACTION_VIEW, problem.solveUrl.toUri()))
+                                        }
+                                    }
+                                },
+                                onSolve = {
+                                    if (problem.solveUrl.isNotEmpty()) {
+                                        context.startActivity(Intent(Intent.ACTION_VIEW, problem.solveUrl.toUri()))
+                                    }
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-private data class StriverStats(
-    val totalCount: Int,
-    val completedTotal: Int,
-    val percentage: Int,
-    val easyTotal: Int,
-    val easyDone: Int,
-    val mediumTotal: Int,
-    val mediumDone: Int,
-    val hardTotal: Int,
-    val hardDone: Int
-)
-
 @Composable
-private fun DifficultyStatVertical(label: String, completed: Int, total: Int, color: Color) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Black)
-        Text(text = "$completed/$total", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
-    }
-}
-
-@Composable
-private fun LargeTopicHeader(
-    title: String,
-    completed: Int,
-    total: Int,
-    isExpanded: Boolean,
-    onClick: () -> Unit
-) {
-    val progress = remember(completed, total) {
-        if (total > 0) completed.toFloat() / total else 0f
-    }
-    
+private fun StriverSummaryHeader(stats: StriverStats) {
     Card(
-        onClick = onClick,
-        colors = CardDefaults.cardColors(
-            containerColor = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22)
-        ),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(modifier = Modifier.weight(1f)) {
+                Column {
                     Text(
-                        text = title,
-                        color = Color.White,
-                        fontSize = 18.sp,
+                        text = "Striver A2Z Sheet",
+                        style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
-                        maxLines = 2
+                        color = Color.White
                     )
-                    Spacer(Modifier.height(4.dp))
                     Text(
-                        text = "$completed / $total COMPLETED",
-                        color = if (completed == total && total > 0) LeetCodeGreen else LeetCodeOrange,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp
+                        text = "${stats.completedTotal} / ${stats.totalCount} Problems Solved",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.Gray
                     )
                 }
+                Text(
+                    text = "${stats.percentage}%",
+                    fontSize = 32.sp,
+                    fontWeight = FontWeight.Black,
+                    color = LeetCodeOrange
+                )
+            }
+            
+            Spacer(Modifier.height(12.dp))
+            
+            LinearProgressIndicator(
+                progress = { stats.percentage / 100f },
+                modifier = Modifier.fillMaxWidth().height(6.dp).clip(CircleShape),
+                color = LeetCodeOrange,
+                trackColor = Color(0xFF0d1117)
+            )
+            
+            Spacer(Modifier.height(16.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                DifficultyPill("EASY", stats.easyDone, stats.easyTotal, LeetCodeGreen)
+                DifficultyPill("MEDIUM", stats.mediumDone, stats.mediumTotal, LeetCodeYellow)
+                DifficultyPill("HARD", stats.hardDone, stats.hardTotal, LeetCodeRed)
+            }
+        }
+    }
+}
+
+@Composable
+private fun DifficultyPill(label: String, done: Int, total: Int, color: Color) {
+    Surface(
+        color = color.copy(alpha = 0.1f),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.dp, color.copy(alpha = 0.2f))
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(Modifier.size(6.dp).background(color, CircleShape))
+            Spacer(Modifier.width(6.dp))
+            Text(
+                text = "$label: $done/$total",
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold,
+                color = color
+            )
+        }
+    }
+}
+
+@Composable
+private fun SearchAndFilterBar(query: String, onQueryChange: (String) -> Unit) {
+    OutlinedTextField(
+        value = query,
+        onValueChange = onQueryChange,
+        modifier = Modifier.fillMaxWidth(),
+        placeholder = { Text("Search problems...", fontSize = 14.sp) },
+        leadingIcon = { Icon(Icons.Default.Search, null, modifier = Modifier.size(20.dp)) },
+        trailingIcon = {
+            if (query.isNotEmpty()) {
+                IconButton(onClick = { onQueryChange("") }) {
+                    Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp))
+                }
+            }
+        },
+        shape = RoundedCornerShape(8.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = LeetCodeOrange,
+            unfocusedBorderColor = Color(0xFF30363d),
+            focusedContainerColor = Color(0xFF161b22),
+            unfocusedContainerColor = Color(0xFF161b22)
+        ),
+        singleLine = true
+    )
+}
+
+@Composable
+private fun SectionAccordionHeader(
+    title: String,
+    completed: Int,
+    total: Int,
+    isExpanded: Boolean,
+    onToggle: () -> Unit
+) {
+    Card(
+        onClick = onToggle,
+        colors = CardDefaults.cardColors(
+            containerColor = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22)
+        ),
+        shape = RoundedCornerShape(8.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = title,
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.weight(1f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "$completed/$total",
+                    color = if (completed == total) LeetCodeGreen else Color.Gray,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(Modifier.width(8.dp))
                 Icon(
                     imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
                     contentDescription = null,
                     tint = Color.Gray,
-                    modifier = Modifier.size(28.dp)
-                )
-            }
-            
-            if (!isExpanded) {
-                Spacer(Modifier.height(12.dp))
-                LinearProgressIndicator(
-                    progress = { progress },
-                    modifier = Modifier.fillMaxWidth().height(4.dp).background(Color.Black, RoundedCornerShape(2.dp)),
-                    color = if (completed == total) LeetCodeGreen else LeetCodeOrange,
-                    trackColor = Color(0xFF0d1117)
+                    modifier = Modifier.size(20.dp)
                 )
             }
         }
@@ -253,94 +306,99 @@ private fun LargeTopicHeader(
 }
 
 @Composable
-private fun LargeStriverProblemCard(
-    problem: StriverProblem,
+private fun SubSectionHeader(
+    title: String,
+    isExpanded: Boolean,
+    onToggle: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onToggle)
+            .padding(start = 8.dp, top = 12.dp, bottom = 8.dp, end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = title.uppercase(),
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Black,
+            color = if (isExpanded) LeetCodeOrange.copy(alpha = 0.8f) else Color.Gray,
+            letterSpacing = 1.sp,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+            contentDescription = null,
+            tint = Color.Gray,
+            modifier = Modifier.size(16.dp)
+        )
+    }
+}
+
+@Composable
+private fun TopicRow(
+    problem: StriverProblemEntity,
     isCompleted: Boolean,
     onToggle: () -> Unit,
+    onProblemClick: () -> Unit,
     onSolve: () -> Unit
 ) {
-    val difficultyColor = remember(problem.difficulty) {
-        when (problem.difficulty) {
-            "Easy" -> LeetCodeGreen
-            "Medium" -> LeetCodeYellow
-            "Hard" -> LeetCodeRed
-            else -> Color.Gray
-        }
+    val difficultyColor = when (problem.difficulty) {
+        "Easy" -> LeetCodeGreen
+        "Medium" -> LeetCodeYellow
+        else -> LeetCodeRed
     }
 
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22).copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(12.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 4.dp),
-        border = if (isCompleted) BorderStroke(1.dp, LeetCodeGreen.copy(alpha = 0.2f)) else null
+        shape = RoundedCornerShape(8.dp),
+        modifier = Modifier.fillMaxWidth(),
+        border = if (isCompleted) BorderStroke(1.dp, LeetCodeGreen.copy(alpha = 0.1f)) else null
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            modifier = Modifier.padding(10.dp).fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-                onClick = onToggle,
-                modifier = Modifier.size(32.dp)
-            ) {
+            // 1. Status Toggle
+            IconButton(onClick = onToggle, modifier = Modifier.size(28.dp)) {
                 Icon(
                     imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
                     contentDescription = null,
                     tint = if (isCompleted) LeetCodeGreen else Color.Gray,
-                    modifier = Modifier.size(28.dp)
+                    modifier = Modifier.size(24.dp)
                 )
             }
 
-            Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.width(8.dp))
 
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable(onClick = onSolve)
-            ) {
+            // 2. Title & Difficulty
+            Column(modifier = Modifier.weight(1f).clickable(onClick = onProblemClick)) {
                 Text(
                     text = problem.title,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold,
                     color = if (isCompleted) Color.Gray else Color.White,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(Modifier.height(4.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Surface(
-                        color = difficultyColor.copy(alpha = 0.1f),
-                        shape = RoundedCornerShape(4.dp)
-                    ) {
-                        Text(
-                            text = problem.difficulty.uppercase(),
-                            color = difficultyColor,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Black,
-                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                        )
-                    }
-                    if (isCompleted) {
-                        Spacer(Modifier.width(8.dp))
-                        Text(
-                            text = "SOLVED",
-                            color = LeetCodeGreen,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Black
-                        )
-                    }
-                }
+                Text(
+                    text = problem.difficulty,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = difficultyColor
+                )
             }
 
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = Color.DarkGray,
-                modifier = Modifier.size(20.dp)
-            )
+            // 3. Solve Action
+            IconButton(onClick = onSolve, modifier = Modifier.size(32.dp)) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Solve",
+                    tint = Color.Gray,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
         }
     }
 }

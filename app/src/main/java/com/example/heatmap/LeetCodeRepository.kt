@@ -6,9 +6,11 @@ import com.example.heatmap.domain.GfgPotdEntity
 import com.example.heatmap.domain.Problem
 import com.example.heatmap.domain.toDomain
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -226,11 +228,37 @@ class LeetCodeRepository private constructor(context: Context) {
                 val detail = response.data?.question
                 if (detail != null) {
                     val content = detail.content ?: "No content available"
-                    problemsDao.updateProblemContent(slug, content, System.currentTimeMillis())
+                    val tags = detail.topicTags?.joinToString(",") { it.name } ?: ""
+                    problemsDao.updateProblemDetails(slug, content, tags, System.currentTimeMillis())
                     emit(problemsDao.getProblemBySlug(slug))
                 }
             } catch (e: Exception) {
                 Log.e("LeetCodeRepository", "Failed to fetch problem detail", e)
+            }
+        }
+    }
+
+    suspend fun prefetchProblemDetails(limit: Int = 50) {
+        withContext(Dispatchers.IO) {
+            val slugs = problemsDao.getSlugsWithoutContent().take(limit)
+            slugs.forEach { slug ->
+                try {
+                    val response = service.getProfile(
+                        GraphQLRequest(
+                            query = questionDetailQuery,
+                            variables = mapOf("titleSlug" to slug)
+                        )
+                    )
+                    val detail = response.data?.question
+                    if (detail != null) {
+                        val content = detail.content ?: "No content available"
+                        val tags = detail.topicTags?.joinToString(",") { it.name } ?: ""
+                        problemsDao.updateProblemDetails(slug, content, tags, System.currentTimeMillis())
+                        delay(500) // Avoid rate limiting
+                    }
+                } catch (e: Exception) {
+                    Log.e("LeetCodeRepository", "Prefetch failed for $slug", e)
+                }
             }
         }
     }

@@ -35,12 +35,29 @@ interface GfgDao {
     suspend fun getPotdByDate(date: String): GfgPotdEntity?
 }
 
-@Database(entities = [CachedLeetCodeData::class, Folder::class, Note::class, ProblemEntity::class, GfgPotdEntity::class], version = 4, exportSchema = false)
+@Database(
+    entities = [
+        CachedLeetCodeData::class,
+        Folder::class,
+        Note::class,
+        ProblemEntity::class,
+        GfgPotdEntity::class,
+        StriverProblemEntity::class,
+        TrainingPlanEntity::class,
+        TrainingTaskEntity::class,
+        AppPreferenceEntity::class
+    ],
+    version = 6,
+    exportSchema = false
+)
 abstract class LeetCodeDatabase : RoomDatabase() {
     abstract fun leetCodeDao(): LeetCodeDao
     abstract fun notesDao(): NotesDao
     abstract fun problemsDao(): ProblemsDao
     abstract fun gfgDao(): GfgDao
+    abstract fun striverDao(): StriverDao
+    abstract fun trainingDao(): TrainingDao
+    abstract fun preferenceDao(): PreferenceDao
 
     companion object {
         @Volatile

@@ -239,6 +239,18 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                         color = Color.Gray,
                         fontSize = 12.sp
                     )
+
+                    if (problem.tags.isNotEmpty()) {
+                        Spacer(Modifier.width(8.dp))
+                        Icon(Icons.Default.Label, contentDescription = null, tint = Color.Gray, modifier = Modifier.size(14.dp))
+                        Text(
+                            text = problem.tags.first(),
+                            color = Color.Gray,
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                 }
 
                 HorizontalDivider(color = Color(0xFF30363d), thickness = 1.dp)
@@ -257,7 +269,7 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                         }
                     },
                     update = { webView ->
-                        val content = problem.content ?: "Loading content..."
+                        val content = problem.content ?: "<div style='text-align:center; padding-top: 50px;'><h3>Content not available offline</h3><p>Please connect to internet to load this problem for the first time.</p></div>"
                         val styledHtml = """
                             <!DOCTYPE html>
                             <html>
@@ -311,262 +323,5 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun StriverSheetScreen(
-    problems: List<StriverProblem>,
-    completedIds: Set<Int>,
-    onToggleProblem: (Int) -> Unit
-) {
-    val context = LocalContext.current
-    var expandedSections by remember { mutableStateOf(setOf<String>()) }
-    val sections = remember(problems) { problems.map { it.section }.distinct() }
-
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(bottom = 16.dp)
-    ) {
-        // Overall Summary
-        item {
-            StriverSummaryHeader(problems, completedIds)
-        }
-
-        sections.forEach { section ->
-            val sectionProblems = problems.filter { it.section == section }
-            val completedCount = sectionProblems.count { it.id in completedIds }
-            val isExpanded = section in expandedSections
-
-            item {
-                TopicHeader(
-                    title = section,
-                    completed = completedCount,
-                    total = sectionProblems.size,
-                    isExpanded = isExpanded,
-                    onClick = {
-                        expandedSections = if (isExpanded) expandedSections - section else expandedSections + section
-                    }
-                )
-            }
-
-            if (isExpanded) {
-                items(sectionProblems, key = { "striver_${it.id}" }) { problem ->
-                    StriverProblemCard(
-                        problem = problem,
-                        isCompleted = problem.id in completedIds,
-                        onToggle = { onToggleProblem(problem.id) },
-                        onSolve = {
-                            if (problem.resources.solve.isNotEmpty()) {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(problem.resources.solve))
-                                context.startActivity(intent)
-                            }
-                        }
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun StriverSummaryHeader(problems: List<StriverProblem>, completedIds: Set<Int>) {
-    val total = problems.size
-    val completed = completedIds.size
-    val percent = if (total > 0) (completed * 100 / total) else 0
-
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF1c2128)),
-        shape = RoundedCornerShape(16.dp)
-    ) {
-        Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "$percent%", fontSize = 32.sp, fontWeight = FontWeight.Black, color = LeetCodeOrange)
-            Text(text = "Overall Progress", fontSize = 12.sp, color = Color.Gray)
-            Text(text = "$completed/$total Problems", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            
-            Spacer(Modifier.height(12.dp))
-            
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                DifficultyStat("Easy", problems.count { it.difficulty == "Easy" }, completedIds, problems)
-                DifficultyStat("Medium", problems.count { it.difficulty == "Medium" }, completedIds, problems)
-                DifficultyStat("Hard", problems.count { it.difficulty == "Hard" }, completedIds, problems)
-            }
-        }
-    }
-}
-
-@Composable
-private fun DifficultyStat(label: String, total: Int, completedIds: Set<Int>, allProblems: List<StriverProblem>) {
-    val completed = allProblems.filter { it.difficulty == label }.count { it.id in completedIds }
-    val color = when(label) {
-        "Easy" -> LeetCodeGreen
-        "Medium" -> LeetCodeYellow
-        else -> LeetCodeRed
-    }
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = label, color = color, fontSize = 10.sp, fontWeight = FontWeight.Bold)
-        Text(text = "$completed/$total", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Medium)
-    }
-}
-
-@Composable
-private fun TopicHeader(
-    title: String,
-    completed: Int,
-    total: Int,
-    isExpanded: Boolean,
-    onClick: () -> Unit
-) {
-    Card(
-        onClick = onClick,
-        colors = CardDefaults.cardColors(
-            containerColor = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22)
-        ),
-        shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = Color.White,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "$completed/$total Problems Done",
-                    color = if (completed == total && total > 0) LeetCodeGreen else Color.Gray,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-            Icon(
-                imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                contentDescription = if (isExpanded) "Collapse" else "Expand",
-                tint = LeetCodeOrange
-            )
-        }
-    }
-}
-
-@Composable
-private fun StriverProblemCard(
-    problem: StriverProblem,
-    isCompleted: Boolean,
-    onToggle: () -> Unit,
-    onSolve: () -> Unit
-) {
-    val difficultyColor = when (problem.difficulty) {
-        "Easy" -> LeetCodeGreen
-        "Medium" -> LeetCodeYellow
-        "Hard" -> LeetCodeRed
-        else -> Color.Gray
-    }
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
-                    IconButton(onClick = onToggle, modifier = Modifier.size(24.dp)) {
-                        Icon(
-                            imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
-                            contentDescription = "Toggle Complete",
-                            tint = if (isCompleted) LeetCodeGreen else Color.Gray,
-                            modifier = Modifier.size(20.dp)
-                        )
-                    }
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        text = problem.title,
-                        color = if (isCompleted) Color.Gray else Color.White,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.clickable(onClick = onSolve)
-                    )
-                }
-                Surface(
-                    color = difficultyColor.copy(alpha = 0.1f),
-                    shape = RoundedCornerShape(4.dp)
-                ) {
-                    Text(
-                        text = problem.difficulty,
-                        color = difficultyColor,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                    )
-                }
-            }
-
-            // Only show resource row if there are supplemental links
-            if (problem.resources.youtube.isNotEmpty() || problem.resources.editorial.isNotEmpty()) {
-                Spacer(Modifier.height(12.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    if (problem.resources.youtube.isNotEmpty()) {
-                        ResourceLink(
-                            label = "Video",
-                            icon = Icons.Default.PlayCircleFilled,
-                            color = Color(0xFFFF0000),
-                            onClick = onSolve // Simplified for example, should ideally use youtube link
-                        )
-                    }
-                    if (problem.resources.editorial.isNotEmpty()) {
-                        ResourceLink(
-                            label = "Editorial",
-                            icon = Icons.AutoMirrored.Filled.List,
-                            color = Color.Gray,
-                            onClick = onSolve // Simplified
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ResourceLink(
-    label: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    color: Color,
-    onClick: () -> Unit
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clickable(onClick = onClick)
-    ) {
-        Icon(icon, contentDescription = null, tint = color, modifier = Modifier.size(16.dp))
-        Spacer(Modifier.width(4.dp))
-        Text(
-            text = label,
-            color = color,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Medium
-        )
     }
 }

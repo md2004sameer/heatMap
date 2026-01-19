@@ -33,8 +33,8 @@ class ReminderWorker(
     )
 
     override suspend fun doWork(): Result {
-        val prefs = context.getSharedPreferences("leetcode_prefs", Context.MODE_PRIVATE)
-        val username = prefs.getString("last_username", null) ?: return Result.success()
+        val db = LeetCodeDatabase.getDatabase(context)
+        val username = db.preferenceDao().getPreference("last_username") ?: return Result.success()
 
         val repository = LeetCodeRepository.getInstance(context)
         var leetCodeData: LeetCodeData? = null
@@ -51,11 +51,7 @@ class ReminderWorker(
 
         val data = leetCodeData ?: return Result.retry()
 
-        // 1. Check if any submission was made today (Streak maintained)
         val isStreakMaintained = data.streakCounter?.currentDayCompleted == true
-        
-        // 2. Check if the Daily Coding Challenge specifically is completed
-        // userStatus is usually "Finish" or "NotStart"
         val isDailyChallengeDone = data.activeDailyCodingChallengeQuestion?.userStatus == "Finish"
 
         val currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
@@ -66,11 +62,9 @@ class ReminderWorker(
             return Result.success()
         }
 
-        // Send a specialized reminder if it's evening and the Daily Challenge is pending
         if (isEvening && !isDailyChallengeDone) {
             sendDailyChallengeReminder(data)
         } else if (!isStreakMaintained) {
-            // General streak reminder
             sendGeneralReminder(data)
         }
 

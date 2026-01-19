@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.heatmap.Note
 import com.example.heatmap.ui.theme.BorderDark
 import com.example.heatmap.ui.theme.LeetCodeOrange
@@ -22,9 +23,9 @@ import com.example.heatmap.ui.theme.Typography
 
 @Composable
 fun NotesModuleSection(viewModel: MainViewModel) {
-    val folders by viewModel.folders.collectAsState()
-    val notes by viewModel.currentNotes.collectAsState()
-    val selectedFolderId by viewModel.selectedFolderId.collectAsState()
+    val folders by viewModel.folders.collectAsStateWithLifecycle()
+    val notes by viewModel.currentNotes.collectAsStateWithLifecycle()
+    val selectedFolderId by viewModel.selectedFolderId.collectAsStateWithLifecycle()
     
     var showEditorByNote by remember { mutableStateOf<Note?>(null) }
     var showFolderDialog by remember { mutableStateOf(false) }

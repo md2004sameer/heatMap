@@ -1,6 +1,7 @@
 package com.example.heatmap
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Entity(tableName = "problems")
 data class ProblemEntity(
@@ -19,6 +20,9 @@ data class ProblemEntity(
 @Dao
 interface ProblemsDao {
     @Query("SELECT * FROM problems ORDER BY CAST(questionFrontendId AS INTEGER) ASC")
+    fun getAllProblemsFlow(): Flow<List<ProblemEntity>>
+
+    @Query("SELECT * FROM problems ORDER BY CAST(questionFrontendId AS INTEGER) ASC")
     suspend fun getAllProblems(): List<ProblemEntity>
 
     @Query("SELECT * FROM problems WHERE title LIKE '%' || :query || '%' OR questionFrontendId LIKE '%' || :query || '%' ORDER BY CAST(questionFrontendId AS INTEGER) ASC")
@@ -36,6 +40,9 @@ interface ProblemsDao {
     @Query("SELECT * FROM problems WHERE titleSlug = :slug LIMIT 1")
     suspend fun getProblemBySlug(slug: String): ProblemEntity?
 
-    @Query("UPDATE problems SET content = :content, lastUpdated = :timestamp WHERE titleSlug = :slug")
-    suspend fun updateProblemContent(slug: String, content: String, timestamp: Long)
+    @Query("UPDATE problems SET content = :content, tags = :tags, lastUpdated = :timestamp WHERE titleSlug = :slug")
+    suspend fun updateProblemDetails(slug: String, content: String, tags: String, timestamp: Long)
+    
+    @Query("SELECT titleSlug FROM problems WHERE content IS NULL")
+    suspend fun getSlugsWithoutContent(): List<String>
 }
