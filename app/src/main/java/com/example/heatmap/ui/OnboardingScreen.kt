@@ -33,122 +33,117 @@ fun OnboardingScreen(onJoin: (String) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(BackgroundDark, Color(0xFF1a1a2e))
-                )
-            )
+            .background(BackgroundDark)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(32.dp)
+                .padding(24.dp)
                 .statusBarsPadding(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterVertically)
         ) {
+            // Minimalist Logo
             Surface(
-                modifier = Modifier.size(100.dp),
-                shape = CircleShape,
-                color = LeetCodeOrange.copy(alpha = 0.1f),
-                border = androidx.compose.foundation.BorderStroke(2.dp, LeetCodeOrange)
+                modifier = Modifier.size(80.dp),
+                shape = RoundedCornerShape(20.dp),
+                color = Color.Transparent,
+                border = androidx.compose.foundation.BorderStroke(1.dp, LeetCodeOrange.copy(alpha = 0.5f))
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Default.DateRange,
                         contentDescription = null,
-                        modifier = Modifier.size(48.dp),
+                        modifier = Modifier.size(40.dp),
                         tint = LeetCodeOrange
                     )
                 }
             }
 
-            Spacer(Modifier.height(32.dp))
-
-            Text(
-                "LeetCode HeatMap",
-                style = Typography.displaySmall,
-                color = TextPrimaryDark,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(Modifier.height(12.dp))
-
-            Text(
-                "Automate your progress tracking and personalize your device with your coding journey.",
-                style = Typography.bodyLarge,
-                color = TextSecondaryDark,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
-
-            Spacer(Modifier.height(48.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                OnboardingFeature(Icons.Default.Refresh, "Auto Sync")
-                OnboardingFeature(Icons.Default.Build, "Wallpapers")
-                OnboardingFeature(Icons.Default.Star, "Insights")
-            }
-
-            Spacer(Modifier.height(56.dp))
-
-            OutlinedTextField(
-                value = username,
-                onValueChange = {
-                    username = it
-                    errorMessage = null
-                },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("LeetCode Username") },
-                placeholder = { Text("e.g. sameerog") },
-                isError = errorMessage != null,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = LeetCodeOrange,
-                    unfocusedBorderColor = BorderDark,
-                    focusedLabelColor = LeetCodeOrange,
-                    cursorColor = LeetCodeOrange,
-                    focusedTextColor = TextPrimaryDark,
-                    unfocusedTextColor = TextPrimaryDark
-                ),
-                shape = RoundedCornerShape(16.dp),
-                singleLine = true
-            )
-
-            errorMessage?.let {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    it, 
-                    color = LeetCodeRed, 
-                    style = Typography.labelMedium,
-                    modifier = Modifier.align(Alignment.Start).padding(start = 12.dp, top = 6.dp)
+                    "HeatMap",
+                    style = MaterialTheme.typography.displaySmall,
+                    fontWeight = FontWeight.Black,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    "Track. Visualize. Conquer.",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = LeetCodeOrange,
+                    letterSpacing = 2.sp
                 )
             }
 
-            Spacer(Modifier.height(32.dp))
+            Text(
+                "Your LeetCode journey, elegantly visualized and integrated into your daily workflow.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = TextSecondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+
+            // Minimalist Features
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                OnboardingFeature(Icons.Default.Refresh, "Sync", Modifier.weight(1f))
+                OnboardingFeature(Icons.Default.Build, "Widget", Modifier.weight(1f))
+                OnboardingFeature(Icons.Default.Star, "Stats", Modifier.weight(1f))
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = {
+                        username = it
+                        errorMessage = null
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    placeholder = { Text("LeetCode Username", color = TextMuted) },
+                    isError = errorMessage != null,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = LeetCodeOrange,
+                        unfocusedBorderColor = BorderDark,
+                        cursorColor = LeetCodeOrange,
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        errorBorderColor = LeetCodeRed.copy(alpha = 0.5f)
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    singleLine = true
+                )
+
+                errorMessage?.let {
+                    Text(
+                        it, 
+                        color = LeetCodeRed, 
+                        style = MaterialTheme.typography.labelSmall,
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                }
+            }
 
             Button(
                 onClick = {
                     val error = validator(username)
-                    if (error == null) {
-                        onJoin(username)
-                    } else {
-                        errorMessage = error
-                    }
+                    if (error == null) onJoin(username) else errorMessage = error
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(64.dp),
+                    .height(56.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
-                shape = RoundedCornerShape(16.dp),
-                elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
-                    "Launch Journey", 
-                    style = Typography.titleMedium,
+                    "START JOURNEY", 
+                    style = MaterialTheme.typography.titleSmall,
                     color = BackgroundDark,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Black
                 )
             }
         }
@@ -156,29 +151,31 @@ fun OnboardingScreen(onJoin: (String) -> Unit) {
 }
 
 @Composable
-fun OnboardingFeature(icon: ImageVector, label: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Surface(
-            modifier = Modifier.size(56.dp),
-            shape = RoundedCornerShape(16.dp),
-            color = SurfaceDark,
-            border = androidx.compose.foundation.BorderStroke(1.dp, BorderDark)
+fun OnboardingFeature(icon: ImageVector, label: String, modifier: Modifier = Modifier) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = SurfaceDark),
+        shape = RoundedCornerShape(12.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, BorderDark)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    icon, 
-                    contentDescription = null, 
-                    tint = LeetCodeOrange, 
-                    modifier = Modifier.size(28.dp)
-                )
-            }
+            Icon(
+                icon, 
+                contentDescription = null, 
+                tint = LeetCodeOrange, 
+                modifier = Modifier.size(24.dp)
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                label, 
+                style = MaterialTheme.typography.labelSmall,
+                color = TextSecondary,
+                fontWeight = FontWeight.Bold
+            )
         }
-        Spacer(Modifier.height(12.dp))
-        Text(
-            label, 
-            style = Typography.labelMedium,
-            color = TextSecondaryDark,
-            fontWeight = FontWeight.SemiBold
-        )
     }
 }

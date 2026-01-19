@@ -38,19 +38,44 @@ fun StriverProgressScreen(
     onToggleProblem: (Int) -> Unit
 ) {
     val context = LocalContext.current
-    val totalProblems = problems.size
-    val completedTotal = completedIds.size
-    val overallPercentage = if (totalProblems > 0) (completedTotal * 100 / totalProblems) else 0
+    
+    // Grouping and pre-calculating stats to avoid redundant work during list rendering
+    val groupedProblems = remember(problems) {
+        problems.groupBy { it.section }
+    }
+    
+    val sections = remember(groupedProblems) {
+        groupedProblems.keys.toList()
+    }
 
-    val easyProblems = problems.filter { it.difficulty == "Easy" }
-    val mediumProblems = problems.filter { it.difficulty == "Medium" }
-    val hardProblems = problems.filter { it.difficulty == "Hard" }
+    val stats = remember(problems, completedIds) {
+        val total = problems.size
+        val done = completedIds.size
+        val easy = problems.filter { it.difficulty == "Easy" }
+        val medium = problems.filter { it.difficulty == "Medium" }
+        val hard = problems.filter { it.difficulty == "Hard" }
+        
+        val percentage = if (total > 0) (done * 100 / total) else 0
+        val easyTotal = easy.size
+        val easyDone = easy.count { it.id in completedIds }
+        val mediumTotal = medium.size
+        val mediumDone = medium.count { it.id in completedIds }
+        val hardTotal = hard.size
+        val hardDone = hard.count { it.id in completedIds }
 
-    val completedEasy = easyProblems.count { it.id in completedIds }
-    val completedMedium = mediumProblems.count { it.id in completedIds }
-    val completedHard = hardProblems.count { it.id in completedIds }
+        StriverStats(
+            totalCount = total,
+            completedTotal = done,
+            percentage = percentage,
+            easyTotal = easyTotal,
+            easyDone = easyDone,
+            mediumTotal = mediumTotal,
+            mediumDone = mediumDone,
+            hardTotal = hardTotal,
+            hardDone = hardDone
+        )
+    }
 
-    val sections = remember(problems) { problems.map { it.section }.distinct() }
     var expandedSections by remember { mutableStateOf(setOf<String>()) }
 
     LazyColumn(
@@ -72,7 +97,7 @@ fun StriverProgressScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "$overallPercentage%",
+                        text = "${stats.percentage}%",
                         fontSize = 64.sp,
                         fontWeight = FontWeight.Black,
                         color = LeetCodeOrange
@@ -86,7 +111,7 @@ fun StriverProgressScreen(
                     )
                     Spacer(Modifier.height(8.dp))
                     Text(
-                        text = "$completedTotal / $totalProblems Problems",
+                        text = "${stats.completedTotal} / ${stats.totalCount} Problems",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color.White
@@ -98,9 +123,9 @@ fun StriverProgressScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        DifficultyStatVertical("EASY", completedEasy, easyProblems.size, LeetCodeGreen)
-                        DifficultyStatVertical("MEDIUM", completedMedium, mediumProblems.size, LeetCodeYellow)
-                        DifficultyStatVertical("HARD", completedHard, hardProblems.size, LeetCodeRed)
+                        DifficultyStatVertical("EASY", stats.easyDone, stats.easyTotal, LeetCodeGreen)
+                        DifficultyStatVertical("MEDIUM", stats.mediumDone, stats.mediumTotal, LeetCodeYellow)
+                        DifficultyStatVertical("HARD", stats.hardDone, stats.hardTotal, LeetCodeRed)
                     }
                 }
             }
@@ -108,11 +133,11 @@ fun StriverProgressScreen(
 
         // 2. Expandable Topic Sections
         sections.forEach { section ->
-            val sectionProblems = problems.filter { it.section == section }
+            val sectionProblems = groupedProblems[section] ?: emptyList()
             val completedCount = sectionProblems.count { it.id in completedIds }
             val isExpanded = section in expandedSections
 
-            item {
+            item(key = "header_$section") {
                 LargeTopicHeader(
                     title = section,
                     completed = completedCount,
@@ -143,6 +168,18 @@ fun StriverProgressScreen(
     }
 }
 
+private data class StriverStats(
+    val totalCount: Int,
+    val completedTotal: Int,
+    val percentage: Int,
+    val easyTotal: Int,
+    val easyDone: Int,
+    val mediumTotal: Int,
+    val mediumDone: Int,
+    val hardTotal: Int,
+    val hardDone: Int
+)
+
 @Composable
 private fun DifficultyStatVertical(label: String, completed: Int, total: Int, color: Color) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -159,7 +196,9 @@ private fun LargeTopicHeader(
     isExpanded: Boolean,
     onClick: () -> Unit
 ) {
-    val progress = if (total > 0) completed.toFloat() / total else 0f
+    val progress = remember(completed, total) {
+        if (total > 0) completed.toFloat() / total else 0f
+    }
     
     Card(
         onClick = onClick,
@@ -220,11 +259,13 @@ private fun LargeStriverProblemCard(
     onToggle: () -> Unit,
     onSolve: () -> Unit
 ) {
-    val difficultyColor = when (problem.difficulty) {
-        "Easy" -> LeetCodeGreen
-        "Medium" -> LeetCodeYellow
-        "Hard" -> LeetCodeRed
-        else -> Color.Gray
+    val difficultyColor = remember(problem.difficulty) {
+        when (problem.difficulty) {
+            "Easy" -> LeetCodeGreen
+            "Medium" -> LeetCodeYellow
+            "Hard" -> LeetCodeRed
+            else -> Color.Gray
+        }
     }
 
     Card(
