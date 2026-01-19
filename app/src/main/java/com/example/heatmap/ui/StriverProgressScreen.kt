@@ -1,7 +1,6 @@
 package com.example.heatmap.ui
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.RadioButtonUnchecked
@@ -26,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import com.example.heatmap.domain.StriverProblem
 import com.example.heatmap.ui.theme.LeetCodeGreen
 import com.example.heatmap.ui.theme.LeetCodeOrange
@@ -133,7 +132,7 @@ fun StriverProgressScreen(
                         onToggle = { onToggleProblem(problem.id) },
                         onSolve = {
                             if (problem.resources.solve.isNotEmpty()) {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(problem.resources.solve))
+                                val intent = Intent(Intent.ACTION_VIEW, problem.resources.solve.toUri())
                                 context.startActivity(intent)
                             }
                         }
@@ -296,7 +295,7 @@ private fun LargeStriverProblemCard(
             }
 
             Icon(
-                imageVector = Icons.Default.ChevronRight,
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 tint = Color.DarkGray,
                 modifier = Modifier.size(20.dp)
