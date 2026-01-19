@@ -1,5 +1,6 @@
 package com.example.heatmap
 
+import com.example.heatmap.domain.GfgPotdResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -12,6 +13,9 @@ interface LeetCodeService {
 
     @GET("api/problems/all/")
     suspend fun getAllProblemsRest(): AllProblemsRestResponse
+
+    @GET("https://practiceapi.geeksforgeeks.org/api/v1/problems-of-day/problem/today/")
+    suspend fun getGfgPotd(): GfgPotdResponse
 }
 
 // Models for the REST approach

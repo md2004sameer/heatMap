@@ -1,6 +1,8 @@
 package com.example.heatmap.ui
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.activity.ComponentActivity
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
@@ -248,7 +250,7 @@ fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainVi
     ) { screen ->
         Column(modifier = Modifier.fillMaxSize()) {
             when (screen) {
-                is Screen.Profile -> ProfileContent(data, screen.section)
+                is Screen.Profile -> ProfileContent(data, screen.section, viewModel)
                 is Screen.Problems -> ProblemsHubContent(viewModel, screen.section)
                 is Screen.Productivity -> ProductivityHubContent(screen.section, viewModel, data)
             }
@@ -295,6 +297,8 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
 
 @Composable
 fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
+    val gfgPotdList by viewModel.gfgPotdList.collectAsState()
+
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         // Sub-tabs for Productivity
         Row(
@@ -315,14 +319,27 @@ fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewMode
             }
         }
 
-        ProductivityContent(section, viewModel, data)
+        when (section) {
+            ProductivitySection.Todo -> {
+                DailyChallengeContent(
+                    leetCodeData = data,
+                    gfgPotdList = gfgPotdList
+                )
+            }
+            ProductivitySection.Notes -> {
+                NotesModuleSection(viewModel)
+            }
+        }
     }
 }
 
 @Composable
-fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
+fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainViewModel) {
     val user = data.matchedUser ?: return
     val submissionCalendar = user.userCalendar?.submissionCalendar
+    val gfgPotdList by viewModel.gfgPotdList.collectAsState()
+    val context = LocalContext.current
+
     val submissionByDate = remember(submissionCalendar) {
         try {
             if (submissionCalendar == null) {
@@ -361,6 +378,20 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection) {
                         data.activeDailyCodingChallengeQuestion?.let { challenge ->
                             DailyChallengeCard(challenge)
                         }
+                        
+                        // Show Today's GFG POTD
+                        val today = LocalDate.now().toString()
+                        val todayGfg = gfgPotdList.find { it.date == today }
+                        todayGfg?.let { potd ->
+                            GfgPotdCard(
+                                potd = potd,
+                                onOpenLink = {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(potd.problemUrl))
+                                    context.startActivity(intent)
+                                }
+                            )
+                        }
+
                         SubmissionStatsCard(user, submissionByDate)
                         StreakStatusCard(data.streakCounter, submissionByDate[LocalDate.now()] ?: 0)
                     }

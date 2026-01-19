@@ -2,7 +2,7 @@ package com.example.heatmap.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,7 +10,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.RadioButtonUnchecked
@@ -49,10 +51,7 @@ fun StriverProgressScreen(
     val completedMedium = mediumProblems.count { it.id in completedIds }
     val completedHard = hardProblems.count { it.id in completedIds }
 
-    // Dynamically extract sections from problems to stay synchronized with the data
     val sections = remember(problems) { problems.map { it.section }.distinct() }
-    
-    // State to track expanded sections
     var expandedSections by remember { mutableStateOf(setOf<String>()) }
 
     LazyColumn(
@@ -60,79 +59,75 @@ fun StriverProgressScreen(
             .fillMaxSize()
             .background(Color(0xFF0d1117)),
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        // 1. Percentage Top Summary
-        item {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "$overallPercentage%",
-                    fontSize = 56.sp,
-                    fontWeight = FontWeight.Black,
-                    color = LeetCodeOrange
-                )
-                Text(
-                    text = "Overall Progress",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = Color.Gray
-                )
-                Text(
-                    text = "$completedTotal/$totalProblems",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-            }
-        }
-
-        // 2. Difficulty Breakdown
+        // 1. Prominent Top Summary
         item {
             Card(
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth()
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
             ) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    DifficultyRow("Easy", completedEasy, easyProblems.size, LeetCodeGreen)
-                    DifficultyRow("Medium", completedMedium, mediumProblems.size, LeetCodeYellow)
-                    DifficultyRow("Hard", completedHard, hardProblems.size, LeetCodeRed)
+                Column(
+                    modifier = Modifier.padding(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "$overallPercentage%",
+                        fontSize = 64.sp,
+                        fontWeight = FontWeight.Black,
+                        color = LeetCodeOrange
+                    )
+                    Text(
+                        text = "TOTAL PROGRESS",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Gray,
+                        letterSpacing = 1.5.sp
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        text = "$completedTotal / $totalProblems Problems",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White
+                    )
+                    
+                    Spacer(Modifier.height(24.dp))
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        DifficultyStatVertical("EASY", completedEasy, easyProblems.size, LeetCodeGreen)
+                        DifficultyStatVertical("MEDIUM", completedMedium, mediumProblems.size, LeetCodeYellow)
+                        DifficultyStatVertical("HARD", completedHard, hardProblems.size, LeetCodeRed)
+                    }
                 }
             }
         }
 
-        item { Spacer(Modifier.height(8.dp)) }
-
-        // 3. Expandable Topic Sections
+        // 2. Expandable Topic Sections
         sections.forEach { section ->
             val sectionProblems = problems.filter { it.section == section }
             val completedCount = sectionProblems.count { it.id in completedIds }
             val isExpanded = section in expandedSections
 
             item {
-                TopicHeader(
+                LargeTopicHeader(
                     title = section,
                     completed = completedCount,
                     total = sectionProblems.size,
                     isExpanded = isExpanded,
                     onClick = {
-                        expandedSections = if (isExpanded) {
-                            expandedSections - section
-                        } else {
-                            expandedSections + section
-                        }
+                        expandedSections = if (isExpanded) expandedSections - section else expandedSections + section
                     }
                 )
             }
 
             if (isExpanded) {
                 items(sectionProblems, key = { "striver_${it.id}" }) { problem ->
-                    StriverProblemCard(
+                    LargeStriverProblemCard(
                         problem = problem,
                         isCompleted = problem.id in completedIds,
                         onToggle = { onToggleProblem(problem.id) },
@@ -150,55 +145,77 @@ fun StriverProgressScreen(
 }
 
 @Composable
-private fun TopicHeader(
+private fun DifficultyStatVertical(label: String, completed: Int, total: Int, color: Color) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Black)
+        Text(text = "$completed/$total", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+    }
+}
+
+@Composable
+private fun LargeTopicHeader(
     title: String,
     completed: Int,
     total: Int,
     isExpanded: Boolean,
     onClick: () -> Unit
 ) {
+    val progress = if (total > 0) completed.toFloat() / total else 0f
+    
     Card(
         onClick = onClick,
         colors = CardDefaults.cardColors(
             containerColor = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22)
         ),
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(12.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = Color.White,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "$completed/$total Problems Done",
-                    color = if (completed == total && total > 0) LeetCodeGreen else Color.Gray,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Medium
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        color = Color.White,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = "$completed / $total COMPLETED",
+                        color = if (completed == total && total > 0) LeetCodeGreen else LeetCodeOrange,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                }
+                Icon(
+                    imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                    contentDescription = null,
+                    tint = Color.Gray,
+                    modifier = Modifier.size(28.dp)
                 )
             }
-            Icon(
-                imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                contentDescription = if (isExpanded) "Collapse" else "Expand",
-                tint = LeetCodeOrange
-            )
+            
+            if (!isExpanded) {
+                Spacer(Modifier.height(12.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier.fillMaxWidth().height(4.dp).background(Color.Black, RoundedCornerShape(2.dp)),
+                    color = if (completed == total) LeetCodeGreen else LeetCodeOrange,
+                    trackColor = Color(0xFF0d1117)
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun StriverProblemCard(
+private fun LargeStriverProblemCard(
     problem: StriverProblem,
     isCompleted: Boolean,
     onToggle: () -> Unit,
@@ -212,31 +229,32 @@ private fun StriverProblemCard(
     }
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF0d1117)),
-        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22).copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 4.dp)
+            .padding(horizontal = 4.dp),
+        border = if (isCompleted) BorderStroke(1.dp, LeetCodeGreen.copy(alpha = 0.2f)) else null
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
                 onClick = onToggle,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(32.dp)
             ) {
                 Icon(
                     imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
-                    contentDescription = "Toggle Complete",
+                    contentDescription = null,
                     tint = if (isCompleted) LeetCodeGreen else Color.Gray,
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(28.dp)
                 )
             }
 
-            Spacer(Modifier.width(12.dp))
+            Spacer(Modifier.width(16.dp))
 
             Column(
                 modifier = Modifier
@@ -245,41 +263,44 @@ private fun StriverProblemCard(
             ) {
                 Text(
                     text = problem.title,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
                     color = if (isCompleted) Color.Gray else Color.White,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(
-                    text = problem.difficulty,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = difficultyColor
-                )
+                Spacer(Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Surface(
+                        color = difficultyColor.copy(alpha = 0.1f),
+                        shape = RoundedCornerShape(4.dp)
+                    ) {
+                        Text(
+                            text = problem.difficulty.uppercase(),
+                            color = difficultyColor,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Black,
+                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                        )
+                    }
+                    if (isCompleted) {
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = "SOLVED",
+                            color = LeetCodeGreen,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
+                }
             }
 
-            if (isCompleted) {
-                Text(
-                    text = "DONE",
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Black,
-                    color = LeetCodeGreen.copy(alpha = 0.7f),
-                    modifier = Modifier.padding(start = 8.dp)
-                )
-            }
+            Icon(
+                imageVector = Icons.Default.ChevronRight,
+                contentDescription = null,
+                tint = Color.DarkGray,
+                modifier = Modifier.size(20.dp)
+            )
         }
-    }
-}
-
-@Composable
-private fun DifficultyRow(label: String, completed: Int, total: Int, color: Color) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = label, color = color, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-        Text(text = "$completed/$total", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
     }
 }

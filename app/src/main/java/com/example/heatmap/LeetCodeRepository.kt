@@ -2,6 +2,9 @@ package com.example.heatmap
 
 import android.content.Context
 import android.util.Log
+import com.example.heatmap.domain.GfgPotdEntity
+import com.example.heatmap.domain.Problem
+import com.example.heatmap.domain.toDomain
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +19,7 @@ import java.util.concurrent.TimeUnit
 class LeetCodeRepository private constructor(context: Context) {
     private val dao = LeetCodeDatabase.getDatabase(context).leetCodeDao()
     private val problemsDao = LeetCodeDatabase.getDatabase(context).problemsDao()
+    private val gfgDao = LeetCodeDatabase.getDatabase(context).gfgDao()
     private val gson = Gson()
     
     private val client = OkHttpClient.Builder()
@@ -164,10 +168,6 @@ class LeetCodeRepository private constructor(context: Context) {
         }
     }
 
-    /**
-     * Uses the LeetCode REST API to fetch all problems in a single call.
-     * This is often more reliable than manual pagination via GraphQL for the initial sync.
-     */
     fun getAllProblems(refresh: Boolean = false): Flow<List<ProblemEntity>> = flow {
         val cached = problemsDao.getAllProblems()
         if (cached.isNotEmpty()) emit(cached)
@@ -197,13 +197,12 @@ class LeetCodeRepository private constructor(context: Context) {
                         difficulty = difficultyStr,
                         isPaidOnly = pair.paid_only,
                         acRate = acRate,
-                        tags = "" // REST API doesn't provide tags in this call, can be updated later if needed
+                        tags = ""
                     )
                 }
 
                 if (entities.isNotEmpty()) {
                     problemsDao.insertProblems(entities)
-                    Log.d("LeetCodeRepository", "Successfully synced ${entities.size} problems.")
                     emit(problemsDao.getAllProblems())
                 }
             } catch (e: Exception) {
@@ -239,6 +238,39 @@ class LeetCodeRepository private constructor(context: Context) {
     suspend fun searchProblems(query: String) = problemsDao.searchProblems(query)
     suspend fun filterByDifficulty(difficulty: String) = problemsDao.filterByDifficulty(difficulty)
     suspend fun filterByTag(tag: String) = problemsDao.filterByTag(tag)
+
+    // GFG POTD Operations
+    suspend fun getAllGfgPotd() = gfgDao.getAllPotd()
+    
+    suspend fun fetchAndStoreGfgPotd() {
+        try {
+            val response = service.getGfgPotd()
+            val dateOnly = response.date.split(" ").first() // extract YYYY-MM-DD
+            
+            val entity = GfgPotdEntity(
+                date = dateOnly,
+                id = response.id,
+                problemName = response.problem_name,
+                problemUrl = response.problem_url,
+                difficulty = response.difficulty,
+                accuracy = response.accuracy,
+                totalSubmissions = response.total_submissions,
+                isSolved = response.is_solved,
+                remainingTime = response.remaining_time,
+                endDate = response.end_date,
+                companyTags = response.tags.company_tags.joinToString(","),
+                topicTags = response.tags.topic_tags.joinToString(",")
+            )
+            gfgDao.insertPotd(entity)
+        } catch (e: Exception) {
+            Log.e("LeetCodeRepository", "Failed to fetch GFG POTD", e)
+            throw e
+        }
+    }
+
+    suspend fun updateGfgSolvedStatus(date: String, isSolved: Boolean) {
+        gfgDao.updateSolvedStatus(date, isSolved)
+    }
 
     companion object {
         @Volatile

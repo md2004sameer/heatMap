@@ -34,6 +34,7 @@ class MainViewModel(
     private val getAllProblemsUseCase = GetAllProblemsUseCase(repository)
     private val searchProblemsUseCase = SearchProblemsUseCase(repository)
     private val getProblemDetailUseCase = GetProblemDetailUseCase(repository)
+    private val getGfgPotdUseCase = GetGfgPotdUseCase(repository)
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState: StateFlow<UiState> = _uiState
@@ -61,6 +62,10 @@ class MainViewModel(
     private val _completedStriverIds = MutableStateFlow<Set<Int>>(emptySet())
     val completedStriverIds: StateFlow<Set<Int>> = _completedStriverIds
 
+    // GFG POTD State
+    private val _gfgPotdList = MutableStateFlow<List<GfgPotdEntity>>(emptyList())
+    val gfgPotdList: StateFlow<List<GfgPotdEntity>> = _gfgPotdList
+
     // Notes State
     private val notesDao by lazy { LeetCodeDatabase.getDatabase(context).notesDao() }
     private val _folders = MutableStateFlow<List<Folder>>(emptyList())
@@ -82,10 +87,27 @@ class MainViewModel(
         loadProblems()
         loadStriverSheet()
         loadStriverProgress()
+        loadGfgPotd()
     }
 
     fun navigateTo(screen: Screen) {
         _currentScreen.value = screen
+    }
+
+    // GFG POTD Operations
+    private fun loadGfgPotd() {
+        viewModelScope.launch {
+            getGfgPotdUseCase().collectLatest {
+                _gfgPotdList.value = it
+            }
+        }
+    }
+
+    fun toggleGfgSolved(date: String, isSolved: Boolean) {
+        viewModelScope.launch {
+            repository.updateGfgSolvedStatus(date, isSolved)
+            _gfgPotdList.value = repository.getAllGfgPotd()
+        }
     }
 
     // Problems Operations
@@ -107,8 +129,7 @@ class MainViewModel(
                 val problems: List<StriverProblem> = gson.fromJson(jsonString, type)
                 _striverProblems.value = problems
             } catch (e: Exception) {
-                // If it's not in assets but in package, use different way. 
-                // But for now assuming it should be in assets for simplicity.
+                // Log error
             }
         }
     }
@@ -156,7 +177,7 @@ class MainViewModel(
         _selectedProblem.value = null
     }
 
-    // Notes Operations
+    // Notes Operations (Skipping for brevity, keeping existing)
     private fun loadFolders() {
         viewModelScope.launch {
             try {
@@ -171,7 +192,6 @@ class MainViewModel(
                     selectFolder(folderList.first().id)
                 }
             } catch (e: Exception) {
-                // Log error or handle gracefully
             }
         }
     }
@@ -253,7 +273,6 @@ class MainViewModel(
                 }
             }
         } catch (e: Exception) {
-            // Handle parsing or date errors
         }
     }
 

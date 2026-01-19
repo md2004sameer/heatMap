@@ -8,10 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,6 +22,10 @@ import androidx.core.net.toUri
 import com.example.heatmap.Contest
 import com.example.heatmap.DailyChallenge
 import com.example.heatmap.UserContestRanking
+import com.example.heatmap.ui.theme.LeetCodeGreen
+import com.example.heatmap.ui.theme.LeetCodeOrange
+import com.example.heatmap.ui.theme.LeetCodeRed
+import com.example.heatmap.ui.theme.LeetCodeYellow
 import kotlinx.coroutines.delay
 import java.time.Instant
 import java.time.LocalDateTime
@@ -201,81 +202,72 @@ fun DailyChallengeCard(challenge: DailyChallenge) {
     val question = challenge.question
     if (question == null) return
 
+    val isSolved = challenge.userStatus == "Finish"
     val difficultyColor = when (question.difficulty) {
-        "Easy" -> Color(0xFF00b8a3)
-        "Medium" -> Color(0xFFffc01e)
-        "Hard" -> Color(0xFFff375f)
+        "Easy" -> LeetCodeGreen
+        "Medium" -> LeetCodeYellow
+        "Hard" -> LeetCodeRed
         else -> Color.Gray
     }
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF282828).copy(alpha = 0.6f)),
-        border = BorderStroke(1.dp, Color(0xFFffa116).copy(alpha = 0.5f)),
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable {
-                challenge.link?.let { link ->
-                    val intent = Intent(Intent.ACTION_VIEW, "https://leetcode.com$link".toUri())
-                    context.startActivity(intent)
-                }
-            },
-        shape = RoundedCornerShape(16.dp)
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(1.dp, if (isSolved) LeetCodeGreen.copy(alpha = 0.3f) else Color(0xFF30363d))
     ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Default.Star,
-                        contentDescription = null,
-                        tint = Color(0xFFffa116),
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(Modifier.width(8.dp))
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.Top
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        "Daily Challenge",
-                        color = Color(0xFFffa116),
+                        text = "LeetCode Daily — ${challenge.date ?: "Today"}",
+                        color = Color.Gray,
                         fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = question.title ?: "No Title",
+                        color = Color.White,
+                        fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        letterSpacing = 1.sp
+                        modifier = Modifier.clickable {
+                            challenge.link?.let { link ->
+                                val intent = Intent(Intent.ACTION_VIEW, "https://leetcode.com$link".toUri())
+                                context.startActivity(intent)
+                            }
+                        }
                     )
                 }
-
-                Spacer(Modifier.height(8.dp))
-
-                Text(
-                    question.title ?: "No Title",
-                    color = Color.White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold
-                )
-
-                Spacer(Modifier.height(4.dp))
-
-                Text(
-                    question.difficulty ?: "Unknown",
-                    color = difficultyColor,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium
-                )
+                
+                if (isSolved) {
+                    Icon(
+                        imageVector = Icons.Default.Done,
+                        contentDescription = "Solved",
+                        tint = LeetCodeGreen,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
             }
 
-            IconButton(
-                onClick = {
-                    challenge.link?.let { link ->
-                        val intent = Intent(Intent.ACTION_VIEW, "https://leetcode.com$link".toUri())
-                        context.startActivity(intent)
-                    }
-                },
-                modifier = Modifier.background(Color(0xFFffa116).copy(alpha = 0.1f), CircleShape)
+            Spacer(Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Icon(
-                    imageVector = Icons.Default.PlayArrow,
-                    contentDescription = "Solve",
-                    tint = Color(0xFFffa116)
-                )
+                Column {
+                    Text(text = "Difficulty", color = Color.Gray, fontSize = 10.sp)
+                    Text(text = question.difficulty ?: "Unknown", color = difficultyColor, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+                Column {
+                    Text(text = "Status", color = Color.Gray, fontSize = 10.sp)
+                    Text(text = if (isSolved) "Completed" else "Pending", color = if (isSolved) LeetCodeGreen else Color.Gray, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
             }
         }
     }

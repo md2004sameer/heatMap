@@ -2,6 +2,7 @@ package com.example.heatmap
 
 import android.content.Context
 import androidx.room.*
+import com.example.heatmap.domain.GfgPotdEntity
 
 @Entity(tableName = "leetcode_data")
 data class CachedLeetCodeData(
@@ -19,11 +20,27 @@ interface LeetCodeDao {
     suspend fun insertData(data: CachedLeetCodeData)
 }
 
-@Database(entities = [CachedLeetCodeData::class, Folder::class, Note::class, ProblemEntity::class], version = 3, exportSchema = false)
+@Dao
+interface GfgDao {
+    @Query("SELECT * FROM gfg_potd ORDER BY date DESC")
+    suspend fun getAllPotd(): List<GfgPotdEntity>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertPotd(potd: GfgPotdEntity)
+
+    @Query("UPDATE gfg_potd SET isSolved = :isSolved WHERE date = :date")
+    suspend fun updateSolvedStatus(date: String, isSolved: Boolean)
+
+    @Query("SELECT * FROM gfg_potd WHERE date = :date LIMIT 1")
+    suspend fun getPotdByDate(date: String): GfgPotdEntity?
+}
+
+@Database(entities = [CachedLeetCodeData::class, Folder::class, Note::class, ProblemEntity::class, GfgPotdEntity::class], version = 4, exportSchema = false)
 abstract class LeetCodeDatabase : RoomDatabase() {
     abstract fun leetCodeDao(): LeetCodeDao
     abstract fun notesDao(): NotesDao
     abstract fun problemsDao(): ProblemsDao
+    abstract fun gfgDao(): GfgDao
 
     companion object {
         @Volatile
