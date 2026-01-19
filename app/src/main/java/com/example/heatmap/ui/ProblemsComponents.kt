@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
@@ -29,9 +30,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.example.heatmap.domain.Problem
 import com.example.heatmap.domain.StriverProblem
 import com.example.heatmap.ui.theme.LeetCodeGreen
@@ -141,110 +145,178 @@ fun ProblemItem(problem: Problem, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
     val context = LocalContext.current
-    AlertDialog(
+    
+    Dialog(
         onDismissRequest = onDismiss,
-        containerColor = Color(0xFF0d1117),
-        title = { Text(problem.title, color = Color.White) },
-        text = {
-            Column(horizontalAlignment = Alignment.End) {
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(400.dp)
-                    .background(Color(0xFF0d1117), RoundedCornerShape(8.dp))
+        properties = DialogProperties(
+            usePlatformDefaultWidth = false,
+            decorFitsSystemWindows = false
+        )
+    ) {
+        Scaffold(
+            topBar = {
+                CenterAlignedTopAppBar(
+                    title = {
+                        Text(
+                            text = problem.title,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onDismiss) {
+                            Icon(Icons.Default.Close, contentDescription = "Close")
+                        }
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = Color(0xFF0d1117),
+                        titleContentColor = Color.White,
+                        navigationIconContentColor = Color.White
+                    )
+                )
+            },
+            bottomBar = {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color(0xFF0d1117),
+                    tonalElevation = 4.dp,
+                    shadowElevation = 8.dp
                 ) {
-                    AndroidView(
-                        factory = { ctx ->
-                            WebView(ctx).apply {
-                                setBackgroundColor(0)
-                                settings.apply {
-                                    javaScriptEnabled = false
-                                    loadWithOverviewMode = true
-                                    useWideViewPort = true
-                                    defaultFontSize = 14
-                                }
-                                webViewClient = WebViewClient()
-                            }
+                    Button(
+                        onClick = {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://leetcode.com/problems/${problem.slug}/"))
+                            context.startActivity(intent)
                         },
-                        update = { webView ->
-                            val content = problem.content ?: "Loading content..."
-                            val styledHtml = """
-                                <!DOCTYPE html>
-                                <html>
-                                <head>
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <style>
-                                    body {
-                                        background-color: #0d1117;
-                                        color: #c9d1d9;
-                                        font-family: -apple-system, system-ui, sans-serif;
-                                        line-height: 1.6;
-                                        margin: 0;
-                                        padding: 12px;
-                                    }
-                                    pre {
-                                        background-color: #161b22;
-                                        padding: 16px;
-                                        border-radius: 8px;
-                                        overflow-x: auto;
-                                        border: 1px solid #30363d;
-                                        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-                                    }
-                                    code {
-                                        background-color: #21262d;
-                                        padding: 0.2em 0.4em;
-                                        border-radius: 4px;
-                                        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-                                    }
-                                    img {
-                                        max-width: 100%;
-                                        height: auto;
-                                        display: block;
-                                        margin: 16px auto;
-                                        border-radius: 8px;
-                                    }
-                                    p { margin-top: 0; margin-bottom: 16px; }
-                                    ul, ol { padding-left: 20px; margin-bottom: 16px; }
-                                    li { margin-bottom: 8px; }
-                                    strong, b { color: #ffffff; font-weight: 600; }
-                                    * { box-sizing: border-box; }
-                                </style>
-                                </head>
-                                <body>
-                                    $content
-                                </body>
-                                </html>
-                            """.trimIndent()
-                            webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
-                        },
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text("Solve on LeetCode", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                    }
+                }
+            },
+            containerColor = Color(0xFF0d1117)
+        ) { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                // Header Info
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val difficultyColor = when (problem.difficulty) {
+                        "Easy" -> LeetCodeGreen
+                        "Medium" -> LeetCodeYellow
+                        "Hard" -> LeetCodeRed
+                        else -> Color.Gray
+                    }
+                    
+                    Surface(
+                        color = difficultyColor.copy(alpha = 0.15f),
+                        shape = RoundedCornerShape(4.dp)
+                    ) {
+                        Text(
+                            text = problem.difficulty,
+                            color = difficultyColor,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+                    }
+                    
+                    Text(
+                        text = "Acceptance: ${(problem.acRate).toInt()}%",
+                        color = Color.Gray,
+                        fontSize = 12.sp
                     )
                 }
-                
-                Spacer(Modifier.height(16.dp))
-                
-                Button(
-                    onClick = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://leetcode.com/problems/${problem.slug}/"))
-                        context.startActivity(intent)
+
+                Divider(color = Color(0xFF30363d), thickness = 1.dp)
+
+                AndroidView(
+                    factory = { ctx ->
+                        WebView(ctx).apply {
+                            setBackgroundColor(0)
+                            settings.apply {
+                                javaScriptEnabled = false
+                                loadWithOverviewMode = true
+                                useWideViewPort = true
+                                defaultFontSize = 14
+                            }
+                            webViewClient = WebViewClient()
+                        }
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
-                    shape = RoundedCornerShape(20.dp),
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
-                    modifier = Modifier.height(32.dp)
-                ) {
-                    Text("Solve Now", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text("Close", color = LeetCodeOrange)
+                    update = { webView ->
+                        val content = problem.content ?: "Loading content..."
+                        val styledHtml = """
+                            <!DOCTYPE html>
+                            <html>
+                            <head>
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <style>
+                                body {
+                                    background-color: #0d1117;
+                                    color: #c9d1d9;
+                                    font-family: -apple-system, system-ui, sans-serif;
+                                    line-height: 1.6;
+                                    margin: 0;
+                                    padding: 16px;
+                                }
+                                pre {
+                                    background-color: #161b22;
+                                    padding: 16px;
+                                    border-radius: 8px;
+                                    overflow-x: auto;
+                                    border: 1px solid #30363d;
+                                    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                                }
+                                code {
+                                    background-color: #21262d;
+                                    padding: 0.2em 0.4em;
+                                    border-radius: 4px;
+                                    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                                }
+                                img {
+                                    max-width: 100%;
+                                    height: auto;
+                                    display: block;
+                                    margin: 16px auto;
+                                    border-radius: 8px;
+                                }
+                                p { margin-top: 0; margin-bottom: 16px; }
+                                ul, ol { padding-left: 20px; margin-bottom: 16px; }
+                                li { margin-bottom: 8px; }
+                                strong, b { color: #ffffff; font-weight: 600; }
+                                * { box-sizing: border-box; }
+                            </style>
+                            </head>
+                            <body>
+                                $content
+                            </body>
+                            </html>
+                        """.trimIndent()
+                        webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
+                    },
+                    modifier = Modifier.fillMaxSize()
+                )
             }
         }
-    )
+    }
 }
 
 @Composable
@@ -401,6 +473,7 @@ fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
     }
 
     Card(
+        onClick = { if (problem.resources.solve.isNotEmpty()) onUrlClick(problem.resources.solve) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 4.dp),

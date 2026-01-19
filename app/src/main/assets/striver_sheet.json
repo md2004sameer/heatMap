@@ -3,10 +3,10 @@
     "id": 1,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "User Input / Output",
+    "title": "User Input and Output",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/c-input-output/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -19,7 +19,7 @@
     "title": "Data Types",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/data-type/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -29,10 +29,10 @@
     "id": 3,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "If Else statements",
+    "title": "If-Else Statements",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/java-if-else-decision-making0924/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -45,7 +45,7 @@
     "title": "Switch Statement",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/java-switch-case-statement3529/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -55,10 +55,10 @@
     "id": 5,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "What are arrays, strings?",
+    "title": "Introduction to Arrays and Strings",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/introduction-to-arrays/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -68,10 +68,10 @@
     "id": 6,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "For loops",
+    "title": "For Loops",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/for-loop-primecheck/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -81,10 +81,10 @@
     "id": 7,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "While loops",
+    "title": "While Loops",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/while-loop-printtable/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -97,7 +97,7 @@
     "title": "Functions (Pass by Reference and Value)",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/passing-by-pointer-vs-passing-by-reference-in-c/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -107,10 +107,10 @@
     "id": 9,
     "section": "Learn the basics",
     "subSection": "Things to Know in C++/Java/Python or any language",
-    "title": "Time Complexity [Learn Basics, and then analyse in next Steps]",
+    "title": "Time Complexity Basics",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -120,10 +120,10 @@
     "id": 10,
     "section": "Build-up Logical Thinking",
     "subSection": "",
-    "title": "Patterns",
+    "title": "Pattern Problems",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/pattern/0",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -136,7 +136,7 @@
     "title": "C++ STL",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/the-c-standard-template-library-stl/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -149,7 +149,7 @@
     "title": "Java Collections",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/collections-in-java-2/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -162,7 +162,7 @@
     "title": "Count Digits",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-digits5716/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -175,7 +175,7 @@
     "title": "Reverse a Number",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-integer/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -188,7 +188,7 @@
     "title": "Check Palindrome",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/palindrome-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -198,10 +198,10 @@
     "id": 16,
     "section": "Know Basic Maths",
     "subSection": "",
-    "title": "GCD Or HCF",
+    "title": "GCD or HCF",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/gcd-of-two-numbers3459/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -214,7 +214,7 @@
     "title": "Armstrong Numbers",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/armstrong-numbers2727/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -227,7 +227,7 @@
     "title": "Print all Divisors",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/all-divisors-of-a-number/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -240,7 +240,7 @@
     "title": "Check for Prime",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/prime-number2314/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -250,10 +250,10 @@
     "id": 20,
     "section": "Learn Basic Recursion",
     "subSection": "",
-    "title": "Understand recursion by print something N times",
+    "title": "Print 1 to N using recursion",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -266,7 +266,7 @@
     "title": "Print name N times using recursion",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/print-gfg-n-times/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -279,7 +279,7 @@
     "title": "Print 1 to N using recursion",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -292,7 +292,7 @@
     "title": "Print N to 1 using recursion",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/print-n-to-1-without-loop/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -305,7 +305,7 @@
     "title": "Sum of first N numbers",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/sum-of-first-n-terms5843/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -318,7 +318,7 @@
     "title": "Factorial of N numbers",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/factorial5739/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -331,7 +331,7 @@
     "title": "Reverse an array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-string/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -344,7 +344,7 @@
     "title": "Check if a string is palindrome or not",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/valid-palindrome/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -357,7 +357,7 @@
     "title": "Fibonacci Number",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/fibonacci-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -370,7 +370,7 @@
     "title": "Hashing Theory",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/hashing-data-structure/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -383,7 +383,7 @@
     "title": "Counting frequencies of array elements",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -396,7 +396,7 @@
     "title": "Find the highest/lowest frequency element",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/top-k-frequent-elements-in-array/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -409,7 +409,7 @@
     "title": "Selection Sort",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/selection-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -422,7 +422,7 @@
     "title": "Bubble Sort",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/bubble-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -435,7 +435,7 @@
     "title": "Insertion Sort",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/insertion-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -448,7 +448,7 @@
     "title": "Merge Sort",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/merge-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -461,7 +461,7 @@
     "title": "Recursive Bubble Sort",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/bubble-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -474,7 +474,7 @@
     "title": "Recursive Insertion Sort",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/insertion-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -487,7 +487,7 @@
     "title": "Quick Sort",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/quick-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -500,7 +500,7 @@
     "title": "Largest Element in an Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/largest-element-in-array4009/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -510,10 +510,10 @@
     "id": 40,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Second Largest Element in an Array without sorting",
+    "title": "Second Largest Element in an Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/second-largest3735/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -523,10 +523,10 @@
     "id": 41,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Check if the array is sorted",
+    "title": "Check if Array Is Sorted and Rotated",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -536,10 +536,10 @@
     "id": 42,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Remove duplicates from Sorted array",
+    "title": "Remove Duplicates from Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -549,10 +549,10 @@
     "id": 43,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Left Rotate an array by one place",
+    "title": "Rotate Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/rotate-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -562,10 +562,10 @@
     "id": 44,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Left rotate an array by D places",
+    "title": "Left Rotate Array by D Places",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -575,10 +575,10 @@
     "id": 45,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Move Zeros to end",
+    "title": "Move Zeroes",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/move-zeroes/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -591,7 +591,7 @@
     "title": "Linear Search",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/search-an-element-in-an-array-1587115621/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -604,7 +604,7 @@
     "title": "Find the Union",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/union-of-two-arrays-1587115621/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -614,10 +614,10 @@
     "id": 48,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Find missing number in an array",
+    "title": "Missing Number",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/missing-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -627,10 +627,10 @@
     "id": 49,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Maximum Consecutive Ones",
+    "title": "Max Consecutive Ones",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/max-consecutive-ones/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -640,10 +640,10 @@
     "id": 50,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Find the number that appears once, and other numbers twice.",
+    "title": "Single Number",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/single-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -653,10 +653,10 @@
     "id": 51,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Longest subarray with given sum K(positives)",
+    "title": "Longest Subarray with Sum K (Positive)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -666,10 +666,10 @@
     "id": 52,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Easy",
-    "title": "Longest subarray with sum K (Positives + Negatives)",
+    "title": "Longest Subarray with Sum K (Positive + Negative)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -679,10 +679,10 @@
     "id": 53,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "2Sum Problem",
+    "title": "Two Sum",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/two-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -692,10 +692,10 @@
     "id": 54,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Sort an array of 0's 1's and 2's",
+    "title": "Sort Colors",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sort-colors/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -705,10 +705,10 @@
     "id": 55,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Majority Element (>n/2 times)",
+    "title": "Majority Element",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/majority-element/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -718,10 +718,10 @@
     "id": 56,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Kadane's Algorithm, maximum subarray sum",
+    "title": "Maximum Subarray (Kadane's Algorithm)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-subarray/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -731,10 +731,10 @@
     "id": 57,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Print subarray with maximum subarray sum (extended version of above problem)",
+    "title": "Print Subarray with Maximum Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/maximum-sub-array5443/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -744,10 +744,10 @@
     "id": 58,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Stock Buy and Sell",
+    "title": "Best Time to Buy and Sell Stock",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -757,10 +757,10 @@
     "id": 59,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Rearrange the array in alternating positive and negative items",
+    "title": "Rearrange Array Elements by Sign",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -773,7 +773,7 @@
     "title": "Next Permutation",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/next-permutation/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -783,10 +783,10 @@
     "id": 61,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Leaders in an Array problem",
+    "title": "Leaders in an Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -796,10 +796,10 @@
     "id": 62,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Longest Consecutive Sequence in an Array",
+    "title": "Longest Consecutive Sequence",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-consecutive-sequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -809,10 +809,10 @@
     "id": 63,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Set Matrix Zeros",
+    "title": "Set Matrix Zeroes",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/set-matrix-zeroes/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -822,10 +822,10 @@
     "id": 64,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Rotate Matrix by 90 degrees",
+    "title": "Rotate Image",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/rotate-image/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -835,10 +835,10 @@
     "id": 65,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Print the matrix in spiral manner",
+    "title": "Spiral Matrix",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/spiral-matrix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -848,10 +848,10 @@
     "id": 66,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Medium",
-    "title": "Count subarrays with given sum",
+    "title": "Subarray Sum Equals K",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/subarray-sum-equals-k/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -864,7 +864,7 @@
     "title": "Pascal's Triangle",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/pascals-triangle/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -874,10 +874,10 @@
     "id": 68,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "Majority Element (n/3 times)",
+    "title": "Majority Element II",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/majority-element-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -887,10 +887,10 @@
     "id": 69,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "3-Sum Problem",
+    "title": "3Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/3sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -900,10 +900,10 @@
     "id": 70,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "4-Sum Problem",
+    "title": "4Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/4sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -916,7 +916,7 @@
     "title": "Largest Subarray with 0 Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -926,10 +926,10 @@
     "id": 72,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "Count number of subarrays with given xor K",
+    "title": "Count Subarrays with Given XOR",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.interviewbit.com/problems/subarray-with-given-xor/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -939,10 +939,10 @@
     "id": 73,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "Merge Overlapping Subintervals",
+    "title": "Merge Intervals",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/merge-intervals/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -952,10 +952,10 @@
     "id": 74,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "Merge two sorted arrays without extra space",
+    "title": "Merge Sorted Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/merge-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -965,10 +965,10 @@
     "id": 75,
     "section": "Solve Problems on Arrays [Easy -> Medium -> Hard]",
     "subSection": "Hard",
-    "title": "Find the repeating and missing number",
+    "title": "Find the Duplicate Number",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-the-duplicate-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -981,7 +981,7 @@
     "title": "Count Inversions",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -994,7 +994,7 @@
     "title": "Reverse Pairs",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-pairs/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1007,7 +1007,7 @@
     "title": "Maximum Product Subarray",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-product-subarray/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1017,10 +1017,10 @@
     "id": 79,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Binary Search to find X in sorted array",
+    "title": "Binary Search",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-search/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1033,7 +1033,7 @@
     "title": "Implement Lower Bound",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/implement-lower-bound-in-c/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1046,7 +1046,7 @@
     "title": "Implement Upper Bound",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/implement-upper-bound-in-c/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1059,7 +1059,7 @@
     "title": "Search Insert Position",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/search-insert-position/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1069,10 +1069,10 @@
     "id": 83,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Floor/Ceil in Sorted Array",
+    "title": "Floor and Ceil in Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1082,10 +1082,10 @@
     "id": 84,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Find the first or last occurrence of a given number in a sorted array",
+    "title": "Find First and Last Position of Element in Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1095,10 +1095,10 @@
     "id": 85,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Count occurrences of a number in a sorted array with duplicates",
+    "title": "Count Occurrences in Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/number-of-occurrence2259/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1108,10 +1108,10 @@
     "id": 86,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Search in Rotated Sorted Array I",
+    "title": "Search in Rotated Sorted Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1124,7 +1124,7 @@
     "title": "Search in Rotated Sorted Array II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1134,10 +1134,10 @@
     "id": 88,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Find minimum in Rotated Sorted Array",
+    "title": "Find Minimum in Rotated Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1147,10 +1147,10 @@
     "id": 89,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Find out how many times has an array been rotated",
+    "title": "Find Rotation Count in Rotated Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/rotation4723/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1160,10 +1160,10 @@
     "id": 90,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Single element in a Sorted Array",
+    "title": "Single Element in a Sorted Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1173,10 +1173,10 @@
     "id": 91,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 1D Arrays",
-    "title": "Find peak element",
+    "title": "Find Peak Element",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-peak-element/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1186,10 +1186,10 @@
     "id": 92,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Find square root of a number in log n",
+    "title": "Square Root",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sqrtx/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1199,10 +1199,10 @@
     "id": 93,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Find the Nth root of a number using binary search",
+    "title": "Nth Root of a Number",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/find-nth-root-of-m5843/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1215,7 +1215,7 @@
     "title": "Koko Eating Bananas",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/koko-eating-bananas/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1225,10 +1225,10 @@
     "id": 95,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Minimum days to make M bouquets",
+    "title": "Minimum Number of Days to Make M Bouquets",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1238,10 +1238,10 @@
     "id": 96,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Find the smallest Divisor",
+    "title": "Find the Smallest Divisor Given a Threshold",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1251,10 +1251,10 @@
     "id": 97,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Capacity to Ship Packages within D Days",
+    "title": "Capacity To Ship Packages Within D Days",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1267,7 +1267,7 @@
     "title": "Kth Missing Positive Number",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/kth-missing-positive-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1280,7 +1280,7 @@
     "title": "Aggressive Cows",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.spoj.com/problems/AGGRCOW/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1290,10 +1290,10 @@
     "id": 100,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Book Allocation Problem",
+    "title": "Allocate Books",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.interviewbit.com/problems/allocate-books/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1303,10 +1303,10 @@
     "id": 101,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Split array - Largest Sum",
+    "title": "Split Array Largest Sum",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/split-array-largest-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1316,10 +1316,10 @@
     "id": 102,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Painter's partition",
+    "title": "Painter's Partition Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.interviewbit.com/problems/painters-partition-problem/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1332,7 +1332,7 @@
     "title": "Minimize Max Distance to Gas Station",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimize-max-distance-to-gas-station/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1342,10 +1342,10 @@
     "id": 104,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Median of 2 sorted arrays",
+    "title": "Median of Two Sorted Arrays",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1355,10 +1355,10 @@
     "id": 105,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on Answers",
-    "title": "Kth element of 2 sorted arrays",
+    "title": "K-th Element of Two Sorted Arrays",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1368,10 +1368,10 @@
     "id": 106,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 2D Arrays",
-    "title": "Find the row with maximum number of 1's",
+    "title": "Row with Maximum 1s",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1381,10 +1381,10 @@
     "id": 107,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 2D Arrays",
-    "title": "Search in a 2 D matrix",
+    "title": "Search a 2D Matrix",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/search-a-2d-matrix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1394,10 +1394,10 @@
     "id": 108,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 2D Arrays",
-    "title": "Search in a row and column wise sorted matrix",
+    "title": "Search in a Row-wise and Column-wise Sorted Matrix",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/search-in-a-matrix17201720/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1407,10 +1407,10 @@
     "id": 109,
     "section": "Binary Search [1D, 2D Arrays, Search Space]",
     "subSection": "BS on 2D Arrays",
-    "title": "Find Peak Element (2D Matrix)",
+    "title": "Find Peak Element II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-a-peak-element-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1423,7 +1423,7 @@
     "title": "Matrix Median",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.interviewbit.com/problems/matrix-median/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1433,10 +1433,10 @@
     "id": 111,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "Remove outermost Paranthesis",
+    "title": "Remove Outermost Parentheses",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/remove-outermost-parentheses/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1446,10 +1446,10 @@
     "id": 112,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "Reverse words in a given string / Palindrome Check",
+    "title": "Reverse Words in a String",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-words-in-a-string/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1459,10 +1459,10 @@
     "id": 113,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "Largest odd number in a string",
+    "title": "Largest Odd Number in String",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/largest-odd-number-in-string/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1475,7 +1475,7 @@
     "title": "Longest Common Prefix",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-common-prefix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1485,10 +1485,10 @@
     "id": 115,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "Isomorphic String",
+    "title": "Isomorphic Strings",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/isomorphic-strings/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1498,10 +1498,10 @@
     "id": 116,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "check whether one string is a rotation of another",
+    "title": "Check if One String is Rotation of Another",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/check-if-strings-are-rotations-of-each-other-or-not-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1511,10 +1511,10 @@
     "id": 117,
     "section": "Strings [Basic and Medium]",
     "subSection": "Basic and Easy String Problems",
-    "title": "Check if two strings are anagram of each other",
+    "title": "Valid Anagram",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/valid-anagram/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1524,10 +1524,10 @@
     "id": 118,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Sort Characters by frequency",
+    "title": "Sort Characters By Frequency",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sort-characters-by-frequency/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1537,10 +1537,10 @@
     "id": 119,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Maximum Nesting Depth of Paranthesis",
+    "title": "Maximum Nesting Depth of Parentheses",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1550,10 +1550,10 @@
     "id": 120,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Roman Number to Integer and vice versa",
+    "title": "Roman to Integer and Integer to Roman",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/roman-to-integer/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1563,10 +1563,10 @@
     "id": 121,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Implement Atoi",
+    "title": "String to Integer (atoi)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/string-to-integer-atoi/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1579,7 +1579,7 @@
     "title": "Count Number of Substrings",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-number-of-substrings4528/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1589,10 +1589,10 @@
     "id": 123,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Longest Palindromic Substring[Do it without DP]",
+    "title": "Longest Palindromic Substring",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-palindromic-substring/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1602,10 +1602,10 @@
     "id": 124,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Sum of Beauty of all substring",
+    "title": "Sum of Beauty of All Substrings",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sum-of-beauty-of-all-substrings/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1615,10 +1615,10 @@
     "id": 125,
     "section": "Strings [Basic and Medium]",
     "subSection": "Medium String Problems",
-    "title": "Reverse Every Word in A String",
+    "title": "Reverse Words in a String III",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-words-in-a-string-iii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1628,10 +1628,10 @@
     "id": 126,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn 1D LinkedList",
-    "title": "Introduction to LinkedList, learn about struct, and how is node represented",
+    "title": "Introduction to Linked Lists",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/data-structures/linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1641,10 +1641,10 @@
     "id": 127,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn 1D LinkedList",
-    "title": "Inserting a node in LinkedList",
+    "title": "Insert a Node in Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1654,10 +1654,10 @@
     "id": 128,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn 1D LinkedList",
-    "title": "Deleting a node in LinkedList",
+    "title": "Delete a Node in Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/delete-a-node-in-single-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1667,10 +1667,10 @@
     "id": 129,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn 1D LinkedList",
-    "title": "Find the length of the linkedlist [learn traversal]",
+    "title": "Find Length of Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-nodes-of-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1680,10 +1680,10 @@
     "id": 130,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn 1D LinkedList",
-    "title": "Search an element in the LL",
+    "title": "Search an Element in Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1693,10 +1693,10 @@
     "id": 131,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn Doubly LinkedList",
-    "title": "Introduction to DLL, learn about struct, and how is node represented",
+    "title": "Introduction to Doubly Linked Lists",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/doubly-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1706,10 +1706,10 @@
     "id": 132,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn Doubly LinkedList",
-    "title": "Insert a node in DLL",
+    "title": "Insert a Node in Doubly Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/insert-a-node-in-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1719,10 +1719,10 @@
     "id": 133,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn Doubly LinkedList",
-    "title": "Delete a node in DLL",
+    "title": "Delete a Node in Doubly Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/delete-node-in-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1732,10 +1732,10 @@
     "id": 134,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Learn Doubly LinkedList",
-    "title": "Reverse a DLL",
+    "title": "Reverse a Doubly Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1745,10 +1745,10 @@
     "id": 135,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Middle of a LinkedList [TortoiseHare Method]",
+    "title": "Middle of the Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/middle-of-the-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1758,10 +1758,10 @@
     "id": 136,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Reverse a LinkedList [Iterative]",
+    "title": "Reverse Linked List (Iterative)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1771,10 +1771,10 @@
     "id": 137,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Reverse a LL [Recursive]",
+    "title": "Reverse Linked List (Recursive)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1784,10 +1784,10 @@
     "id": 138,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Detect a loop in LL",
+    "title": "Linked List Cycle Detection",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/linked-list-cycle/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1797,10 +1797,10 @@
     "id": 139,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Find the starting point in LL",
+    "title": "Linked List Cycle II (Find Starting Point)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/linked-list-cycle-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1810,10 +1810,10 @@
     "id": 140,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Length of Loop in LL",
+    "title": "Length of Loop in Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/find-length-of-loop/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1823,10 +1823,10 @@
     "id": 141,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Check if LL is palindrome or not",
+    "title": "Palindrome Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/palindrome-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1836,10 +1836,10 @@
     "id": 142,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Segrregate odd and even nodes in LL",
+    "title": "Odd Even Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/odd-even-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1849,10 +1849,10 @@
     "id": 143,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Remove Nth node from the back of the LL",
+    "title": "Remove Nth Node From End of List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1862,10 +1862,10 @@
     "id": 144,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Delete the middle node of LL",
+    "title": "Delete the Middle Node of Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1875,10 +1875,10 @@
     "id": 145,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Sort LL",
+    "title": "Sort List",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sort-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1888,10 +1888,10 @@
     "id": 146,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Sort a LL of 0's 1's and 2's by changing links",
+    "title": "Sort a Linked List of 0s, 1s and 2s",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1901,10 +1901,10 @@
     "id": 147,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Find the intersection point of Y LL",
+    "title": "Intersection of Two Linked Lists",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1914,10 +1914,10 @@
     "id": 148,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Add 1 to a number represented by LL",
+    "title": "Add 1 to Number Represented as Linked List",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1927,10 +1927,10 @@
     "id": 149,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of LL",
-    "title": "Add 2 numbers in LL",
+    "title": "Add Two Numbers",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/add-two-numbers/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1940,10 +1940,10 @@
     "id": 150,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of DLL",
-    "title": "Delete all occurrences of a key in DLL",
+    "title": "Delete All Occurrences of a Key in DLL",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1953,10 +1953,10 @@
     "id": 151,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of DLL",
-    "title": "Find pairs with given sum in DLL",
+    "title": "Find Pairs with Given Sum in DLL",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1966,10 +1966,10 @@
     "id": 152,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Medium Problems of DLL",
-    "title": "Remove duplicates from sorted DLL",
+    "title": "Remove Duplicates from Sorted DLL",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1979,10 +1979,10 @@
     "id": 153,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Hard Problems of LL",
-    "title": "Reverse LL in group of given size K",
+    "title": "Reverse Nodes in k-Group",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -1992,10 +1992,10 @@
     "id": 154,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Hard Problems of LL",
-    "title": "Rotate a LL",
+    "title": "Rotate List",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/rotate-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2005,10 +2005,10 @@
     "id": 155,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Hard Problems of LL",
-    "title": "Flattening of LL",
+    "title": "Flatten a Multilevel Doubly Linked List",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2018,10 +2018,10 @@
     "id": 156,
     "section": "Learn LinkedList [Single LL, Double LL, Medium, Hard Problems]",
     "subSection": "Hard Problems of LL",
-    "title": "Clone a Linked List with random and next pointer",
+    "title": "Copy List with Random Pointer",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/copy-list-with-random-pointer/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2034,7 +2034,7 @@
     "title": "Recursive Implementation of atoi()",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/string-to-integer-atoi/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2047,7 +2047,7 @@
     "title": "Pow(x, n)",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/powx-n/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2057,10 +2057,10 @@
     "id": 159,
     "section": "Recursion [PatternWise]",
     "subSection": "Get a Strong Hold",
-    "title": "Count Good numbers",
+    "title": "Count Good Numbers",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-good-numbers/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2070,10 +2070,10 @@
     "id": 160,
     "section": "Recursion [PatternWise]",
     "subSection": "Get a Strong Hold",
-    "title": "Sort a stack using recursion",
+    "title": "Sort a Stack using Recursion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/sort-a-stack/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2083,10 +2083,10 @@
     "id": 161,
     "section": "Recursion [PatternWise]",
     "subSection": "Get a Strong Hold",
-    "title": "Reverse a stack using recursion",
+    "title": "Reverse a Stack using Recursion",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/reverse-a-stack/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2096,10 +2096,10 @@
     "id": 162,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Generate all binary strings",
+    "title": "Generate All Binary Strings",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/generate-all-binary-strings/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2109,10 +2109,10 @@
     "id": 163,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Generate Paranthesis",
+    "title": "Generate Parentheses",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/generate-parentheses/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2122,10 +2122,10 @@
     "id": 164,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Print all subsequences/Power Set",
+    "title": "Print all Subsequences/Power Set",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/subsets/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2138,7 +2138,7 @@
     "title": "Learn All Patterns of Subsequences (Theory)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/generating-all-possible-subsequences-using-recursion/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2148,10 +2148,10 @@
     "id": 166,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Count all subsequences with sum K",
+    "title": "Count Subsequences with Sum K",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2161,10 +2161,10 @@
     "id": 167,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Check if there exists a subsequence with sum K",
+    "title": "Check if Subsequence with Sum K Exists",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2177,7 +2177,7 @@
     "title": "Combination Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/combination-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2187,10 +2187,10 @@
     "id": 169,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Combination Sum-II",
+    "title": "Combination Sum II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/combination-sum-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2200,10 +2200,10 @@
     "id": 170,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Subset Sum-I",
+    "title": "Subset Sum I",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2213,10 +2213,10 @@
     "id": 171,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Subset Sum-II",
+    "title": "Subset Sum II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/subsets-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2226,10 +2226,10 @@
     "id": 172,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Combination Sum - III",
+    "title": "Combination Sum III",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/combination-sum-iii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2239,10 +2239,10 @@
     "id": 173,
     "section": "Recursion [PatternWise]",
     "subSection": "Subsequences Pattern",
-    "title": "Letter Combinations of a Phone number",
+    "title": "Letter Combinations of a Phone Number",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2255,7 +2255,7 @@
     "title": "Palindrome Partitioning",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/palindrome-partitioning/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2268,7 +2268,7 @@
     "title": "Word Search",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/word-search/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2278,10 +2278,10 @@
     "id": 176,
     "section": "Recursion [PatternWise]",
     "subSection": "Trying out all Combos / Hard",
-    "title": "N Queen",
+    "title": "N-Queens",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/n-queens/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2294,7 +2294,7 @@
     "title": "Rat in a Maze",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2307,7 +2307,7 @@
     "title": "Word Break",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/word-break/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2320,7 +2320,7 @@
     "title": "M Coloring Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2330,10 +2330,10 @@
     "id": 180,
     "section": "Recursion [PatternWise]",
     "subSection": "Trying out all Combos / Hard",
-    "title": "Sudoko Solver",
+    "title": "Sudoku Solver",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sudoku-solver/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2346,7 +2346,7 @@
     "title": "Expression Add Operators",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/expression-add-operators/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2356,10 +2356,10 @@
     "id": 182,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Introduction to Bit Manipulation [Theory]",
+    "title": "Introduction to Bit Manipulation",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/bits-manipulation-important-tactics/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2369,10 +2369,10 @@
     "id": 183,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Check if the i-th bit is set or not",
+    "title": "Check if i-th bit is set",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/check-whether-k-th-bit-is-set-or-not-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2382,10 +2382,10 @@
     "id": 184,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Check if a number is odd or not",
+    "title": "Check if number is odd",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/check-whether-given-number-even-odd/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2395,10 +2395,10 @@
     "id": 185,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Check if a number is power of 2 or not",
+    "title": "Check if number is power of 2",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/power-of-2-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2408,10 +2408,10 @@
     "id": 186,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Count the number of set bits",
+    "title": "Count set bits",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/set-bits0143/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2421,10 +2421,10 @@
     "id": 187,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Set/Unset the rightmost unset bit",
+    "title": "Set/Unset rightmost unset bit",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/set-the-rightmost-unset-bit4436/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2437,7 +2437,7 @@
     "title": "Swap two numbers",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/swap-two-numbers-without-using-temporary-variable/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2447,10 +2447,10 @@
     "id": 189,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Learn Bit Manipulation",
-    "title": "Divide two integers without using multiplication, division and mod operator",
+    "title": "Divide Two Integers",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/divide-two-integers/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2460,10 +2460,10 @@
     "id": 190,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Interview Problems",
-    "title": "Count number of bits to be flipped to convert A to B",
+    "title": "Number of 1 Bits",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-1-bits/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2473,10 +2473,10 @@
     "id": 191,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Interview Problems",
-    "title": "Find the number that appears odd number of times",
+    "title": "Single Number",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/single-number/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2486,10 +2486,10 @@
     "id": 192,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Interview Problems",
-    "title": "Power Set",
+    "title": "Subsets",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/subsets/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2499,10 +2499,10 @@
     "id": 193,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Interview Problems",
-    "title": "Find xor of numbers from L to R",
+    "title": "XOR Queries of Subarray",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/xor-queries-of-a-subarray/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2512,10 +2512,10 @@
     "id": 194,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Interview Problems",
-    "title": "Find the two numbers appearing odd number of times",
+    "title": "Single Number III",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/single-number-iii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2525,10 +2525,10 @@
     "id": 195,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Advanced Maths",
-    "title": "Print Prime Factors of a Number",
+    "title": "Print Prime Factors",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/prime-factors5052/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2541,7 +2541,7 @@
     "title": "All Divisors of a Number",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/all-divisors-of-a-number/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2554,7 +2554,7 @@
     "title": "Sieve of Eratosthenes",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2564,10 +2564,10 @@
     "id": 198,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Advanced Maths",
-    "title": "Find Prime Factorisation of a Number using Sieve",
+    "title": "Prime Factorization using Sieve",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/prime-factorization-using-sieve-olog-n-multiple-queries/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2577,10 +2577,10 @@
     "id": 199,
     "section": "Bit Manipulation [Concepts & Problems]",
     "subSection": "Advanced Maths",
-    "title": "Power(n, x)",
+    "title": "Power(x, n)",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/powx-n/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2593,7 +2593,7 @@
     "title": "Implement Stack using Arrays",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implement-stack-using-array/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2606,7 +2606,7 @@
     "title": "Implement Queue using Arrays",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implement-queue-using-array/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2616,10 +2616,10 @@
     "id": 202,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Implement Stack using Queue",
+    "title": "Implement Stack using Queues",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/implement-stack-using-queues/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2629,10 +2629,10 @@
     "id": 203,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Implement Queue using Stack",
+    "title": "Implement Queue using Stacks",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/implement-queue-using-stacks/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2642,10 +2642,10 @@
     "id": 204,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Implement stack using Linkedlist",
+    "title": "Implement Stack using Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implement-stack-using-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2655,10 +2655,10 @@
     "id": 205,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Implement queue using Linkedlist",
+    "title": "Implement Queue using Linked List",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implement-queue-using-linked-list/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2668,10 +2668,10 @@
     "id": 206,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Check for balanced paranthesis",
+    "title": "Valid Parentheses",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/valid-parentheses/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2681,10 +2681,10 @@
     "id": 207,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Learning",
-    "title": "Implement Min Stack",
+    "title": "Min Stack",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/min-stack/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2694,10 +2694,10 @@
     "id": 208,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Prefix, Infix, PostFix Conversion Problems",
-    "title": "Infix to Postfix Conversion using Stack",
+    "title": "Infix to Postfix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2710,7 +2710,7 @@
     "title": "Prefix to Infix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/prefix-to-infix-conversion/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2723,7 +2723,7 @@
     "title": "Prefix to Postfix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/prefix-to-postfix-conversion/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2736,7 +2736,7 @@
     "title": "Postfix to Prefix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2746,10 +2746,10 @@
     "id": 212,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Prefix, Infix, PostFix Conversion Problems",
-    "title": "Postfix to Infix",
+    "title": "Postfix to Infix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/postfix-to-infix-conversion/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2759,10 +2759,10 @@
     "id": 213,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Prefix, Infix, PostFix Conversion Problems",
-    "title": "Convert Infix To Prefix Notation",
+    "title": "Infix to Prefix Conversion",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/infix-to-prefix-conversion/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2772,10 +2772,10 @@
     "id": 214,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Next Greater Element",
+    "title": "Next Greater Element I",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/next-greater-element-i/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2785,10 +2785,10 @@
     "id": 215,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Next Greater Element 2",
+    "title": "Next Greater Element II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/next-greater-element-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2801,7 +2801,7 @@
     "title": "Next Smaller Element",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/next-smaller-element/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2814,7 +2814,7 @@
     "title": "Number of NGEs to the right",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/number-of-nges-to-the-right/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2824,10 +2824,10 @@
     "id": 218,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Trapping Rainwater",
+    "title": "Trapping Rain Water",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/trapping-rain-water/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2837,10 +2837,10 @@
     "id": 219,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Sum of subarray minimum",
+    "title": "Sum of Subarray Minimums",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sum-of-subarray-minimums/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2853,7 +2853,7 @@
     "title": "Asteroid Collision",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/asteroid-collision/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2863,10 +2863,10 @@
     "id": 221,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Sum of subarray ranges",
+    "title": "Sum of Subarray Ranges",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sum-of-subarray-ranges/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2876,10 +2876,10 @@
     "id": 222,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Remove k Digits",
+    "title": "Remove K Digits",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/remove-k-digits/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2889,10 +2889,10 @@
     "id": 223,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Largest rectangle in a histogram",
+    "title": "Largest Rectangle in Histogram",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2902,10 +2902,10 @@
     "id": 224,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Monotonic Stack/Queue Problems [VVV. Imp]",
-    "title": "Maximal Rectangles",
+    "title": "Maximal Rectangle",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximal-rectangle/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2915,10 +2915,10 @@
     "id": 225,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Implementation Problems",
-    "title": "Sliding Window maximum",
+    "title": "Sliding Window Maximum",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/sliding-window-maximum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2928,10 +2928,10 @@
     "id": 226,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Implementation Problems",
-    "title": "Stock span problem",
+    "title": "Stock Span Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/stock-span-problem-1587115621/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2944,7 +2944,7 @@
     "title": "The Celebrity Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2954,10 +2954,10 @@
     "id": 228,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Implementation Problems",
-    "title": "LRU cache (IMPORTANT)",
+    "title": "LRU Cache",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/lru-cache/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2967,10 +2967,10 @@
     "id": 229,
     "section": "Stack and Queues [Learning, Pre-In-Post-fix, Monotonic Stack, Implementation]",
     "subSection": "Implementation Problems",
-    "title": "LFU cache",
+    "title": "LFU Cache",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/lfu-cache/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2983,7 +2983,7 @@
     "title": "Longest Substring Without Repeating Characters",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -2996,7 +2996,7 @@
     "title": "Max Consecutive Ones III",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/max-consecutive-ones-iii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3009,7 +3009,7 @@
     "title": "Fruit Into Baskets",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/fruit-into-baskets/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3019,10 +3019,10 @@
     "id": 233,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Medium Problems",
-    "title": "longest repeating character replacement",
+    "title": "Longest Repeating Character Replacement",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-repeating-character-replacement/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3032,10 +3032,10 @@
     "id": 234,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Medium Problems",
-    "title": "Binary subarray with sum",
+    "title": "Binary Subarrays With Sum",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-subarrays-with-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3045,10 +3045,10 @@
     "id": 235,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Medium Problems",
-    "title": "Count number of nice subarrays",
+    "title": "Count Number of Nice Subarrays",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3058,10 +3058,10 @@
     "id": 236,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Medium Problems",
-    "title": "Number of substring containing all three characters",
+    "title": "Number of Substrings Containing All Three Characters",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3071,10 +3071,10 @@
     "id": 237,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Medium Problems",
-    "title": "Maximum point you can obtain from cards",
+    "title": "Maximum Points You Can Obtain from Cards",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3087,7 +3087,7 @@
     "title": "Longest Substring with At Most K Distinct Characters",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3097,10 +3097,10 @@
     "id": 239,
     "section": "Sliding Window & Two Pointer Combined Problems",
     "subSection": "Hard Problems",
-    "title": "Subarray with k different integers",
+    "title": "Subarrays with K Different Integers",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3113,7 +3113,7 @@
     "title": "Minimum Window Substring",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-window-substring/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3126,7 +3126,7 @@
     "title": "Minimum Window Subsequence",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-window-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3136,10 +3136,10 @@
     "id": 242,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Learning",
-    "title": "Introduction to Priority Queues using Binary Heaps",
+    "title": "Introduction to Priority Queues",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/priority-queue-set-1-introduction/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3152,7 +3152,7 @@
     "title": "Min Heap and Max Heap Implementation",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/binary-heap/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3162,10 +3162,10 @@
     "id": 244,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Learning",
-    "title": "Check if an array represents a min-heap or not",
+    "title": "Check if Array is a Min-Heap",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/does-array-represent-heap4345/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3175,10 +3175,10 @@
     "id": 245,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Learning",
-    "title": "Convert min Heap to max Heap",
+    "title": "Convert Min Heap to Max Heap",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/convert-min-heap-to-max-heap-1666385109/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3188,10 +3188,10 @@
     "id": 246,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Kth largest element in an array [use priority queue]",
+    "title": "Kth Largest Element in an Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3201,10 +3201,10 @@
     "id": 247,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Kth smallest element in an array [use priority queue]",
+    "title": "Kth Smallest Element in an Array",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3214,10 +3214,10 @@
     "id": 248,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Sort K sorted array",
+    "title": "Sort a K Sorted Array",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/nearly-sorted-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3227,10 +3227,10 @@
     "id": 249,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Merge M sorted Lists",
+    "title": "Merge k Sorted Lists",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/merge-k-sorted-lists/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3240,10 +3240,10 @@
     "id": 250,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Replace each array element by its corresponding rank",
+    "title": "Replace Elements by Rank",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3256,7 +3256,7 @@
     "title": "Task Scheduler",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/task-scheduler/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3266,10 +3266,10 @@
     "id": 252,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Hands of Straights",
+    "title": "Hand of Straights",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/hand-of-straights/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3279,10 +3279,10 @@
     "id": 253,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Design twitter",
+    "title": "Design Twitter",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/design-twitter/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3292,10 +3292,10 @@
     "id": 254,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Connect `n` ropes with minimal cost",
+    "title": "Connect Ropes with Minimum Cost",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3305,10 +3305,10 @@
     "id": 255,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Kth largest element in a stream of running integers",
+    "title": "Kth Largest Element in a Stream",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3321,7 +3321,7 @@
     "title": "Maximum Sum Combination",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.interviewbit.com/problems/maximum-sum-combinations/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3334,7 +3334,7 @@
     "title": "Find Median from Data Stream",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-median-from-data-stream/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3344,10 +3344,10 @@
     "id": 258,
     "section": "Heaps [Learning, Medium, Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "K most frequent elements",
+    "title": "Top K Frequent Elements",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/top-k-frequent-elements/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3360,7 +3360,7 @@
     "title": "Assign Cookies",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/assign-cookies/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3370,10 +3370,10 @@
     "id": 260,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Easy Problems",
-    "title": "Fractional Knapsack Problem",
+    "title": "Fractional Knapsack",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3383,10 +3383,10 @@
     "id": 261,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Easy Problems",
-    "title": "Greedy algorithm to find minimum number of coins",
+    "title": "Minimum Number of Coins",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3399,7 +3399,7 @@
     "title": "Lemonade Change",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/lemonade-change/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3409,10 +3409,10 @@
     "id": 263,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Easy Problems",
-    "title": "Valid Paranthesis Checker",
+    "title": "Valid Parenthesis String",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/valid-parenthesis-string/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3422,10 +3422,10 @@
     "id": 264,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "N meetings in one room",
+    "title": "N Meetings in One Room",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3438,7 +3438,7 @@
     "title": "Jump Game",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/jump-game/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3448,10 +3448,10 @@
     "id": 266,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "Jump Game 2",
+    "title": "Jump Game II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/jump-game-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3461,10 +3461,10 @@
     "id": 267,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "Minimum number of platforms required for a railway",
+    "title": "Minimum Platforms Required",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3474,10 +3474,10 @@
     "id": 268,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "Job sequencing Problem",
+    "title": "Job Sequencing Problem",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3490,7 +3490,7 @@
     "title": "Candy",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/candy/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3500,10 +3500,10 @@
     "id": 270,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "Program for Shortest Job First (or SJF) CPU Scheduling",
+    "title": "Shortest Job First (SJF) Scheduling",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/shortest-job-first/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3513,10 +3513,10 @@
     "id": 271,
     "section": "Greedy Algorithms [Easy, Medium/Hard]",
     "subSection": "Medium/Hard",
-    "title": "Program for Least Recently Used (LRU) Page Replacement Algorithm",
+    "title": "LRU Page Replacement",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/page-faults-in-lru5603/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3529,7 +3529,7 @@
     "title": "Insert Interval",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/insert-interval/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3542,7 +3542,7 @@
     "title": "Merge Intervals",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/merge-intervals/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3555,7 +3555,7 @@
     "title": "Non-overlapping Intervals",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/non-overlapping-intervals/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3568,7 +3568,7 @@
     "title": "Introduction to Trees",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/introduction-to-tree-data-structure/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3581,7 +3581,7 @@
     "title": "Binary Tree Representation in C++",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/binary-tree-set-1-introduction/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3594,7 +3594,7 @@
     "title": "Binary Tree Representation in Java",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/binary-tree-set-1-introduction/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3604,10 +3604,10 @@
     "id": 278,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Binary Tree Traversals in Binary Tree",
+    "title": "Binary Tree Traversals",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3617,10 +3617,10 @@
     "id": 279,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Preorder Traversal of Binary Tree",
+    "title": "Binary Tree Preorder Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3630,10 +3630,10 @@
     "id": 280,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Inorder Traversal of Binary Tree",
+    "title": "Binary Tree Inorder Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3643,10 +3643,10 @@
     "id": 281,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Post-order Traversal of Binary Tree",
+    "title": "Binary Tree Postorder Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3656,10 +3656,10 @@
     "id": 282,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Level order Traversal / Level order traversal in spiral form",
+    "title": "Binary Tree Level Order Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3669,10 +3669,10 @@
     "id": 283,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Iterative Preorder Traversal of Binary Tree",
+    "title": "Iterative Preorder Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/preorder-traversal-iterative/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3682,10 +3682,10 @@
     "id": 284,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Iterative Inorder Traversal of Binary Tree",
+    "title": "Iterative Inorder Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/inorder-traversal-iterative/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3695,10 +3695,10 @@
     "id": 285,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Post-order Traversal of Binary Tree using 2 stack",
+    "title": "Iterative Postorder Traversal using 2 Stacks",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/postorder-traversal-iterative/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3708,10 +3708,10 @@
     "id": 286,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Post-order Traversal of Binary Tree using 1 stack",
+    "title": "Iterative Postorder Traversal using 1 Stack",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/postorder-traversal-iterative/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3721,10 +3721,10 @@
     "id": 287,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Traversals",
-    "title": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+    "title": "All Traversals in One Traversal",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/iterative-postorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3734,10 +3734,10 @@
     "id": 288,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Height of a Binary Tree",
+    "title": "Maximum Depth of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3747,10 +3747,10 @@
     "id": 289,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Check if the Binary tree is height-balanced or not",
+    "title": "Balanced Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/balanced-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3763,7 +3763,7 @@
     "title": "Diameter of Binary Tree",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/diameter-of-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3773,10 +3773,10 @@
     "id": 291,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Maximum path sum",
+    "title": "Binary Tree Maximum Path Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3786,10 +3786,10 @@
     "id": 292,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Check if two trees are identical or not",
+    "title": "Same Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/same-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3799,10 +3799,10 @@
     "id": 293,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Zig Zag Traversal of Binary Tree",
+    "title": "Binary Tree Zigzag Level Order Traversal",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3815,7 +3815,7 @@
     "title": "Boundary Traversal of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3825,10 +3825,10 @@
     "id": 295,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Vertical Order Traversal of Binary Tree",
+    "title": "Vertical Order Traversal of a Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3841,7 +3841,7 @@
     "title": "Top View of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3854,7 +3854,7 @@
     "title": "Bottom View of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3864,10 +3864,10 @@
     "id": 298,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Right/Left View of Binary Tree",
+    "title": "Right View of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-right-side-view/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3877,10 +3877,10 @@
     "id": 299,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Medium Problems",
-    "title": "Symmetric Binary Tree",
+    "title": "Symmetric Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/symmetric-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3893,7 +3893,7 @@
     "title": "Root to Node Path in Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/print-path-root-given-node-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3903,10 +3903,10 @@
     "id": 301,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "LCA in Binary Tree",
+    "title": "Lowest Common Ancestor of a Binary Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3916,10 +3916,10 @@
     "id": 302,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Maximum width of a Binary Tree",
+    "title": "Maximum Width of Binary Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3929,10 +3929,10 @@
     "id": 303,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Check for Children Sum Property",
+    "title": "Children Sum Property",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/children-sum-parent/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3942,10 +3942,10 @@
     "id": 304,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Print all the Nodes at a distance of K in a Binary Tree",
+    "title": "All Nodes Distance K in Binary Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3955,10 +3955,10 @@
     "id": 305,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Minimum time taken to BURN the Binary Tree from a Node",
+    "title": "Minimum Time to Burn Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/burning-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3968,10 +3968,10 @@
     "id": 306,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Count total Nodes in a COMPLETE Binary Tree",
+    "title": "Count Complete Tree Nodes",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-complete-tree-nodes/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3981,10 +3981,10 @@
     "id": 307,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Construct Binary Tree from inorder and preorder",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -3994,10 +3994,10 @@
     "id": 308,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Construct the Binary Tree from Postorder and Inorder Traversal",
+    "title": "Construct Binary Tree from Inorder and Postorder Traversal",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4007,10 +4007,10 @@
     "id": 309,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Serialize and deserialize Binary Tree",
+    "title": "Serialize and Deserialize Binary Tree",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4020,10 +4020,10 @@
     "id": 310,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Morris Preorder Traversal of a Binary Tree",
+    "title": "Morris Preorder Traversal",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/morris-traversal-for-preorder/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4033,10 +4033,10 @@
     "id": 311,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Morris Inorder Traversal of a Binary Tree",
+    "title": "Morris Inorder Traversal",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4046,10 +4046,10 @@
     "id": 312,
     "section": "Binary Trees [Traversals, Medium and Hard Problems]",
     "subSection": "Hard Problems",
-    "title": "Flatten Binary Tree to LinkedList",
+    "title": "Flatten Binary Tree to Linked List",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4059,10 +4059,10 @@
     "id": 313,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Concepts",
-    "title": "Introduction to Binary Search Tree",
+    "title": "Introduction to Binary Search Trees",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/binary-search-tree-data-structure/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4075,7 +4075,7 @@
     "title": "Search in a Binary Search Tree",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4088,7 +4088,7 @@
     "title": "Find Min/Max in BST",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/find-the-minimum-element-in-a-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4101,7 +4101,7 @@
     "title": "Ceil in a Binary Search Tree",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implementing-ceil-in-bst/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4114,7 +4114,7 @@
     "title": "Floor in a Binary Search Tree",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/floor-in-bst/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4124,10 +4124,10 @@
     "id": 318,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Insert a given Node in Binary Search Tree",
+    "title": "Insert into a Binary Search Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4137,10 +4137,10 @@
     "id": 319,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Delete a Node in Binary Search Tree",
+    "title": "Delete Node in a BST",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/delete-node-in-a-bst/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4150,10 +4150,10 @@
     "id": 320,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Find K-th smallest/largest element in BST",
+    "title": "Kth Smallest Element in a BST",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4163,10 +4163,10 @@
     "id": 321,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Check if a tree is a BST or BT",
+    "title": "Validate Binary Search Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/validate-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4176,10 +4176,10 @@
     "id": 322,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "LCA in Binary Search Tree",
+    "title": "Lowest Common Ancestor of a Binary Search Tree",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4189,10 +4189,10 @@
     "id": 323,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Construct a BST from a preorder traversal",
+    "title": "Construct BST from Preorder Traversal",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4202,10 +4202,10 @@
     "id": 324,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Inorder Successor/Predecessor in BST",
+    "title": "Inorder Successor in BST",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/inorder-successor-in-bst/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4215,10 +4215,10 @@
     "id": 325,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Merge 2 BST's",
+    "title": "Merge Two BSTs",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/merge-two-bst-s/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4228,10 +4228,10 @@
     "id": 326,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Two Sum In BST | Check if there exists a pair with Sum K",
+    "title": "Two Sum IV - Input is a BST",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4241,10 +4241,10 @@
     "id": 327,
     "section": "Binary Search Trees [Concept and Problems]",
     "subSection": "Practice Problems",
-    "title": "Recover BST | Correct BST with two nodes swapped",
+    "title": "Recover Binary Search Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/recover-binary-search-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4257,7 +4257,7 @@
     "title": "Largest BST in Binary Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/largest-bst/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4267,10 +4267,10 @@
     "id": 329,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "Graph and Types",
+    "title": "Introduction to Graphs",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4280,10 +4280,10 @@
     "id": 330,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "Graph Representation | C++",
+    "title": "Graph Representation - C++",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/graph-and-its-representations/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4293,10 +4293,10 @@
     "id": 331,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "Graph Representation | Java",
+    "title": "Graph Representation - Java",
     "difficulty": "Easy",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/graph-and-its-representations/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4306,10 +4306,10 @@
     "id": 332,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "Connected Components | Logic Explanation",
+    "title": "Connected Components",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4319,10 +4319,10 @@
     "id": 333,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "BFS",
+    "title": "Breadth First Search (BFS)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4332,10 +4332,10 @@
     "id": 334,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Learning",
-    "title": "DFS",
+    "title": "Depth First Search (DFS)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4345,10 +4345,10 @@
     "id": 335,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Number of provinces (leetcode)",
+    "title": "Number of Provinces",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-provinces/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4358,10 +4358,10 @@
     "id": 336,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Connected Components Problem in Matrix",
+    "title": "Connected Components in Matrix",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-islands/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4371,10 +4371,10 @@
     "id": 337,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Rotten Oranges",
+    "title": "Rotting Oranges",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/rotting-oranges/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4384,10 +4384,10 @@
     "id": 338,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Flood fill",
+    "title": "Flood Fill",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/flood-fill/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4397,10 +4397,10 @@
     "id": 339,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Cycle Detection in Undirected Graph (bfs)",
+    "title": "Detect Cycle in Undirected Graph (BFS)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4410,10 +4410,10 @@
     "id": 340,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Cycle Detection in Undirected Graph (dfs)",
+    "title": "Detect Cycle in Undirected Graph (DFS)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4423,10 +4423,10 @@
     "id": 341,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "0/1 Matrix (Bfs Problem)",
+    "title": "01 Matrix",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/01-matrix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4436,10 +4436,10 @@
     "id": 342,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Surrounded Regions (dfs)",
+    "title": "Surrounded Regions",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/surrounded-regions/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4449,10 +4449,10 @@
     "id": 343,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Number of Enclaves [flood fill implementation - multisource]",
+    "title": "Number of Enclaves",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-enclaves/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4462,10 +4462,10 @@
     "id": 344,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Word ladder - 1",
+    "title": "Word Ladder",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/word-ladder/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4475,10 +4475,10 @@
     "id": 345,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Word ladder - 2",
+    "title": "Word Ladder II",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/word-ladder-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4488,10 +4488,10 @@
     "id": 346,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Number of Distinct Islands [dfs multisource]",
+    "title": "Number of Distinct Islands",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/number-of-distinct-islands/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4501,10 +4501,10 @@
     "id": 347,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Bipartite Graph (DFS)",
+    "title": "Is Graph Bipartite?",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/is-graph-bipartite/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4514,10 +4514,10 @@
     "id": 348,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Problems on BFS/DFS",
-    "title": "Cycle Detection in Directed Graph (DFS)",
+    "title": "Detect Cycle in Directed Graph (DFS)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4527,10 +4527,10 @@
     "id": 349,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Topo Sort",
+    "title": "Topological Sort",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/topological-sort/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4543,7 +4543,7 @@
     "title": "Kahn's Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4553,10 +4553,10 @@
     "id": 351,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Cycle Detection in Directed Graph (BFS)",
+    "title": "Detect Cycle in Directed Graph (BFS)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4566,10 +4566,10 @@
     "id": 352,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Course Schedule - I",
+    "title": "Course Schedule",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/course-schedule/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4579,10 +4579,10 @@
     "id": 353,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Course Schedule - II",
+    "title": "Course Schedule II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/course-schedule-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4592,10 +4592,10 @@
     "id": 354,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Find eventual safe states",
+    "title": "Find Eventual Safe States",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-eventual-safe-states/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4605,10 +4605,10 @@
     "id": 355,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Topo Sort and Problems",
-    "title": "Alien dictionary",
+    "title": "Alien Dictionary",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/alien-dictionary/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4618,10 +4618,10 @@
     "id": 356,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Shortest Path in UG with unit weights",
+    "title": "Shortest Path in Undirected Graph with Unit Weights",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4631,10 +4631,10 @@
     "id": 357,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Shortest Path in DAG",
+    "title": "Shortest Path in Directed Acyclic Graph",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4644,10 +4644,10 @@
     "id": 358,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Djisktra's Algorithm",
+    "title": "Dijkstra's Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4657,10 +4657,10 @@
     "id": 359,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Why priority Queue is used in Djisktra's Algorithm",
+    "title": "Why Priority Queue in Dijkstra",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/why-should-heap-be-used-to-implement-priority-queue/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4670,10 +4670,10 @@
     "id": 360,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Shortest path in a binary maze",
+    "title": "Shortest Path in Binary Matrix",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4683,10 +4683,10 @@
     "id": 361,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Path with minimum effort",
+    "title": "Path With Minimum Effort",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/path-with-minimum-effort/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4696,10 +4696,10 @@
     "id": 362,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Cheapest flights within k stops",
+    "title": "Cheapest Flights Within K Stops",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4709,10 +4709,10 @@
     "id": 363,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Network Delay time",
+    "title": "Network Delay Time",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/network-delay-time/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4722,10 +4722,10 @@
     "id": 364,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Number of ways to arrive at destination",
+    "title": "Number of Ways to Arrive at Destination",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4735,10 +4735,10 @@
     "id": 365,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Minimum steps to reach end from start by performing multiplication and mod operations with array elements",
+    "title": "Minimum Operations to Reach End",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/minimum-steps-to-reach-end-from-start-by-performing-multiplication-and-mod-operations-with-array-elements/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4751,7 +4751,7 @@
     "title": "Bellman Ford Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4761,10 +4761,10 @@
     "id": 367,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Floyd Warshal Algorithm",
+    "title": "Floyd Warshall Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4774,10 +4774,10 @@
     "id": 368,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Shortest Path Algorithms and Problems",
-    "title": "Find the city with the smallest number of neighbors in a threshold distance",
+    "title": "Find the City With the Smallest Number of Neighbors",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4790,7 +4790,7 @@
     "title": "Minimum Spanning Tree",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/minimum-spanning-tree-mst-greedy-algo-5/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4803,7 +4803,7 @@
     "title": "Prim's Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4813,10 +4813,10 @@
     "id": 371,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Disjoint Set [Union by Rank]",
+    "title": "Disjoint Set Union (Union by Rank)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/disjoint-set-data-structures/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4826,10 +4826,10 @@
     "id": 372,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Disjoint Set [Union by Size]",
+    "title": "Disjoint Set Union (Union by Size)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/disjoint-set-data-structures/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4842,7 +4842,7 @@
     "title": "Kruskal's Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4852,10 +4852,10 @@
     "id": 374,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Number of operations to make network connected",
+    "title": "Number of Operations to Make Network Connected",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4865,10 +4865,10 @@
     "id": 375,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Most stones removed with same rows or columns",
+    "title": "Most Stones Removed with Same Row or Column",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4878,10 +4878,10 @@
     "id": 376,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Accounts merge",
+    "title": "Accounts Merge",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/accounts-merge/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4891,10 +4891,10 @@
     "id": 377,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Number of island II",
+    "title": "Number of Islands II",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-islands-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4904,10 +4904,10 @@
     "id": 378,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Making a Large Island",
+    "title": "Making A Large Island",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/making-a-large-island/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4917,10 +4917,10 @@
     "id": 379,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "MinimumSpanningTree/Disjoint Set and Problems",
-    "title": "Swim in rising water",
+    "title": "Swim in Rising Water",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/swim-in-rising-water/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4933,7 +4933,7 @@
     "title": "Bridges in Graph",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/bridge-edge-in-graph/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4943,10 +4943,10 @@
     "id": 381,
     "section": "Graphs [Concepts & Problems]",
     "subSection": "Other Algorithms",
-    "title": "Articulation Point",
+    "title": "Articulation Points",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/articulation-point-1/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4959,7 +4959,7 @@
     "title": "Kosaraju's Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4969,10 +4969,10 @@
     "id": 383,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "Introduction to DP",
-    "title": "Dynamic Programming Introduction",
+    "title": "Introduction to Dynamic Programming",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/dynamic-programming/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4982,10 +4982,10 @@
     "id": 384,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "1D DP",
-    "title": "Climbing Stars",
+    "title": "Climbing Stairs",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/climbing-stairs/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -4995,10 +4995,10 @@
     "id": 385,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "1D DP",
-    "title": "Frog Jump(DP-3)",
+    "title": "Frog Jump",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/frog-jump-dp-3/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5008,10 +5008,10 @@
     "id": 386,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "1D DP",
-    "title": "Frog Jump with k distances(DP-4)",
+    "title": "Frog Jump with K Distances",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/minimum-cost-to-reach-the-top-of-the-floor-by-climbing-stairs/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5021,10 +5021,10 @@
     "id": 387,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "1D DP",
-    "title": "Maximum sum of non-adjacent elements (DP 5)",
+    "title": "Maximum Sum of Non-Adjacent Elements",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/max-sum-without-adjacents2430/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5034,10 +5034,10 @@
     "id": 388,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "1D DP",
-    "title": "House Robber (DP 6)",
+    "title": "House Robber",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/house-robber/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5047,10 +5047,10 @@
     "id": 389,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Ninja's Training (DP 7)",
+    "title": "Ninja's Training",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/ninjas-training-dp-7/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5060,10 +5060,10 @@
     "id": 390,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Grid Unique Paths : DP on Grids (DP8)",
+    "title": "Unique Paths",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/unique-paths/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5073,10 +5073,10 @@
     "id": 391,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Grid Unique Paths 2 (DP 9)",
+    "title": "Unique Paths II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/unique-paths-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5086,10 +5086,10 @@
     "id": 392,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Minimum path sum in Grid (DP 10)",
+    "title": "Minimum Path Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-path-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5099,10 +5099,10 @@
     "id": 393,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Minimum path sum in Triangular Grid (DP 11)",
+    "title": "Triangle",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/triangle/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5112,10 +5112,10 @@
     "id": 394,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "Minimum/Maximum Falling Path Sum (DP-12)",
+    "title": "Minimum Falling Path Sum",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-falling-path-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5125,10 +5125,10 @@
     "id": 395,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "2D/3D DP and DP on Grids",
-    "title": "3-d DP : Ninja and his friends (DP-13)",
+    "title": "Cherry Pickup II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/cherry-pickup-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5138,10 +5138,10 @@
     "id": 396,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Subset sum equal to target (DP- 14)",
+    "title": "Subset Sum Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5151,10 +5151,10 @@
     "id": 397,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Partition Equal Subset Sum (DP- 15)",
+    "title": "Partition Equal Subset Sum",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/partition-equal-subset-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5164,10 +5164,10 @@
     "id": 398,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16)",
+    "title": "Partition Array Into Two Arrays to Minimize Sum Difference",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5177,10 +5177,10 @@
     "id": 399,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Count Subsets with Sum K (DP - 17)",
+    "title": "Count Subsets with Sum K",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5190,10 +5190,10 @@
     "id": 400,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Count Partitions with Given Difference (DP - 18)",
+    "title": "Count Partitions with Given Difference",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/partitions-with-given-difference/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5203,10 +5203,10 @@
     "id": 401,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Assign Cookies",
-    "difficulty": "Easy",
+    "title": "Coin Change",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/coin-change/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5216,10 +5216,10 @@
     "id": 402,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Minimum Coins (DP - 20)",
-    "difficulty": "Hard",
+    "title": "Target Sum",
+    "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/target-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5229,10 +5229,10 @@
     "id": 403,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Target Sum (DP - 21)",
-    "difficulty": "Medium",
+    "title": "Coin Change II",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/coin-change-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5242,10 +5242,10 @@
     "id": 404,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Coin Change 2 (DP - 22)",
+    "title": "Unbounded Knapsack",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5255,10 +5255,10 @@
     "id": 405,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Subsequences",
-    "title": "Unbounded Knapsack (DP - 23)",
+    "title": "Rod Cutting Problem",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/rod-cutting0840/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5267,11 +5267,11 @@
   {
     "id": 406,
     "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "DP on Subsequences",
-    "title": "Rod Cutting Problem | (DP - 24)",
+    "subSection": "DP on Strings",
+    "title": "Longest Common Subsequence",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-common-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5281,10 +5281,10 @@
     "id": 407,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Longest Common Subsequence | (DP - 25)",
+    "title": "Print Longest Common Subsequence",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5294,10 +5294,10 @@
     "id": 408,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Print Longest Common Subsequence | (DP - 26)",
+    "title": "Longest Common Substring",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5307,10 +5307,10 @@
     "id": 409,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Longest Common Substring | (DP - 27)",
+    "title": "Longest Palindromic Subsequence",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-palindromic-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5320,10 +5320,10 @@
     "id": 410,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Longest Palindromic Subsequence | (DP-28)",
+    "title": "Minimum Insertions to Make String Palindrome",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5333,10 +5333,10 @@
     "id": 411,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Minimum insertions to make string palindrome | DP-29",
+    "title": "Minimum Insertion/Deletion to Convert String",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5346,10 +5346,10 @@
     "id": 412,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Minimum Insertions/Deletions to Convert String | (DP- 30)",
+    "title": "Shortest Common Supersequence",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/shortest-common-supersequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5359,10 +5359,10 @@
     "id": 413,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Shortest Common Supersequence | (DP - 31)",
+    "title": "Distinct Subsequences",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/distinct-subsequences/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5372,10 +5372,10 @@
     "id": 414,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Distinct Subsequences| (DP-32)",
+    "title": "Edit Distance",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/edit-distance/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5385,10 +5385,10 @@
     "id": 415,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Strings",
-    "title": "Edit Distance | (DP-33)",
+    "title": "Wildcard Matching",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/wildcard-matching/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5397,11 +5397,11 @@
   {
     "id": 416,
     "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "DP on Strings",
-    "title": "Wildcard Matching | (DP-34)",
-    "difficulty": "Hard",
+    "subSection": "DP on Stocks",
+    "title": "Best Time to Buy and Sell Stock",
+    "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5411,10 +5411,10 @@
     "id": 417,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Stocks",
-    "title": "Best Time to Buy and Sell Stock |(DP-35)",
+    "title": "Best Time to Buy and Sell Stock II",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5424,10 +5424,10 @@
     "id": 418,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Stocks",
-    "title": "Buy and Sell Stock - II|(DP-36)",
+    "title": "Best Time to Buy and Sell Stock III",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5437,10 +5437,10 @@
     "id": 419,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Stocks",
-    "title": "Buy and Sell Stocks III|(DP-37)",
+    "title": "Best Time to Buy and Sell Stock IV",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5450,10 +5450,10 @@
     "id": 420,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Stocks",
-    "title": "Buy and Stock Sell IV |(DP-38)",
-    "difficulty": "Medium",
+    "title": "Best Time to Buy and Sell Stock with Cooldown",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5463,10 +5463,10 @@
     "id": 421,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Stocks",
-    "title": "Buy and Sell Stocks With Cooldown|(DP-39)",
-    "difficulty": "Hard",
+    "title": "Best Time to Buy and Sell Stock with Transaction Fee",
+    "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5475,11 +5475,11 @@
   {
     "id": 422,
     "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "DP on Stocks",
-    "title": "Buy and Sell Stocks With Transaction Fee|(DP-40)",
+    "subSection": "DP on LIS",
+    "title": "Longest Increasing Subsequence",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-increasing-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5489,10 +5489,10 @@
     "id": 423,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Longest Increasing Subsequence |(DP-41)",
+    "title": "Print Longest Increasing Subsequence",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5502,10 +5502,10 @@
     "id": 424,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Printing Longest Increasing Subsequence|(DP-42)",
+    "title": "Longest Increasing Subsequence (Binary Search)",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-increasing-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5515,10 +5515,10 @@
     "id": 425,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Longest Increasing Subsequence |(DP-43)",
+    "title": "Largest Divisible Subset",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/largest-divisible-subset/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5528,10 +5528,10 @@
     "id": 426,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Largest Divisible Subset|(DP-44)",
+    "title": "Longest String Chain",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-string-chain/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5541,10 +5541,10 @@
     "id": 427,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Longest String Chain|(DP-45)",
+    "title": "Longest Bitonic Subsequence",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5554,10 +5554,10 @@
     "id": 428,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on LIS",
-    "title": "Longest Bitonic Subsequence |(DP-46)",
+    "title": "Number of Longest Increasing Subsequence",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5566,11 +5566,11 @@
   {
     "id": 429,
     "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "DP on LIS",
-    "title": "Number of Longest Increasing Subsequences|(DP-47)",
-    "difficulty": "Medium",
+    "subSection": "MCM DP | Partition DP",
+    "title": "Matrix Chain Multiplication",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5580,10 +5580,10 @@
     "id": 430,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Matrix Chain Multiplication|(DP-48)",
+    "title": "Matrix Chain Multiplication (Bottom Up)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5593,10 +5593,10 @@
     "id": 431,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Matrix Chain Multiplication | Bottom-Up|(DP-49)",
+    "title": "Minimum Cost to Cut a Stick",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5606,10 +5606,10 @@
     "id": 432,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Minimum Cost to Cut the Stick|(DP-50)",
+    "title": "Burst Balloons",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/burst-balloons/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5619,10 +5619,10 @@
     "id": 433,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Burst Balloons|(DP-51)",
+    "title": "Evaluate Boolean Expression to True",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5632,10 +5632,10 @@
     "id": 434,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Evaluate Boolean Expression to True|(DP-52)",
+    "title": "Palindrome Partitioning II",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/palindrome-partitioning-ii/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5645,10 +5645,10 @@
     "id": 435,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "MCM DP | Partition DP",
-    "title": "Palindrome Partitioning - II|(DP-53)",
+    "title": "Partition Array for Maximum Sum",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/partition-array-for-maximum-sum/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5657,11 +5657,11 @@
   {
     "id": 436,
     "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "MCM DP | Partition DP",
-    "title": "Partition Array for Maximum Sum|(DP-54)",
+    "subSection": "DP on Squares",
+    "title": "Maximal Rectangle",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximal-rectangle/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5671,10 +5671,10 @@
     "id": 437,
     "section": "Dynamic Programming [Patterns and Problems]",
     "subSection": "DP on Squares",
-    "title": "Maximum Rectangle Area with all 1's|(DP-55)",
+    "title": "Count Square Submatrices with All Ones",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-square-submatrices-with-all-ones/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5682,12 +5682,12 @@
   },
   {
     "id": 438,
-    "section": "Dynamic Programming [Patterns and Problems]",
-    "subSection": "DP on Squares",
-    "title": "Count Square Submatrices with All Ones|(DP-56)",
+    "section": "Tries",
+    "subSection": "Theory",
+    "title": "Implement Trie (Prefix Tree)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/implement-trie-prefix-tree/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5696,11 +5696,11 @@
   {
     "id": 439,
     "section": "Tries",
-    "subSection": "Theory",
-    "title": "Implement TRIE | INSERT | SEARCH | STARTSWITH",
+    "subSection": "Problems",
+    "title": "Implement Trie II (Prefix Tree)",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/trie-insert-and-search0651/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5710,10 +5710,10 @@
     "id": 440,
     "section": "Tries",
     "subSection": "Problems",
-    "title": "Implement Trie - 2 (Prefix Tree)",
-    "difficulty": "Hard",
+    "title": "Longest Word With All Prefixes",
+    "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array5129/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5723,10 +5723,10 @@
     "id": 441,
     "section": "Tries",
     "subSection": "Problems",
-    "title": "Longest String with All Prefixes",
+    "title": "Number of Distinct Substrings in a String",
     "difficulty": "Medium",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/number-of-distinct-subsequences0909/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5736,10 +5736,10 @@
     "id": 442,
     "section": "Tries",
     "subSection": "Problems",
-    "title": "Number of Distinct Substrings in a String",
-    "difficulty": "Medium",
+    "title": "Bit Prerequisites for TRIE Problems",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/trie-insert-and-search/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5749,10 +5749,10 @@
     "id": 443,
     "section": "Tries",
     "subSection": "Problems",
-    "title": "Bit PreRequisites for TRIE Problems",
+    "title": "Maximum XOR of Two Numbers in an Array",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5762,10 +5762,10 @@
     "id": 444,
     "section": "Tries",
     "subSection": "Problems",
-    "title": "Maximum XOR of two numbers in an array",
+    "title": "Maximum XOR With an Element From Array",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5773,12 +5773,12 @@
   },
   {
     "id": 445,
-    "section": "Tries",
-    "subSection": "Problems",
-    "title": "Maximum XOR With an Element From Array",
+    "section": "Strings",
+    "subSection": "Hard Problems",
+    "title": "Minimum Bracket Reversals",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-the-reversals0401/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5788,10 +5788,10 @@
     "id": 446,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Minimum number of bracket reversals needed to make an expression balanced",
+    "title": "Count and Say",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-and-say/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5801,10 +5801,10 @@
     "id": 447,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Count and say",
+    "title": "Rabin-Karp Algorithm",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5814,10 +5814,10 @@
     "id": 448,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Hashing In Strings | Theory",
-    "difficulty": "Medium",
+    "title": "Z-Function",
+    "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://cp-algorithms.com/string/z-function.html",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5827,10 +5827,10 @@
     "id": 449,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Rabin Karp",
+    "title": "KMP Algorithm / LPS Array",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/search-pattern0205/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5840,10 +5840,10 @@
     "id": 450,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Z-Function",
+    "title": "Shortest Palindrome",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/shortest-palindrome/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5853,10 +5853,10 @@
     "id": 451,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "KMP algo / LPS(pi) array",
+    "title": "Longest Happy Prefix",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/longest-happy-prefix/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5866,10 +5866,10 @@
     "id": 452,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Shortest Palindrome",
+    "title": "Count Palindromic Subsequences",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5879,10 +5879,10 @@
     "id": 453,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Longest happy prefix",
+    "title": "Minimum Bracket Reversals",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-the-reversals0401/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5892,10 +5892,10 @@
     "id": 454,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Count palindromic subsequence in given string",
+    "title": "Count and Say",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://leetcode.com/problems/count-and-say/",
       "editorial": "",
       "postLink": "",
       "youtube": ""
@@ -5905,10 +5905,10 @@
     "id": 455,
     "section": "Strings",
     "subSection": "Hard Problems",
-    "title": "Count palindromic subsequence in given string",
+    "title": "Count Palindromic Subsequences",
     "difficulty": "Hard",
     "resources": {
-      "solve": "",
+      "solve": "https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1",
       "editorial": "",
       "postLink": "",
       "youtube": ""
