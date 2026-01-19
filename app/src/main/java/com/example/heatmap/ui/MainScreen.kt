@@ -1,8 +1,5 @@
 package com.example.heatmap.ui
 
-import android.content.Intent
-import android.net.Uri
-import androidx.activity.ComponentActivity
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -16,16 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import com.example.heatmap.*
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.Typography
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 @Composable
@@ -96,7 +90,7 @@ fun DualBottomNavigation(
     ) {
         // Top Bar: Dynamic Sub-sections
         AnimatedVisibility(visible = currentScreen is Screen.Profile || currentScreen is Screen.Problems) {
-            val tabs = remember(currentScreen, onNavigate) {
+            val tabs = remember(currentScreen) {
                 when (currentScreen) {
                     is Screen.Profile -> ProfileSection.all.map { it.title to { onNavigate(Screen.Profile(it)) } }
                     is Screen.Problems -> ProblemsSection.all.map { it.title to { onNavigate(Screen.Problems(it)) } }
@@ -104,11 +98,15 @@ fun DualBottomNavigation(
                 }
             }
             
-            val selectedIndex = when (currentScreen) {
-                is Screen.Profile -> ProfileSection.all.indexOfFirst { currentScreen.section == it }
-                is Screen.Problems -> ProblemsSection.all.indexOfFirst { currentScreen.section == it }
-                else -> 0
-            }.coerceAtLeast(0)
+            val selectedIndex by remember(currentScreen) {
+                derivedStateOf {
+                    when (currentScreen) {
+                        is Screen.Profile -> ProfileSection.all.indexOfFirst { currentScreen.section == it }
+                        is Screen.Problems -> ProblemsSection.all.indexOfFirst { currentScreen.section == it }
+                        else -> 0
+                    }.coerceAtLeast(0)
+                }
+            }
 
             ScrollableTabRow(
                 selectedTabIndex = selectedIndex,
@@ -353,114 +351,109 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainV
     val user = data.matchedUser ?: return
     val gfgPotdList by viewModel.gfgPotdList.collectAsStateWithLifecycle()
     val submissionByDate by viewModel.submissionByDate.collectAsStateWithLifecycle()
-    val context = LocalContext.current
+    val viewingUrl = remember { mutableStateOf<String?>(null) }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item {
+        item(key = "header") {
             ProfileHeader(user)
         }
 
         when (section) {
             ProfileSection.Details -> {
-                item {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        data.activeDailyCodingChallengeQuestion?.let { challenge ->
-                            DailyChallengeCard(challenge)
-                        }
-                        
-                        // Show Today's GFG POTD
-                        val today = LocalDate.now().toString()
-                        val todayGfg = gfgPotdList.find { it.date == today }
-                        todayGfg?.let { potd ->
-                            GfgPotdCard(
-                                potd = potd,
-                                onOpenLink = {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(potd.problemUrl))
-                                    context.startActivity(intent)
-                                }
-                            )
-                        }
-
-                        SubmissionStatsCard(user, submissionByDate)
-                        StreakStatusCard(data.streakCounter, submissionByDate[LocalDate.now()] ?: 0)
+                item(key = "daily_leetcode") {
+                    data.activeDailyCodingChallengeQuestion?.let { challenge ->
+                        DailyChallengeCard(challenge)
                     }
+                }
+                
+                item(key = "daily_gfg") {
+                    val today = remember { LocalDate.now().toString() }
+                    val todayGfg = remember(gfgPotdList, today) { gfgPotdList.find { it.date == today } }
+                    todayGfg?.let { potd ->
+                        GfgPotdCard(
+                            potd = potd,
+                            onOpenLink = {
+                                viewingUrl.value = potd.problemUrl
+                            }
+                        )
+                    }
+                }
+
+                item(key = "stats") {
+                    SubmissionStatsCard(user, submissionByDate)
+                }
+
+                item(key = "streak") {
+                    val today = remember { LocalDate.now() }
+                    StreakStatusCard(data.streakCounter, submissionByDate[today] ?: 0)
                 }
             }
             ProfileSection.Submissions -> {
-                item {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        ProblemsSolvedCard(user, data.allQuestionsCount ?: emptyList())
-                        RecentSubmissionsSection(data.recentSubmissionList ?: emptyList())
-                    }
+                item(key = "solved_card") {
+                    ProblemsSolvedCard(user, data.allQuestionsCount ?: emptyList())
+                }
+                item(key = "recent_subs") {
+                    RecentSubmissionsSection(data.recentSubmissionList ?: emptyList())
                 }
             }
             ProfileSection.Contest -> {
-                item {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        data.userContestRanking?.let { ContestRankingCard(it) }
-                        UpcomingContestsSection(data.upcomingContests ?: emptyList())
-                    }
+                item(key = "contest_card") {
+                    data.userContestRanking?.let { ContestRankingCard(it) }
+                }
+                item(key = "upcoming_contests") {
+                    UpcomingContestsSection(data.upcomingContests ?: emptyList())
                 }
             }
             ProfileSection.Info -> {
-                item {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        ProfileInfoCard(user)
-                        WallpaperModule(data, viewModel)
-                    }
+                item(key = "info_card") {
+                    ProfileInfoCard(user)
+                }
+                item(key = "wallpaper_module") {
+                    WallpaperModule(viewModel)
                 }
             }
         }
     }
+
+    viewingUrl.value?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl.value = null })
+    }
 }
 
 @Composable
-fun WallpaperModule(data: LeetCodeData, viewModel: MainViewModel) {
+fun WallpaperModule(viewModel: MainViewModel) {
     val showWallpaperOptions = remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
     if (showWallpaperOptions.value) {
         WallpaperSelectionDialog(
             onDismiss = { showWallpaperOptions.value = false },
-            onApply = { flag ->
+            onApply = { flag: Int ->
                 showWallpaperOptions.value = false
                 viewModel.setPreference("wallpaper_target", flag.toString())
-                (context as? ComponentActivity)?.lifecycleScope?.launch {
-                    WallpaperUtils.applyWallpaper(context, data, flag)
-                    WallpaperWorker.enqueue(context)
-                }
             }
         )
     }
-
+    
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(12.dp)
     ) {
-        Column(Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(imageVector = Icons.Default.Build, contentDescription = null, tint = LeetCodeOrange, modifier = Modifier.size(48.dp))
-            Spacer(Modifier.height(16.dp))
-            Text("Set as Wallpaper", style = Typography.headlineSmall, color = Color.White)
-            Spacer(Modifier.height(8.dp))
-            Text(
-                "Keep your LeetCode heatmap as your wallpaper to stay motivated and track your daily streak.",
-                style = Typography.bodyMedium,
-                color = Color.Gray,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center
-            )
-            Spacer(Modifier.height(24.dp))
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text("Daily Wallpaper", style = MaterialTheme.typography.titleMedium, color = Color.White)
+            Text("Update your home screen with daily stats.", color = Color.Gray, fontSize = 12.sp)
+            Spacer(Modifier.height(12.dp))
             Button(
                 onClick = { showWallpaperOptions.value = true },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(8.dp)
             ) {
-                Text("Customize & Apply", fontWeight = FontWeight.Bold)
+                Text("Setup Wallpaper", color = Color.Black)
             }
         }
     }
@@ -470,39 +463,13 @@ fun WallpaperModule(data: LeetCodeData, viewModel: MainViewModel) {
 fun WallpaperSelectionDialog(onDismiss: () -> Unit, onApply: (Int) -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        containerColor = Color(0xFF161b22),
-        titleContentColor = Color.White,
-        textContentColor = Color.White,
-        title = { Text("Apply Wallpaper", fontWeight = FontWeight.Bold) },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Select where to apply the heatmap wallpaper:")
-                Spacer(Modifier.height(8.dp))
-
-                val targets = listOf(
-                    "Home Screen" to android.app.WallpaperManager.FLAG_SYSTEM,
-                    "Lock Screen" to android.app.WallpaperManager.FLAG_LOCK,
-                    "Both" to (android.app.WallpaperManager.FLAG_SYSTEM or android.app.WallpaperManager.FLAG_LOCK)
-                )
-
-                targets.forEach { (label, flag) ->
-                    Button(
-                        onClick = {
-                            onApply(flag)
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
-                        shape = RoundedCornerShape(8.dp)
-                    ) {
-                        Text(label, fontWeight = FontWeight.Bold)
-                    }
-                }
-            }
-        },
+        title = { Text("Select Target") },
+        text = { Text("Where do you want to apply the wallpaper?") },
         confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text("Cancel", color = LeetCodeOrange)
-            }
+            TextButton(onClick = { onApply(1) }) { Text("Home Screen") }
+        },
+        dismissButton = {
+            TextButton(onClick = { onApply(2) }) { Text("Both") }
         }
     )
 }

@@ -74,24 +74,7 @@ fun UpcomingContestsSection(contests: List<Contest>) {
 @Composable
 fun ContestCard(contest: Contest) {
     val context = LocalContext.current
-    var timeLeft by remember { mutableLongStateOf(contest.startTime * 1000 - System.currentTimeMillis()) }
-
-    LaunchedEffect(key1 = contest.startTime) {
-        while (timeLeft > 0) {
-            delay(1000)
-            timeLeft = contest.startTime * 1000 - System.currentTimeMillis()
-        }
-    }
-
-    val formattedTimeLeft = remember(timeLeft) {
-        if (timeLeft <= 0) "Started"
-        else {
-            val hours = TimeUnit.MILLISECONDS.toHours(timeLeft)
-            val minutes = TimeUnit.MILLISECONDS.toMinutes(timeLeft) % 60
-            val seconds = TimeUnit.MILLISECONDS.toSeconds(timeLeft) % 60
-            String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds)
-        }
-    }
+    var viewingUrl by remember { mutableStateOf<String?>(null) }
 
     val startDateTime = remember(contest.startTime) {
         try {
@@ -118,7 +101,10 @@ fun ContestCard(contest: Contest) {
                         contest.title,
                         color = Color.White,
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.clickable {
+                            viewingUrl = "https://leetcode.com/contest/${contest.titleSlug}"
+                        }
                     )
                     Text(
                         "Starts: $startDateTime",
@@ -132,18 +118,8 @@ fun ContestCard(contest: Contest) {
                     )
                 }
 
-                Surface(
-                    color = if (timeLeft > 0) Color(0xFFffa116).copy(alpha = 0.1f) else Color.Red.copy(alpha = 0.1f),
-                    shape = RoundedCornerShape(4.dp)
-                ) {
-                    Text(
-                        formattedTimeLeft,
-                        color = if (timeLeft > 0) Color(0xFFffa116) else Color.Red,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                    )
-                }
+                // Isolated timer to minimize recomposition
+                ContestTimerPill(startTimeSeconds = contest.startTime)
             }
 
             Spacer(Modifier.height(16.dp))
@@ -154,8 +130,7 @@ fun ContestCard(contest: Contest) {
             ) {
                 Button(
                     onClick = {
-                        val intent = Intent(Intent.ACTION_VIEW, "https://leetcode.com/contest/${contest.titleSlug}".toUri())
-                        context.startActivity(intent)
+                        viewingUrl = "https://leetcode.com/contest/${contest.titleSlug}"
                     },
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFffa116)),
@@ -168,7 +143,6 @@ fun ContestCard(contest: Contest) {
                 IconButton(
                     onClick = { 
                         try {
-                            // Assuming ContestUtils is available
                             com.example.heatmap.ui.ContestUtils.scheduleContestReminder(context, contest) 
                         } catch (e: Exception) {}
                     },
@@ -194,11 +168,49 @@ fun ContestCard(contest: Contest) {
             }
         }
     }
+
+    viewingUrl?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl = null })
+    }
+}
+
+@Composable
+fun ContestTimerPill(startTimeSeconds: Long) {
+    var timeLeft by remember(startTimeSeconds) { mutableLongStateOf(startTimeSeconds * 1000 - System.currentTimeMillis()) }
+
+    LaunchedEffect(key1 = startTimeSeconds) {
+        while (timeLeft > 0) {
+            delay(1000)
+            timeLeft = startTimeSeconds * 1000 - System.currentTimeMillis()
+        }
+    }
+
+    val formattedTimeLeft = remember(timeLeft) {
+        if (timeLeft <= 0) "Started"
+        else {
+            val hours = TimeUnit.MILLISECONDS.toHours(timeLeft)
+            val minutes = TimeUnit.MILLISECONDS.toMinutes(timeLeft) % 60
+            val seconds = TimeUnit.MILLISECONDS.toSeconds(timeLeft) % 60
+            String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds)
+        }
+    }
+
+    Surface(
+        color = if (timeLeft > 0) Color(0xFFffa116).copy(alpha = 0.1f) else Color.Red.copy(alpha = 0.1f),
+        shape = RoundedCornerShape(4.dp)
+    ) {
+        Text(
+            formattedTimeLeft,
+            color = if (timeLeft > 0) Color(0xFFffa116) else Color.Red,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+        )
+    }
 }
 
 @Composable
 fun DailyChallengeCard(challenge: DailyChallenge) {
-    val context = LocalContext.current
     val question = challenge.question
     if (question == null) return
 
@@ -209,6 +221,8 @@ fun DailyChallengeCard(challenge: DailyChallenge) {
         "Hard" -> LeetCodeRed
         else -> Color.Gray
     }
+
+    var viewingUrl by remember { mutableStateOf<String?>(null) }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -237,8 +251,7 @@ fun DailyChallengeCard(challenge: DailyChallenge) {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable {
                             challenge.link?.let { link ->
-                                val intent = Intent(Intent.ACTION_VIEW, "https://leetcode.com$link".toUri())
-                                context.startActivity(intent)
+                                viewingUrl = "https://leetcode.com$link"
                             }
                         }
                     )
@@ -270,5 +283,9 @@ fun DailyChallengeCard(challenge: DailyChallenge) {
                 }
             }
         }
+    }
+
+    viewingUrl?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl = null })
     }
 }

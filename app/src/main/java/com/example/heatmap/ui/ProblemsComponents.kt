@@ -2,9 +2,9 @@ package com.example.heatmap.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,9 +14,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -32,7 +29,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.heatmap.domain.Problem
-import com.example.heatmap.domain.StriverProblem
 import com.example.heatmap.ui.theme.LeetCodeGreen
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.LeetCodeRed
@@ -255,6 +251,57 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
 
                 HorizontalDivider(color = Color(0xFF30363d), thickness = 1.dp)
 
+                val styledHtml = remember(problem.content) {
+                    val content = problem.content ?: "<div style='text-align:center; padding-top: 50px;'><h3>Content not available offline</h3><p>Please connect to internet to load this problem for the first time.</p></div>"
+                    """
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>
+                            body {
+                                background-color: #0d1117;
+                                color: #c9d1d9;
+                                font-family: -apple-system, system-ui, sans-serif;
+                                line-height: 1.6;
+                                margin: 0;
+                                padding: 16px;
+                            }
+                            pre {
+                                background-color: #161b22;
+                                padding: 16px;
+                                border-radius: 8px;
+                                overflow-x: auto;
+                                border: 1px solid #30363d;
+                                font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                            }
+                            code {
+                                background-color: #21262d;
+                                padding: 0.2em 0.4em;
+                                border-radius: 4px;
+                                font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+                            }
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                display: block;
+                                margin: 16px auto;
+                                border-radius: 8px;
+                            }
+                            p { margin-top: 0; margin-bottom: 16px; }
+                            ul, ol { padding-left: 20px; margin-bottom: 16px; }
+                            li { margin-bottom: 8px; }
+                            strong, b { color: #ffffff; font-weight: 600; }
+                            * { box-sizing: border-box; }
+                        </style>
+                        </head>
+                        <body>
+                            $content
+                        </body>
+                        </html>
+                    """.trimIndent()
+                }
+
                 AndroidView(
                     factory = { ctx ->
                         WebView(ctx).apply {
@@ -264,62 +311,26 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                                 loadWithOverviewMode = true
                                 useWideViewPort = true
                                 defaultFontSize = 14
+                                cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
                             }
                             webViewClient = WebViewClient()
                         }
                     },
                     update = { webView ->
-                        val content = problem.content ?: "<div style='text-align:center; padding-top: 50px;'><h3>Content not available offline</h3><p>Please connect to internet to load this problem for the first time.</p></div>"
-                        val styledHtml = """
-                            <!DOCTYPE html>
-                            <html>
-                            <head>
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <style>
-                                body {
-                                    background-color: #0d1117;
-                                    color: #c9d1d9;
-                                    font-family: -apple-system, system-ui, sans-serif;
-                                    line-height: 1.6;
-                                    margin: 0;
-                                    padding: 16px;
-                                }
-                                pre {
-                                    background-color: #161b22;
-                                    padding: 16px;
-                                    border-radius: 8px;
-                                    overflow-x: auto;
-                                    border: 1px solid #30363d;
-                                    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-                                }
-                                code {
-                                    background-color: #21262d;
-                                    padding: 0.2em 0.4em;
-                                    border-radius: 4px;
-                                    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-                                }
-                                img {
-                                    max-width: 100%;
-                                    height: auto;
-                                    display: block;
-                                    margin: 16px auto;
-                                    border-radius: 8px;
-                                }
-                                p { margin-top: 0; margin-bottom: 16px; }
-                                ul, ol { padding-left: 20px; margin-bottom: 16px; }
-                                li { margin-bottom: 8px; }
-                                strong, b { color: #ffffff; font-weight: 600; }
-                                * { box-sizing: border-box; }
-                            </style>
-                            </head>
-                            <body>
-                                $content
-                            </body>
-                            </html>
-                        """.trimIndent()
-                        webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
+                        // Only load if content is actually different to avoid flickering/performance hit
+                        if (webView.tag != problem.content) {
+                            webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
+                            webView.tag = problem.content
+                        }
                     },
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    onRelease = { webView ->
+                        webView.stopLoading()
+                        webView.loadUrl("about:blank")
+                        webView.clearHistory()
+                        webView.removeAllViews()
+                        webView.destroy()
+                    }
                 )
             }
         }

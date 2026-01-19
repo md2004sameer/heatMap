@@ -1,7 +1,5 @@
 package com.example.heatmap.ui
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,7 +14,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,8 +41,8 @@ fun DailyChallengeContent(
     leetCodeData: LeetCodeData,
     gfgPotdList: List<GfgPotdEntity>
 ) {
-    val context = LocalContext.current
     var selectedSort by remember { mutableStateOf("Newest First") }
+    var viewingUrl by remember { mutableStateOf<String?>(null) }
     
     val sortedGfgList = remember(gfgPotdList, selectedSort) {
         when (selectedSort) {
@@ -120,12 +117,15 @@ fun DailyChallengeContent(
                 GfgPotdCard(
                     potd = potd,
                     onOpenLink = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(potd.problemUrl))
-                        context.startActivity(intent)
+                        viewingUrl = potd.problemUrl
                     }
                 )
             }
         }
+    }
+
+    viewingUrl?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl = null })
     }
 }
 

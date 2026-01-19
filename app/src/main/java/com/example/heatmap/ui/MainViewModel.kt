@@ -7,8 +7,10 @@ import com.example.heatmap.*
 import com.example.heatmap.domain.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -51,32 +53,34 @@ class MainViewModel(
     val uiState: StateFlow<UiState> = _uiState
 
     private val _currentScreen = MutableStateFlow<Screen>(Screen.Profile(ProfileSection.Details))
-    val currentScreen: StateFlow<Screen> = _currentScreen
+    val currentScreen: StateFlow<Screen> = _currentScreen.asStateFlow()
 
     private val _trainingPlan = MutableStateFlow<DailyTrainingPlan?>(null)
-    val trainingPlan: StateFlow<DailyTrainingPlan?> = _trainingPlan
+    val trainingPlan: StateFlow<DailyTrainingPlan?> = _trainingPlan.asStateFlow()
 
     // Problems State
     private val _problems = MutableStateFlow<List<Problem>>(emptyList())
-    val problems: StateFlow<List<Problem>> = _problems
+    val problems: StateFlow<List<Problem>> = _problems.asStateFlow()
 
     private val _selectedProblem = MutableStateFlow<Problem?>(null)
-    val selectedProblem: StateFlow<Problem?> = _selectedProblem
+    val selectedProblem: StateFlow<Problem?> = _selectedProblem.asStateFlow()
 
     private val _isProblemsSyncing = MutableStateFlow(false)
-    val isProblemsSyncing: StateFlow<Boolean> = _isProblemsSyncing
+    val isProblemsSyncing: StateFlow<Boolean> = _isProblemsSyncing.asStateFlow()
 
     // Striver Sheet State
     private val _striverProblems = MutableStateFlow<List<StriverProblemEntity>>(emptyList())
-    val striverProblems: StateFlow<List<StriverProblemEntity>> = _striverProblems
+    val striverProblems: StateFlow<List<StriverProblemEntity>> = _striverProblems.asStateFlow()
 
     private val _completedStriverIds = MutableStateFlow<Set<Int>>(emptySet())
-    val completedStriverIds: StateFlow<Set<Int>> = _completedStriverIds
+    val completedStriverIds: StateFlow<Set<Int>> = _completedStriverIds.asStateFlow()
 
     val striverStats: StateFlow<StriverStats> = combine(_striverProblems, _completedStriverIds) { problems, completedIds ->
+        if (problems.isEmpty()) return@combine StriverStats()
+        
         val total = problems.size
         val done = completedIds.size
-        val percentage = if (total > 0) (done * 100 / total) else 0
+        val percentage = (done * 100 / total)
         
         val easy = problems.filter { it.difficulty == "Easy" }
         val medium = problems.filter { it.difficulty == "Medium" }
@@ -93,41 +97,50 @@ class MainViewModel(
             hardTotal = hard.size,
             hardDone = hard.count { it.id in completedIds }
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), StriverStats())
+    }.distinctUntilChanged()
+     .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), StriverStats())
 
     // GFG POTD State
     private val _gfgPotdList = MutableStateFlow<List<GfgPotdEntity>>(emptyList())
-    val gfgPotdList: StateFlow<List<GfgPotdEntity>> = _gfgPotdList
+    val gfgPotdList: StateFlow<List<GfgPotdEntity>> = _gfgPotdList.asStateFlow()
 
     // Notes State
     private val notesDao = db.notesDao()
     private val _folders = MutableStateFlow<List<Folder>>(emptyList())
-    val folders: StateFlow<List<Folder>> = _folders
+    val folders: StateFlow<List<Folder>> = _folders.asStateFlow()
 
     private val _currentNotes = MutableStateFlow<List<Note>>(emptyList())
-    val currentNotes: StateFlow<List<Note>> = _currentNotes
+    val currentNotes: StateFlow<List<Note>> = _currentNotes.asStateFlow()
 
     private val _selectedFolderId = MutableStateFlow<String?>(null)
-    val selectedFolderId: StateFlow<String?> = _selectedFolderId
+    val selectedFolderId: StateFlow<String?> = _selectedFolderId.asStateFlow()
 
-    val submissionByDate: StateFlow<Map<LocalDate, Int>> = uiState.map { state ->
-        if (state is UiState.Success) {
-            parseSubmissionCalendar(state.data.matchedUser?.userCalendar?.submissionCalendar)
-        } else {
-            emptyMap()
+    val submissionByDate: StateFlow<Map<LocalDate, Int>> = uiState
+        .map { state ->
+            if (state is UiState.Success) {
+                state.data.matchedUser?.userCalendar?.submissionCalendar
+            } else {
+                null
+            }
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
+        .distinctUntilChanged()
+        .map { calendarJson ->
+            withContext(Dispatchers.Default) {
+                parseSubmissionCalendar(calendarJson)
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
 
     private val gson = Gson()
 
     init {
         viewModelScope.launch {
             checkOnboarding()
-            loadTrainingPlan()
-            loadFolders()
-            loadProblems()
-            loadStriverSheet()
-            loadGfgPotd()
+            launch { loadTrainingPlan() }
+            launch { loadFolders() }
+            launch { loadProblems() }
+            launch { loadStriverSheet() }
+            launch { loadGfgPotd() }
             
             // Prefetch some problem descriptions in background for offline use
             repository.prefetchProblemDetails(20)
@@ -140,7 +153,7 @@ class MainViewModel(
                 emptyMap()
             } else {
                 val type = object : TypeToken<Map<String, Int>>() {}.type
-                val rawMap = Gson().fromJson<Map<String, Int>>(calendar, type)
+                val rawMap = gson.fromJson<Map<String, Int>>(calendar, type)
                 rawMap?.entries?.associate { (tsStr, count) ->
                     val ts = tsStr.toLongOrNull() ?: 0L
                     val date = if (tsStr.length > 10) {
@@ -185,9 +198,13 @@ class MainViewModel(
             try {
                 val striverDao = db.striverDao()
                 if (striverDao.getCount() == 0) {
-                    val jsonString = getApplication<Application>().assets.open("striver_sheet.json").bufferedReader().use { it.readText() }
+                    val jsonString = withContext(Dispatchers.IO) {
+                        getApplication<Application>().assets.open("striver_sheet.json").bufferedReader().use { it.readText() }
+                    }
                     val type = object : TypeToken<List<StriverProblem>>() {}.type
-                    val problems: List<StriverProblem> = gson.fromJson(jsonString, type)
+                    val problems: List<StriverProblem> = withContext(Dispatchers.Default) {
+                        gson.fromJson(jsonString, type)
+                    }
                     
                     val entities = problems.mapIndexed { index, it -> 
                         StriverProblemEntity(
@@ -203,10 +220,14 @@ class MainViewModel(
                             stepOrder = index + 1
                         )
                     }
-                    striverDao.insertStriverProblems(entities)
+                    withContext(Dispatchers.IO) {
+                        striverDao.insertStriverProblems(entities)
+                    }
                 }
                 
-                val entities = striverDao.getAllStriverProblems()
+                val entities = withContext(Dispatchers.IO) {
+                    striverDao.getAllStriverProblems()
+                }
                 _striverProblems.value = entities
                 _completedStriverIds.value = entities.filter { it.isCompleted }.map { it.id }.toSet()
             } catch (_: Exception) {
@@ -225,9 +246,11 @@ class MainViewModel(
                 currentSet.remove(id)
             }
             _completedStriverIds.value = currentSet
-            db.striverDao().updateProgress(id, isCompleted)
-            // Refresh list
-            _striverProblems.value = db.striverDao().getAllStriverProblems()
+            withContext(Dispatchers.IO) {
+                db.striverDao().updateProgress(id, isCompleted)
+                // Refresh list
+                _striverProblems.value = db.striverDao().getAllStriverProblems()
+            }
         }
     }
 
@@ -261,10 +284,14 @@ class MainViewModel(
     private fun loadFolders() {
         viewModelScope.launch {
             try {
-                val folderList = notesDao.getAllFolders()
+                val folderList = withContext(Dispatchers.IO) {
+                    notesDao.getAllFolders()
+                }
                 if (folderList.isEmpty()) {
                     val defaultFolder = Folder(UUID.randomUUID().toString(), "All Notes")
-                    notesDao.insertFolder(defaultFolder)
+                    withContext(Dispatchers.IO) {
+                        notesDao.insertFolder(defaultFolder)
+                    }
                     _folders.value = listOf(defaultFolder)
                     selectFolder(defaultFolder.id)
                 } else {
@@ -279,14 +306,18 @@ class MainViewModel(
     fun selectFolder(folderId: String) {
         _selectedFolderId.value = folderId
         viewModelScope.launch {
-            _currentNotes.value = notesDao.getNotesInFolder(folderId)
+            _currentNotes.value = withContext(Dispatchers.IO) {
+                notesDao.getNotesInFolder(folderId)
+            }
         }
     }
 
     fun createFolder(name: String) {
         viewModelScope.launch {
             val newFolder = Folder(UUID.randomUUID().toString(), name)
-            notesDao.insertFolder(newFolder)
+            withContext(Dispatchers.IO) {
+                notesDao.insertFolder(newFolder)
+            }
             loadFolders()
         }
     }
@@ -300,21 +331,27 @@ class MainViewModel(
                 body = body,
                 tags = ""
             )
-            notesDao.insertNote(newNote)
+            withContext(Dispatchers.IO) {
+                notesDao.insertNote(newNote)
+            }
             selectFolder(folderId)
         }
     }
 
     fun updateNote(note: Note) {
         viewModelScope.launch {
-            notesDao.insertNote(note.copy(updatedAt = System.currentTimeMillis()))
+            withContext(Dispatchers.IO) {
+                notesDao.insertNote(note.copy(updatedAt = System.currentTimeMillis()))
+            }
             selectFolder(note.folderId)
         }
     }
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
-            notesDao.deleteNote(note)
+            withContext(Dispatchers.IO) {
+                notesDao.deleteNote(note)
+            }
             selectFolder(note.folderId)
         }
     }
@@ -322,13 +359,17 @@ class MainViewModel(
     // Preference Operations
     fun setPreference(key: String, value: String) {
         viewModelScope.launch {
-            db.preferenceDao().setPreference(AppPreferenceEntity(key, value))
+            withContext(Dispatchers.IO) {
+                db.preferenceDao().setPreference(AppPreferenceEntity(key, value))
+            }
         }
     }
 
     // Training Plan Operations
     private suspend fun checkOnboarding() {
-        val lastUsername = db.preferenceDao().getPreference("last_username")
+        val lastUsername = withContext(Dispatchers.IO) {
+            db.preferenceDao().getPreference("last_username")
+        }
         if (lastUsername == null) {
             _uiState.value = UiState.Onboarding
         } else {
@@ -339,9 +380,13 @@ class MainViewModel(
     private suspend fun loadTrainingPlan() {
         try {
             val today = LocalDate.now().toString()
-            val planEntity = db.trainingDao().getPlanByDate(today)
+            val planEntity = withContext(Dispatchers.IO) {
+                db.trainingDao().getPlanByDate(today)
+            }
             if (planEntity != null) {
-                val taskEntities = db.trainingDao().getTasksForPlan(today)
+                val taskEntities = withContext(Dispatchers.IO) {
+                    db.trainingDao().getTasksForPlan(today)
+                }
                 val tasks = taskEntities.map { 
                     TrainingTask(
                         id = it.id,
@@ -398,18 +443,20 @@ class MainViewModel(
             val updatedPlan = currentPlan.copy(tasks = currentPlan.tasks + newTask)
             _trainingPlan.value = updatedPlan
             
-            db.trainingDao().insertPlan(TrainingPlanEntity(today))
-            db.trainingDao().insertTask(TrainingTaskEntity(
-                id = newTask.id,
-                planDate = today,
-                title = newTask.title,
-                description = newTask.description,
-                category = newTask.category,
-                difficulty = newTask.difficulty,
-                estimatedTime = newTask.estimatedTime,
-                type = newTask.type.name,
-                isCompleted = newTask.isCompleted
-            ))
+            withContext(Dispatchers.IO) {
+                db.trainingDao().insertPlan(TrainingPlanEntity(today))
+                db.trainingDao().insertTask(TrainingTaskEntity(
+                    id = newTask.id,
+                    planDate = today,
+                    title = newTask.title,
+                    description = newTask.description,
+                    category = newTask.category,
+                    difficulty = newTask.difficulty,
+                    estimatedTime = newTask.estimatedTime,
+                    type = newTask.type.name,
+                    isCompleted = newTask.isCompleted
+                ))
+            }
         }
     }
 
@@ -418,7 +465,9 @@ class MainViewModel(
             val currentPlan = _trainingPlan.value ?: return@launch
             val updatedPlan = currentPlan.copy(tasks = currentPlan.tasks.filter { it.id != taskId })
             _trainingPlan.value = updatedPlan
-            db.trainingDao().deleteTaskById(taskId)
+            withContext(Dispatchers.IO) {
+                db.trainingDao().deleteTaskById(taskId)
+            }
         }
     }
 
@@ -428,29 +477,33 @@ class MainViewModel(
             val updatedTasks = currentPlan.tasks.map { if (it.id == taskId) it.copy(isCompleted = !it.isCompleted) else it }
             _trainingPlan.value = currentPlan.copy(tasks = updatedTasks)
             
-            val entity = db.trainingDao().getTasksForPlan(currentPlan.date).find { it.id == taskId }
-            if (entity != null) {
-                db.trainingDao().updateTask(entity.copy(isCompleted = !entity.isCompleted))
+            withContext(Dispatchers.IO) {
+                val entity = db.trainingDao().getTasksForPlan(currentPlan.date).find { it.id == taskId }
+                if (entity != null) {
+                    db.trainingDao().updateTask(entity.copy(isCompleted = !entity.isCompleted))
+                }
             }
         }
     }
 
     private suspend fun savePlanToDb(plan: DailyTrainingPlan) {
-        db.trainingDao().insertPlan(TrainingPlanEntity(plan.date))
-        val taskEntities = plan.tasks.map { 
-            TrainingTaskEntity(
-                id = it.id,
-                planDate = plan.date,
-                title = it.title,
-                description = it.description,
-                category = it.category,
-                difficulty = it.difficulty,
-                estimatedTime = it.estimatedTime,
-                type = it.type.name,
-                isCompleted = it.isCompleted
-            )
+        withContext(Dispatchers.IO) {
+            db.trainingDao().insertPlan(TrainingPlanEntity(plan.date))
+            val taskEntities = plan.tasks.map { 
+                TrainingTaskEntity(
+                    id = it.id,
+                    planDate = plan.date,
+                    title = it.title,
+                    description = it.description,
+                    category = it.category,
+                    difficulty = it.difficulty,
+                    estimatedTime = it.estimatedTime,
+                    type = it.type.name,
+                    isCompleted = it.isCompleted
+                )
+            }
+            db.trainingDao().insertTasks(taskEntities)
         }
-        db.trainingDao().insertTasks(taskEntities)
     }
 
     fun saveUsernameAndFetch(username: String) {
@@ -460,7 +513,9 @@ class MainViewModel(
             return
         }
         viewModelScope.launch {
-            db.preferenceDao().setPreference(AppPreferenceEntity("last_username", username))
+            withContext(Dispatchers.IO) {
+                db.preferenceDao().setPreference(AppPreferenceEntity("last_username", username))
+            }
             fetchProfile(username)
         }
     }

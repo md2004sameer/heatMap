@@ -1,6 +1,5 @@
 package com.example.heatmap.ui
 
-import android.content.Intent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,13 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.net.toUri
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.heatmap.StriverProblemEntity
 import com.example.heatmap.domain.Problem
@@ -42,8 +38,8 @@ fun StriverProgressScreen(
     onProblemClick: (Problem) -> Unit,
     viewModel: MainViewModel
 ) {
-    val context = LocalContext.current
     var searchQuery by remember { mutableStateOf("") }
+    var viewingUrl by remember { mutableStateOf<String?>(null) }
     
     val filteredProblems = remember(problems, searchQuery) {
         if (searchQuery.isBlank()) problems
@@ -132,13 +128,13 @@ fun StriverProgressScreen(
                                 onProblemClick = { 
                                     problem.toLeetCodeProblem()?.let { onProblemClick(it) } ?: run {
                                         if (problem.solveUrl.isNotEmpty()) {
-                                            context.startActivity(Intent(Intent.ACTION_VIEW, problem.solveUrl.toUri()))
+                                            viewingUrl = problem.solveUrl
                                         }
                                     }
                                 },
                                 onSolve = {
                                     if (problem.solveUrl.isNotEmpty()) {
-                                        context.startActivity(Intent(Intent.ACTION_VIEW, problem.solveUrl.toUri()))
+                                        viewingUrl = problem.solveUrl
                                     }
                                 }
                             )
@@ -147,6 +143,10 @@ fun StriverProgressScreen(
                 }
             }
         }
+    }
+
+    viewingUrl?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl = null })
     }
 }
 
