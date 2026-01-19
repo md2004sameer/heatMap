@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme using Material3 -->
-    <style name="Theme.HeatMap" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.HeatMap" parent="Theme.Material3.DayNight">
         <!-- Status bar and navigation bar customization -->
         <item name="android:statusBarColor">#1a1a2e</item>
         <item name="android:windowBackground">#1a1a2e</item>

@@ -58,6 +58,9 @@ class MainViewModel(
     private val _striverProblems = MutableStateFlow<List<StriverProblem>>(emptyList())
     val striverProblems: StateFlow<List<StriverProblem>> = _striverProblems
 
+    private val _completedStriverIds = MutableStateFlow<Set<Int>>(emptySet())
+    val completedStriverIds: StateFlow<Set<Int>> = _completedStriverIds
+
     // Notes State
     private val notesDao by lazy { LeetCodeDatabase.getDatabase(context).notesDao() }
     private val _folders = MutableStateFlow<List<Folder>>(emptyList())
@@ -78,6 +81,7 @@ class MainViewModel(
         loadFolders()
         loadProblems()
         loadStriverSheet()
+        loadStriverProgress()
     }
 
     fun navigateTo(screen: Screen) {
@@ -107,6 +111,22 @@ class MainViewModel(
                 // But for now assuming it should be in assets for simplicity.
             }
         }
+    }
+
+    private fun loadStriverProgress() {
+        val savedIds = prefs.getStringSet("completed_striver_ids", emptySet())
+        _completedStriverIds.value = savedIds?.mapNotNull { it.toIntOrNull() }?.toSet() ?: emptySet()
+    }
+
+    fun toggleStriverProblem(id: Int) {
+        val currentSet = _completedStriverIds.value.toMutableSet()
+        if (currentSet.contains(id)) {
+            currentSet.remove(id)
+        } else {
+            currentSet.add(id)
+        }
+        _completedStriverIds.value = currentSet
+        prefs.edit().putStringSet("completed_striver_ids", currentSet.map { it.toString() }.toSet()).apply()
     }
 
     fun searchProblems(query: String) {

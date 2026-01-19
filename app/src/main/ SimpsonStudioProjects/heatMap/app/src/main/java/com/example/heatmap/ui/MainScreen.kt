@@ -263,7 +263,7 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
     val completedStriverIds by viewModel.completedStriverIds.collectAsState()
     val selectedProblem by viewModel.selectedProblem.collectAsState()
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp, vertical = 8.dp)) {
         Text(section.title, style = Typography.headlineMedium, color = Color.White)
         Spacer(Modifier.height(16.dp))
         
@@ -453,7 +453,7 @@ fun ProductivityContent(section: ProductivitySection, viewModel: MainViewModel, 
                     onGenerate = { viewModel.generateTrainingPlan(data) },
                     onToggleTask = { taskId -> viewModel.toggleTaskCompletion(taskId) },
                     onAddTask = { title, desc, cat, time -> viewModel.addCustomTask(title, desc, cat, time) },
-                    onDeleteTask = { taskId -> viewModel.removeTask(taskId) }
+                    onGenerateCustom = { /* Handle custom generation */ }
                 )
             }
             ProductivitySection.Notes -> {

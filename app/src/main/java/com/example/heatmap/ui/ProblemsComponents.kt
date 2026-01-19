@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TextView
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,16 +11,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.PlayCircleFilled
+import androidx.compose.material.icons.filled.RadioButtonUnchecked
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -246,7 +245,7 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                     )
                 }
 
-                Divider(color = Color(0xFF30363d), thickness = 1.dp)
+                HorizontalDivider(color = Color(0xFF30363d), thickness = 1.dp)
 
                 AndroidView(
                     factory = { ctx ->
@@ -321,7 +320,9 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
 
 @Composable
 fun StriverSheetScreen(
-    problems: List<StriverProblem>
+    problems: List<StriverProblem>,
+    completedIds: Set<Int>,
+    onToggleProblem: (Int) -> Unit
 ) {
     val context = LocalContext.current
     var selectedSection by remember { mutableStateOf<String?>(null) }
@@ -348,6 +349,11 @@ fun StriverSheetScreen(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
+        // Overall Progress Summary at the top
+        StriverSummaryHeader(problems, completedIds)
+        
+        Spacer(Modifier.height(16.dp))
+
         if (selectedSection != null) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -360,7 +366,7 @@ fun StriverSheetScreen(
                             selectedSection = null
                         }
                     }
-                    .padding(bottom = 16.dp)
+                    .padding(vertical = 8.dp)
             ) {
                 Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = LeetCodeOrange)
                 Spacer(Modifier.width(8.dp))
@@ -377,7 +383,7 @@ fun StriverSheetScreen(
                 style = MaterialTheme.typography.titleMedium,
                 color = LeetCodeOrange,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(vertical = 8.dp)
             )
         }
 
@@ -385,7 +391,12 @@ fun StriverSheetScreen(
             selectedSection == null -> {
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     items(sections) { section ->
-                        StriverSelectionCard(title = section) {
+                        val sectionProblems = problems.filter { it.section == section }
+                        val completedCount = sectionProblems.count { it.id in completedIds }
+                        StriverSelectionCard(
+                            title = section,
+                            progress = "$completedCount/${sectionProblems.size}"
+                        ) {
                             selectedSection = section
                         }
                     }
@@ -394,8 +405,13 @@ fun StriverSheetScreen(
             selectedSubSection == null -> {
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     items(subSections) { subSection ->
+                        val subSectionProblems = problems.filter { it.section == selectedSection && it.subSection == subSection }
+                        val completedCount = subSectionProblems.count { it.id in completedIds }
                         val displayTitle = if (subSection.isEmpty()) "General" else subSection
-                        StriverSelectionCard(title = displayTitle) {
+                        StriverSelectionCard(
+                            title = displayTitle,
+                            progress = "$completedCount/${subSectionProblems.size}"
+                        ) {
                             selectedSubSection = subSection
                         }
                     }
@@ -416,14 +432,19 @@ fun StriverSheetScreen(
                 ) {
                     items(
                         items = filteredProblems,
-                        key = { it.title }
+                        key = { it.id }
                     ) { problem ->
-                        StriverProblemItem(problem = problem) { url ->
-                            if (url.isNotEmpty()) {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                                context.startActivity(intent)
+                        StriverProblemItem(
+                            problem = problem,
+                            isCompleted = problem.id in completedIds,
+                            onToggleComplete = { onToggleProblem(problem.id) },
+                            onUrlClick = { url ->
+                                if (url.isNotEmpty()) {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                    context.startActivity(intent)
+                                }
                             }
-                        }
+                        )
                     }
                 }
             }
@@ -432,7 +453,48 @@ fun StriverSheetScreen(
 }
 
 @Composable
-fun StriverSelectionCard(title: String, onClick: () -> Unit) {
+fun StriverSummaryHeader(problems: List<StriverProblem>, completedIds: Set<Int>) {
+    val total = problems.size
+    val completed = completedIds.size
+    val percent = if (total > 0) (completed * 100 / total) else 0
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF1c2128)),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(text = "$percent%", fontSize = 32.sp, fontWeight = FontWeight.Black, color = LeetCodeOrange)
+            Text(text = "Overall Progress", fontSize = 12.sp, color = Color.Gray)
+            Text(text = "$completed/$total Problems", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            
+            Spacer(Modifier.height(12.dp))
+            
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                DifficultyStat("Easy", problems.count { it.difficulty == "Easy" }, completedIds, problems)
+                DifficultyStat("Medium", problems.count { it.difficulty == "Medium" }, completedIds, problems)
+                DifficultyStat("Hard", problems.count { it.difficulty == "Hard" }, completedIds, problems)
+            }
+        }
+    }
+}
+
+@Composable
+private fun DifficultyStat(label: String, total: Int, completedIds: Set<Int>, allProblems: List<StriverProblem>) {
+    val completed = allProblems.filter { it.difficulty == label }.count { it.id in completedIds }
+    val color = when(label) {
+        "Easy" -> LeetCodeGreen
+        "Medium" -> LeetCodeYellow
+        else -> LeetCodeRed
+    }
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = label, color = color, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+        Text(text = "$completed/$total", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+    }
+}
+
+@Composable
+fun StriverSelectionCard(title: String, progress: String, onClick: () -> Unit) {
     Card(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
@@ -444,13 +506,20 @@ fun StriverSelectionCard(title: String, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = title,
-                color = Color.White,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Medium,
-                modifier = Modifier.weight(1f)
-            )
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Medium
+                )
+                Text(
+                    text = progress,
+                    color = LeetCodeOrange.copy(alpha = 0.7f),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
@@ -462,7 +531,12 @@ fun StriverSelectionCard(title: String, onClick: () -> Unit) {
 }
 
 @Composable
-fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
+fun StriverProblemItem(
+    problem: StriverProblem,
+    isCompleted: Boolean,
+    onToggleComplete: () -> Unit,
+    onUrlClick: (String) -> Unit
+) {
     val difficultyColor = remember(problem.difficulty) {
         when (problem.difficulty) {
             "Easy" -> LeetCodeGreen
@@ -473,7 +547,6 @@ fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
     }
 
     Card(
-        onClick = { if (problem.resources.solve.isNotEmpty()) onUrlClick(problem.resources.solve) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 4.dp),
@@ -486,13 +559,26 @@ fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = problem.title,
-                    color = Color.White,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.weight(1f)
-                )
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                    IconButton(onClick = onToggleComplete, modifier = Modifier.size(24.dp)) {
+                        Icon(
+                            imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
+                            contentDescription = "Toggle Complete",
+                            tint = if (isCompleted) LeetCodeGreen else Color.Gray,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = problem.title,
+                        color = if (isCompleted) Color.Gray else Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.clickable { if (problem.resources.solve.isNotEmpty()) onUrlClick(problem.resources.solve) }
+                    )
+                }
                 Surface(
                     color = difficultyColor.copy(alpha = 0.1f),
                     shape = RoundedCornerShape(4.dp)
@@ -507,25 +593,28 @@ fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
                 }
             }
 
-            Spacer(Modifier.height(12.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                if (problem.resources.solve.isNotEmpty()) {
-                    ResourceButton("Solve", Icons.Default.PlayArrow, Color(0xFF00b8a3)) {
-                        onUrlClick(problem.resources.solve)
+            // Only show resource row if there are supplemental links
+            if (problem.resources.youtube.isNotEmpty() || problem.resources.editorial.isNotEmpty()) {
+                Spacer(Modifier.height(12.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(start = 32.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    if (problem.resources.youtube.isNotEmpty()) {
+                        ResourceLink(
+                            label = "Video",
+                            icon = Icons.Default.PlayCircleFilled,
+                            color = Color(0xFFFF0000),
+                            onClick = { onUrlClick(problem.resources.youtube) }
+                        )
                     }
-                }
-                if (problem.resources.youtube.isNotEmpty()) {
-                    ResourceButton("Video", Icons.Default.PlayArrow, Color(0xFFFF0000)) {
-                        onUrlClick(problem.resources.youtube)
-                    }
-                }
-                if (problem.resources.editorial.isNotEmpty()) {
-                    ResourceButton("Editorial", Icons.AutoMirrored.Filled.List, Color.Gray) {
-                        onUrlClick(problem.resources.editorial)
+                    if (problem.resources.editorial.isNotEmpty()) {
+                        ResourceLink(
+                            label = "Editorial",
+                            icon = Icons.AutoMirrored.Filled.List,
+                            color = Color.Gray,
+                            onClick = { onUrlClick(problem.resources.editorial) }
+                        )
                     }
                 }
             }
@@ -534,29 +623,23 @@ fun StriverProblemItem(problem: StriverProblem, onUrlClick: (String) -> Unit) {
 }
 
 @Composable
-private fun RowScope.ResourceButton(
+private fun ResourceLink(
     label: String,
     icon: androidx.compose.ui.graphics.vector.ImageVector,
     color: Color,
     onClick: () -> Unit
 ) {
-    Surface(
-        modifier = Modifier
-            .weight(1f)
-            .height(32.dp)
-            .clickable(onClick = onClick),
-        color = color.copy(alpha = 0.15f),
-        shape = RoundedCornerShape(8.dp),
-        border = androidx.compose.foundation.BorderStroke(1.dp, color.copy(alpha = 0.3f))
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable(onClick = onClick)
     ) {
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(horizontal = 4.dp)
-        ) {
-            Icon(icon, contentDescription = null, tint = color, modifier = Modifier.size(14.dp))
-            Spacer(Modifier.width(4.dp))
-            Text(label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-        }
+        Icon(icon, contentDescription = null, tint = color, modifier = Modifier.size(16.dp))
+        Spacer(Modifier.width(4.dp))
+        Text(
+            text = label,
+            color = color,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Medium
+        )
     }
 }
