@@ -59,6 +59,13 @@ data class AppPreferenceEntity(
     val value: String
 )
 
+@Entity(tableName = "pattern_progress")
+data class PatternProgressEntity(
+    @PrimaryKey val link: String,
+    val isCompleted: Boolean = false,
+    val lastSolvedAt: Long = System.currentTimeMillis()
+)
+
 @Dao
 interface StriverDao {
     @Query("SELECT * FROM striver_problems ORDER BY id ASC")
@@ -123,4 +130,19 @@ interface PreferenceDao {
 
     @Query("SELECT value FROM app_prefs WHERE `key` = :key")
     suspend fun getIntPreference(key: String): String? // Room returns String, parse manually
+}
+
+@Dao
+interface PatternProgressDao {
+    @Query("SELECT * FROM pattern_progress")
+    fun getAllProgressFlow(): Flow<List<PatternProgressEntity>>
+
+    @Query("SELECT * FROM pattern_progress")
+    suspend fun getAllProgress(): List<PatternProgressEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateProgress(progress: PatternProgressEntity)
+
+    @Query("SELECT isCompleted FROM pattern_progress WHERE link = :link")
+    suspend fun isCompleted(link: String): Boolean?
 }

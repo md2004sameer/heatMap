@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Label
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -232,7 +233,7 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
 
                     if (problem.tags.isNotEmpty()) {
                         Spacer(Modifier.width(8.dp))
-                        Icon(Icons.Default.Label, contentDescription = null, tint = Color.Gray, modifier = Modifier.size(14.dp))
+                        Icon(Icons.AutoMirrored.Filled.Label, contentDescription = null, tint = Color.Gray, modifier = Modifier.size(14.dp))
                         Text(
                             text = problem.tags.first(),
                             color = Color.Gray,
@@ -296,36 +297,29 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                     """.trimIndent()
                 }
 
-                AndroidView(
-                    factory = { ctx ->
-                        WebView(ctx).apply {
-                            setBackgroundColor(0)
-                            settings.apply {
-                                javaScriptEnabled = false
-                                loadWithOverviewMode = true
-                                useWideViewPort = true
-                                defaultFontSize = 14
-                                cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+                Box(modifier = Modifier.fillMaxSize()) {
+                    AndroidView(
+                        factory = { ctx ->
+                            WebView(ctx).apply {
+                                setBackgroundColor(0)
+                                settings.apply {
+                                    javaScriptEnabled = false
+                                    loadWithOverviewMode = true
+                                    useWideViewPort = true
+                                    defaultFontSize = 14
+                                    cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+                                }
+                                webViewClient = WebViewClient()
                             }
-                            webViewClient = WebViewClient()
+                        },
+                        update = { webView ->
+                            if (webView.tag != problem.content) {
+                                webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
+                                webView.tag = problem.content
+                            }
                         }
-                    },
-                    update = { webView ->
-                        // Only load if content is actually different to avoid flickering/performance hit
-                        if (webView.tag != problem.content) {
-                            webView.loadDataWithBaseURL("https://leetcode.com", styledHtml, "text/html", "UTF-8", null)
-                            webView.tag = problem.content
-                        }
-                    },
-                    modifier = Modifier.fillMaxSize(),
-                    onRelease = { webView ->
-                        webView.stopLoading()
-                        webView.loadUrl("about:blank")
-                        webView.clearHistory()
-                        webView.removeAllViews()
-                        webView.destroy()
-                    }
-                )
+                    )
+                }
             }
         }
     }

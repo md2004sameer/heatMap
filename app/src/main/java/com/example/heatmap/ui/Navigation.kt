@@ -32,10 +32,11 @@ sealed class ProductivitySection(val title: String, val icon: ImageVector) {
 sealed class ProblemsSection(val title: String, val icon: ImageVector) {
     object Explore : ProblemsSection("Explore", Icons.Default.Search)
     object Striver : ProblemsSection("Striver Sheet", Icons.AutoMirrored.Filled.List)
+    object Patterns : ProblemsSection("Patterns", Icons.Default.GridView)
 
     companion object {
         val all: List<ProblemsSection> by lazy { 
-            listOf(Explore, Striver) 
+            listOf(Explore, Striver, Patterns)
         }
     }
 }

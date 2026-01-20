@@ -45,9 +45,10 @@ interface GfgDao {
         StriverProblemEntity::class,
         TrainingPlanEntity::class,
         TrainingTaskEntity::class,
-        AppPreferenceEntity::class
+        AppPreferenceEntity::class,
+        PatternProgressEntity::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class LeetCodeDatabase : RoomDatabase() {
@@ -58,6 +59,7 @@ abstract class LeetCodeDatabase : RoomDatabase() {
     abstract fun striverDao(): StriverDao
     abstract fun trainingDao(): TrainingDao
     abstract fun preferenceDao(): PreferenceDao
+    abstract fun patternProgressDao(): PatternProgressDao
 
     companion object {
         @Volatile

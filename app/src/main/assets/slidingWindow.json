@@ -1,0 +1,446 @@
+{
+  "slidingWindow": {
+    "patterns": [
+      {
+        "id": 1,
+        "pattern": "Fixed-Size Window",
+        "description": "Used when the window size k is fixed.",
+        "practiceProblems": [
+          {
+            "title": "Maximum Average Subarray I",
+            "difficulty": "Easy",
+            "link": "https://leetcode.com/problems/maximum-average-subarray-i/"
+          },
+          {
+            "title": "Max Consecutive Ones III",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/max-consecutive-ones-iii/"
+          },
+          {
+            "title": "Maximum Sum of Distinct Subarrays With Length K",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/"
+          },
+          {
+            "title": "Contains Duplicate II",
+            "difficulty": "Easy",
+            "link": "https://leetcode.com/problems/contains-duplicate-ii/"
+          },
+          {
+            "title": "Longest Subarray of 1s After Deleting One Element",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "K Radius Subarray Averages",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/k-radius-subarray-averages/"
+          },
+          {
+            "title": "Maximum Points You Can Obtain from Cards",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "pattern": "Variable-Size Window (Expand + Shrink)",
+        "description": "For conditions like sum ≥ K, distinct elements ≤ K, etc.",
+        "practiceProblems": [
+          {
+            "title": "Longest Substring Without Repeating Characters",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+          },
+          {
+            "title": "Minimum Size Subarray Sum",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+          },
+          {
+            "title": "Fruit Into Baskets",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/fruit-into-baskets/"
+          },
+          {
+            "title": "Subarray Sum Equals K",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/subarray-sum-equals-k/"
+          },
+          {
+            "title": "Binary Subarrays With Sum",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/binary-subarrays-with-sum/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Subarrays with K Different Integers",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/subarrays-with-k-different-integers/"
+          },
+          {
+            "title": "Maximum Erasure Value",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-erasure-value/"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "pattern": "Sliding Window with Frequency Map",
+        "description": "Used for anagrams, permutations, character frequency matching.",
+        "practiceProblems": [
+          {
+            "title": "Permutation in String",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/permutation-in-string/"
+          },
+          {
+            "title": "Find All Anagrams in a String",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/find-all-anagrams-in-a-string/"
+          },
+          {
+            "title": "Minimum Window Substring",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/minimum-window-substring/"
+          },
+          {
+            "title": "Longest Substring with At Most K Distinct Characters",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/"
+          },
+          {
+            "title": "Longest Substring with At Most Two Distinct Characters",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Count Complete Substrings",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/count-complete-substrings/"
+          },
+          {
+            "title": "Longest Substring with Equal Character Frequency",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-substring-with-equal-character-frequency/"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "pattern": "Longest / Shortest Substring With Condition",
+        "description": "For substring max/min length based on constraints.",
+        "practiceProblems": [
+          {
+            "title": "Longest Repeating Character Replacement",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/longest-repeating-character-replacement/"
+          },
+          {
+            "title": "Max Consecutive Ones III",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/max-consecutive-ones-iii/"
+          },
+          {
+            "title": "Shortest Subarray With Sum at Least K",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/"
+          },
+          {
+            "title": "Longest Subarray of 1s After Deleting One Element",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/"
+          },
+          {
+            "title": "Maximum Erasure Value",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-erasure-value/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Shortest Subarray to Be Removed to Make Array Sorted",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted/"
+          },
+          {
+            "title": "Minimum Window Substring",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/minimum-window-substring/"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "pattern": "Exactly K / At Most K Distinct Elements",
+        "description": "For substring problems involving distinct characters.",
+        "practiceProblems": [
+          {
+            "title": "Subarrays with K Different Integers",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/subarrays-with-k-different-integers/"
+          },
+          {
+            "title": "Longest Substring with At Most K Distinct Characters",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/"
+          },
+          {
+            "title": "Longest Substring Without Repeating Characters",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+          },
+          {
+            "title": "Longest Repeating Character Replacement",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/longest-repeating-character-replacement/"
+          },
+          {
+            "title": "Fruit Into Baskets",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/fruit-into-baskets/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Count Complete Substrings",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/count-complete-substrings/"
+          },
+          {
+            "title": "Longest Semi-Repetitive Substring",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-semi-repetitive-substring/"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "pattern": "Window With Sum / Product Constraints",
+        "description": "For windows where total sum/product must follow a rule.",
+        "practiceProblems": [
+          {
+            "title": "Subarray Product Less Than K",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/subarray-product-less-than-k/"
+          },
+          {
+            "title": "Minimum Size Subarray Sum",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+          },
+          {
+            "title": "Continuous Subarray Sum",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/continuous-subarray-sum/"
+          },
+          {
+            "title": "Subarray Sum Equals K",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/subarray-sum-equals-k/"
+          },
+          {
+            "title": "Maximum Points You Can Obtain from Cards",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "K Divisible Elements Subarrays",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/k-divisible-elements-subarrays/"
+          },
+          {
+            "title": "Maximum Subarray Sum with One Deletion",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "pattern": "Sliding Window with Monotonic Queue (Deque)",
+        "description": "Optimal for max/min in each window.",
+        "practiceProblems": [
+          {
+            "title": "Sliding Window Maximum",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/sliding-window-maximum/"
+          },
+          {
+            "title": "Sliding Window Median",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/sliding-window-median/"
+          },
+          {
+            "title": "Sum of Subarray Minimums",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/sum-of-subarray-minimums/"
+          },
+          {
+            "title": "Constrained Subsequence Sum",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/constrained-subsequence-sum/"
+          },
+          {
+            "title": "Shortest Subarray with Sum at Least K",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Longest Continuous Subarray With Absolute Diff <= Limit",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/"
+          },
+          {
+            "title": "Daily Temperatures",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/daily-temperatures/"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "pattern": "Sliding Window + Prefix Sums",
+        "description": "Used for cumulative or range-based window checks.",
+        "practiceProblems": [
+          {
+            "title": "Subarray Sum Equals K",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/subarray-sum-equals-k/"
+          },
+          {
+            "title": "Continuous Subarray Sum",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/continuous-subarray-sum/"
+          },
+          {
+            "title": "Shortest Subarray With Sum at Least K",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/"
+          },
+          {
+            "title": "Minimum Operations to Reduce X to Zero",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/"
+          },
+          {
+            "title": "Find Pivot Index",
+            "difficulty": "Easy",
+            "link": "https://leetcode.com/problems/find-pivot-index/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Maximum Points You Can Obtain from Cards",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/"
+          },
+          {
+            "title": "Prefix and Suffix Search",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/prefix-and-suffix-search/"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "pattern": "Sliding Window + Two Pointers",
+        "description": "Useful when window depends on sort order or value differences.",
+        "practiceProblems": [
+          {
+            "title": "Longest Continuous Subarray With Absolute Diff <= Limit",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/"
+          },
+          {
+            "title": "Longest Substring with At Most K Distinct Characters",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/"
+          },
+          {
+            "title": "Minimum Window Substring",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/minimum-window-substring/"
+          },
+          {
+            "title": "Maximum Vowels in a Substring of Given Length",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/"
+          },
+          {
+            "title": "Longest Subarray of 1s After Deleting One Element",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Minimum Operations to Reduce X to Zero",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/"
+          },
+          {
+            "title": "Longest Nice Subarray",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-nice-subarray/"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "pattern": "Dual Windows (Two Simultaneous Windows)",
+        "description": "Used when two separate windows track different conditions.",
+        "practiceProblems": [
+          {
+            "title": "Substring With Concatenation of All Words",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/"
+          },
+          {
+            "title": "Number of Substrings Containing All Three Characters",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/"
+          },
+          {
+            "title": "Longest Nice Subarray",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-nice-subarray/"
+          },
+          {
+            "title": "Substring With Largest Variance",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/substring-with-largest-variance/"
+          },
+          {
+            "title": "Longest Substring Without Repeating Characters",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+          }
+        ],
+        "bonusProblems": [
+          {
+            "title": "Count Complete Substrings",
+            "difficulty": "Hard",
+            "link": "https://leetcode.com/problems/count-complete-substrings/"
+          },
+          {
+            "title": "Longest Semi-Repetitive Substring",
+            "difficulty": "Medium",
+            "link": "https://leetcode.com/problems/longest-semi-repetitive-substring/"
+          }
+        ]
+      }
+    ]
+  }
+}

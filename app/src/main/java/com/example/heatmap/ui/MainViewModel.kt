@@ -36,6 +36,12 @@ data class StriverStats(
     val hardDone: Int = 0
 )
 
+data class PatternStats(
+    val totalCount: Int = 0,
+    val completedCount: Int = 0,
+    val percentage: Int = 0
+)
+
 class MainViewModel(
     application: Application,
     private val getProfileUseCase: GetProfileUseCase,
@@ -74,6 +80,23 @@ class MainViewModel(
 
     private val _completedStriverIds = MutableStateFlow<Set<Int>>(emptySet())
     val completedStriverIds: StateFlow<Set<Int>> = _completedStriverIds.asStateFlow()
+
+    // Pattern State
+    private val _patterns = MutableStateFlow<List<PatternSheet>>(emptyList())
+    val patterns: StateFlow<List<PatternSheet>> = _patterns.asStateFlow()
+
+    private val _patternCompletedLinks = MutableStateFlow<Set<String>>(emptySet())
+    val patternCompletedLinks: StateFlow<Set<String>> = _patternCompletedLinks.asStateFlow()
+
+    val patternStats: StateFlow<PatternStats> = combine(_patterns, _patternCompletedLinks) { patterns, completedLinks ->
+        val allProblemLinks = patterns.flatMap { it.practiceProblems + it.bonusProblems }.map { it.link }.distinct()
+        val total = allProblemLinks.size
+        if (total == 0) return@combine PatternStats()
+        
+        val done = allProblemLinks.count { it in completedLinks }
+        val percentage = (done * 100 / total)
+        PatternStats(total, done, percentage)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PatternStats())
 
     val striverStats: StateFlow<StriverStats> = combine(_striverProblems, _completedStriverIds) { problems, completedIds ->
         if (problems.isEmpty()) return@combine StriverStats()
@@ -141,6 +164,8 @@ class MainViewModel(
             launch { loadProblems() }
             launch { loadStriverSheet() }
             launch { loadGfgPotd() }
+            launch { loadPatterns() }
+            launch { loadPatternProgress() }
             
             // Prefetch some problem descriptions in background for offline use
             repository.prefetchProblemDetails(20)
@@ -232,6 +257,40 @@ class MainViewModel(
                 _completedStriverIds.value = entities.filter { it.isCompleted }.map { it.id }.toSet()
             } catch (_: Exception) {
                 // Log error
+            }
+        }
+    }
+
+    private fun loadPatterns() {
+        viewModelScope.launch {
+            try {
+                val jsonString = withContext(Dispatchers.IO) {
+                    getApplication<Application>().assets.open("slidingWindow.json").bufferedReader().use { it.readText() }
+                }
+                val type = object : TypeToken<PatternResponse>() {}.type
+                val response: PatternResponse = withContext(Dispatchers.Default) {
+                    gson.fromJson(jsonString, type)
+                }
+                _patterns.value = response.slidingWindow.patterns
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun loadPatternProgress() {
+        viewModelScope.launch {
+            db.patternProgressDao().getAllProgressFlow().collectLatest { progressList ->
+                _patternCompletedLinks.value = progressList.filter { it.isCompleted }.map { it.link }.toSet()
+            }
+        }
+    }
+
+    fun togglePatternProblem(link: String) {
+        viewModelScope.launch {
+            val isCompleted = link !in _patternCompletedLinks.value
+            withContext(Dispatchers.IO) {
+                db.patternProgressDao().updateProgress(PatternProgressEntity(link, isCompleted))
             }
         }
     }

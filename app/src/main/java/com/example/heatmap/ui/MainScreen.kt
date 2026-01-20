@@ -262,6 +262,7 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
     val striverProblems by viewModel.striverProblems.collectAsStateWithLifecycle()
     val completedStriverIds by viewModel.completedStriverIds.collectAsStateWithLifecycle()
     val selectedProblem by viewModel.selectedProblem.collectAsStateWithLifecycle()
+    val viewingUrl = remember { mutableStateOf<String?>(null) }
 
     val onProblemClick = remember(viewModel) { { problem: com.example.heatmap.domain.Problem -> viewModel.selectProblem(problem) } }
     val onSearch = remember(viewModel) { { query: String -> viewModel.searchProblems(query) } }
@@ -288,6 +289,12 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
                     viewModel = viewModel
                 )
             }
+            ProblemsSection.Patterns -> {
+                PatternsScreen(
+                    viewModel = viewModel,
+                    onProblemClick = { url -> viewingUrl.value = url }
+                )
+            }
         }
     }
 
@@ -296,6 +303,10 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
             problem = problem,
             onDismiss = { viewModel.clearSelectedProblem() }
         )
+    }
+
+    viewingUrl.value?.let { url ->
+        BrowserDialog(url = url, onDismiss = { viewingUrl.value = null })
     }
 }
 

@@ -1,5 +1,7 @@
 package com.example.heatmap.ui
 
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,6 +18,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -63,8 +67,8 @@ fun StriverProgressScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF0d1117)),
-        contentPadding = PaddingValues(12.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         // 1. Overall Progress Header
         item {
@@ -96,53 +100,67 @@ fun StriverProgressScreen(
                 )
             }
 
-            if (isExpanded) {
-                val subGrouped = sectionProblems.groupBy { it.subSection }
-                subGrouped.forEach { (subSection, subProblems) ->
-                    val isGeneral = subSection.equals("General", ignoreCase = true)
-                    val subSectionKey = "${section}_$subSection"
-                    val isSubExpanded = isGeneral || subSectionKey in expandedSubSections || searchQuery.isNotEmpty()
+            item {
+                AnimatedVisibility(
+                    visible = isExpanded,
+                    enter = expandVertically() + fadeIn(),
+                    exit = shrinkVertically() + fadeOut()
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(top = 4.dp)) {
+                        val subGrouped = sectionProblems.groupBy { it.subSection }
+                        subGrouped.forEach { (subSection, subProblems) ->
+                            val isGeneral = subSection.equals("General", ignoreCase = true)
+                            val subSectionKey = "${section}_$subSection"
+                            val isSubExpanded = isGeneral || subSectionKey in expandedSubSections || searchQuery.isNotEmpty()
 
-                    if (!isGeneral) {
-                        item(key = "sub_${section}_$subSection") {
-                            SubSectionHeader(
-                                title = subSection,
-                                isExpanded = isSubExpanded,
-                                onToggle = {
-                                    expandedSubSections = if (isSubExpanded) {
-                                        expandedSubSections - subSectionKey
-                                    } else {
-                                        expandedSubSections + subSectionKey
-                                    }
-                                }
-                            )
-                        }
-                    }
-
-                    if (isSubExpanded) {
-                        items(subProblems, key = { it.id }) { problem ->
-                            TopicRow(
-                                problem = problem,
-                                isCompleted = problem.id in completedIds,
-                                onToggle = { onToggleProblem(problem.id) },
-                                onProblemClick = { 
-                                    problem.toLeetCodeProblem()?.let { onProblemClick(it) } ?: run {
-                                        if (problem.solveUrl.isNotEmpty()) {
-                                            viewingUrl = problem.solveUrl
+                            if (!isGeneral) {
+                                SubSectionHeader(
+                                    title = subSection,
+                                    isExpanded = isSubExpanded,
+                                    onToggle = {
+                                        expandedSubSections = if (isSubExpanded) {
+                                            expandedSubSections - subSectionKey
+                                        } else {
+                                            expandedSubSections + subSectionKey
                                         }
                                     }
-                                },
-                                onSolve = {
-                                    if (problem.solveUrl.isNotEmpty()) {
-                                        viewingUrl = problem.solveUrl
+                                )
+                            }
+
+                            AnimatedVisibility(
+                                visible = isSubExpanded,
+                                enter = expandVertically() + fadeIn(),
+                                exit = shrinkVertically() + fadeOut()
+                            ) {
+                                Column(verticalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(start = 8.dp)) {
+                                    subProblems.forEach { problem ->
+                                        TopicRow(
+                                            problem = problem,
+                                            isCompleted = problem.id in completedIds,
+                                            onToggle = { onToggleProblem(problem.id) },
+                                            onProblemClick = { 
+                                                problem.toLeetCodeProblem()?.let { onProblemClick(it) } ?: run {
+                                                    if (problem.solveUrl.isNotEmpty()) {
+                                                        viewingUrl = problem.solveUrl
+                                                    }
+                                                }
+                                            },
+                                            onSolve = {
+                                                if (problem.solveUrl.isNotEmpty()) {
+                                                    viewingUrl = problem.solveUrl
+                                                }
+                                            }
+                                        )
                                     }
                                 }
-                            )
+                            }
                         }
                     }
                 }
             }
         }
+        
+        item { Spacer(Modifier.height(24.dp)) }
     }
 
     viewingUrl?.let { url ->
@@ -151,78 +169,101 @@ fun StriverProgressScreen(
 }
 
 @Composable
-private fun StriverSummaryHeader(stats: StriverStats) {
+private fun StriverSummaryHeader(stats: com.example.heatmap.ui.StriverStats) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22)),
-        shape = RoundedCornerShape(12.dp),
-        modifier = Modifier.fillMaxWidth()
+        shape = RoundedCornerShape(16.dp),
+        modifier = Modifier.fillMaxWidth(),
+        border = BorderStroke(1.dp, Color(0xFF30363d))
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
-                    Text(
-                        text = "Striver A2Z Sheet",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(LeetCodeOrange.copy(alpha = 0.08f), Color.Transparent)
+                        )
                     )
-                    Text(
-                        text = "${stats.completedTotal} / ${stats.totalCount} Problems Solved",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Gray
-                    )
-                }
-                Text(
-                    text = "${stats.percentage}%",
-                    fontSize = 32.sp,
-                    fontWeight = FontWeight.Black,
-                    color = LeetCodeOrange
-                )
-            }
-            
-            Spacer(Modifier.height(12.dp))
-            
-            LinearProgressIndicator(
-                progress = { stats.percentage / 100f },
-                modifier = Modifier.fillMaxWidth().height(6.dp).clip(CircleShape),
-                color = LeetCodeOrange,
-                trackColor = Color(0xFF0d1117)
             )
             
-            Spacer(Modifier.height(16.dp))
-            
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                DifficultyPill("EASY", stats.easyDone, stats.easyTotal, LeetCodeGreen)
-                DifficultyPill("MEDIUM", stats.mediumDone, stats.mediumTotal, LeetCodeYellow)
-                DifficultyPill("HARD", stats.hardDone, stats.hardTotal, LeetCodeRed)
+            Column(modifier = Modifier.padding(20.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "A2Z Progress",
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "Striver's SDE Sheet",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Gray
+                        )
+                    }
+                    
+                    Column(horizontalAlignment = Alignment.End) {
+                        Text(
+                            text = "${stats.percentage}%",
+                            fontSize = 36.sp,
+                            fontWeight = FontWeight.Black,
+                            color = LeetCodeOrange
+                        )
+                        Text(
+                            text = "${stats.completedTotal}/${stats.totalCount} SOLVED",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = LeetCodeOrange.copy(alpha = 0.7f),
+                            letterSpacing = 1.sp
+                        )
+                    }
+                }
+                
+                Spacer(Modifier.height(20.dp))
+                
+                LinearProgressIndicator(
+                    progress = { stats.percentage / 100f },
+                    modifier = Modifier.fillMaxWidth().height(10.dp).clip(CircleShape),
+                    color = LeetCodeOrange,
+                    trackColor = Color(0xFF0d1117)
+                )
+                
+                Spacer(Modifier.height(20.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    DifficultyChip("Easy", stats.easyDone, stats.easyTotal, LeetCodeGreen)
+                    DifficultyChip("Medium", stats.mediumDone, stats.mediumTotal, LeetCodeYellow)
+                    DifficultyChip("Hard", stats.hardDone, stats.hardTotal, LeetCodeRed)
+                }
             }
         }
     }
 }
 
 @Composable
-private fun DifficultyPill(label: String, done: Int, total: Int, color: Color) {
+private fun DifficultyChip(label: String, done: Int, total: Int, color: Color) {
     Surface(
-        color = color.copy(alpha = 0.1f),
-        shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, color.copy(alpha = 0.2f))
+        color = color.copy(alpha = 0.05f),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(1.dp, color.copy(alpha = 0.15f))
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(Modifier.size(6.dp).background(color, CircleShape))
-            Spacer(Modifier.width(6.dp))
+            Spacer(Modifier.width(8.dp))
             Text(
-                text = "$label: $done/$total",
-                fontSize = 10.sp,
+                text = "$label $done/$total",
+                fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 color = color
             )
@@ -236,21 +277,23 @@ private fun SearchAndFilterBar(query: String, onQueryChange: (String) -> Unit) {
         value = query,
         onValueChange = onQueryChange,
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text("Search problems...", fontSize = 14.sp) },
-        leadingIcon = { Icon(Icons.Default.Search, null, modifier = Modifier.size(20.dp)) },
+        placeholder = { Text("Filter sheet problems...", color = Color.Gray) },
+        leadingIcon = { Icon(Icons.Default.Search, null, tint = LeetCodeOrange, modifier = Modifier.size(20.dp)) },
         trailingIcon = {
             if (query.isNotEmpty()) {
                 IconButton(onClick = { onQueryChange("") }) {
-                    Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp))
+                    Icon(Icons.Default.Close, null, tint = Color.Gray, modifier = Modifier.size(18.dp))
                 }
             }
         },
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = LeetCodeOrange,
+            focusedBorderColor = LeetCodeOrange.copy(alpha = 0.5f),
             unfocusedBorderColor = Color(0xFF30363d),
             focusedContainerColor = Color(0xFF161b22),
-            unfocusedContainerColor = Color(0xFF161b22)
+            unfocusedContainerColor = Color(0xFF161b22),
+            focusedTextColor = Color.White,
+            unfocusedTextColor = Color.White
         ),
         singleLine = true
     )
@@ -264,19 +307,43 @@ private fun SectionAccordionHeader(
     isExpanded: Boolean,
     onToggle: () -> Unit
 ) {
-    Card(
+    val rotation by animateFloatAsState(if (isExpanded) 0f else -90f, label = "rotation")
+    val isFullySolved = completed == total && total > 0
+
+    Surface(
         onClick = onToggle,
-        colors = CardDefaults.cardColors(
-            containerColor = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22)
-        ),
-        shape = RoundedCornerShape(8.dp),
+        color = if (isExpanded) Color(0xFF21262d) else Color(0xFF161b22),
+        shape = RoundedCornerShape(12.dp),
+        border = if (isExpanded) BorderStroke(1.dp, LeetCodeOrange.copy(alpha = 0.2f)) else null,
         modifier = Modifier.fillMaxWidth()
     ) {
         Row(
-            modifier = Modifier.padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
+            Box(
+                modifier = Modifier
+                    .size(32.dp)
+                    .background(
+                        if (isFullySolved) LeetCodeGreen.copy(alpha = 0.1f) else Color(0xFF0d1117),
+                        CircleShape
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                if (isFullySolved) {
+                    Icon(Icons.Default.Check, null, tint = LeetCodeGreen, modifier = Modifier.size(16.dp))
+                } else {
+                    Text(
+                        text = title.take(1).uppercase(),
+                        color = if (isExpanded) LeetCodeOrange else Color.Gray,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp
+                    )
+                }
+            }
+            
+            Spacer(Modifier.width(12.dp))
+            
             Text(
                 text = title,
                 color = Color.White,
@@ -286,21 +353,28 @@ private fun SectionAccordionHeader(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            
+            Surface(
+                color = if (isFullySolved) LeetCodeGreen.copy(alpha = 0.1f) else Color(0xFF0d1117),
+                shape = CircleShape
+            ) {
                 Text(
                     text = "$completed/$total",
-                    color = if (completed == total) LeetCodeGreen else Color.Gray,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(Modifier.width(8.dp))
-                Icon(
-                    imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = null,
-                    tint = Color.Gray,
-                    modifier = Modifier.size(20.dp)
+                    color = if (isFullySolved) LeetCodeGreen else Color.Gray,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                 )
             }
+            
+            Spacer(Modifier.width(8.dp))
+            
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowDown,
+                contentDescription = null,
+                tint = if (isExpanded) LeetCodeOrange else Color.Gray,
+                modifier = Modifier.size(20.dp).rotate(rotation)
+            )
         }
     }
 }
@@ -315,22 +389,27 @@ private fun SubSectionHeader(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onToggle)
-            .padding(start = 8.dp, top = 12.dp, bottom = 8.dp, end = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+            .padding(horizontal = 8.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
+        Box(
+            modifier = Modifier
+                .size(4.dp, 12.dp)
+                .background(if (isExpanded) LeetCodeOrange else Color.Gray, RoundedCornerShape(2.dp))
+        )
+        Spacer(Modifier.width(8.dp))
         Text(
             text = title.uppercase(),
             fontSize = 11.sp,
             fontWeight = FontWeight.Black,
-            color = if (isExpanded) LeetCodeOrange.copy(alpha = 0.8f) else Color.Gray,
+            color = if (isExpanded) Color.White else Color.Gray,
             letterSpacing = 1.sp,
             modifier = Modifier.weight(1f)
         )
         Icon(
             imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
             contentDescription = null,
-            tint = Color.Gray,
+            tint = Color.Gray.copy(alpha = 0.5f),
             modifier = Modifier.size(16.dp)
         )
     }
@@ -350,54 +429,60 @@ private fun TopicRow(
         else -> LeetCodeRed
     }
 
-    Card(
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF161b22).copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(8.dp),
-        modifier = Modifier.fillMaxWidth(),
-        border = if (isCompleted) BorderStroke(1.dp, LeetCodeGreen.copy(alpha = 0.1f)) else null
+    Surface(
+        color = if (isCompleted) Color.Transparent else Color(0xFF161b22).copy(alpha = 0.6f),
+        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
-            modifier = Modifier.padding(10.dp).fillMaxWidth(),
+            modifier = Modifier.padding(end = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // 1. Status Toggle
-            IconButton(onClick = onToggle, modifier = Modifier.size(28.dp)) {
+            IconButton(onClick = onToggle, modifier = Modifier.size(44.dp)) {
                 Icon(
                     imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.RadioButtonUnchecked,
                     contentDescription = null,
-                    tint = if (isCompleted) LeetCodeGreen else Color.Gray,
+                    tint = if (isCompleted) LeetCodeGreen else Color.Gray.copy(alpha = 0.4f),
                     modifier = Modifier.size(24.dp)
                 )
             }
 
-            Spacer(Modifier.width(8.dp))
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onProblemClick)
+                    .padding(vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = problem.title,
+                        fontSize = 14.sp,
+                        fontWeight = if (isCompleted) FontWeight.Normal else FontWeight.SemiBold,
+                        color = if (isCompleted) Color.Gray else Color.White,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 2.dp)) {
+                        Box(Modifier.size(6.dp).background(difficultyColor, CircleShape))
+                        Spacer(Modifier.width(6.dp))
+                        Text(
+                            text = problem.difficulty,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = difficultyColor.copy(alpha = 0.8f)
+                        )
+                    }
+                }
 
-            // 2. Title & Difficulty
-            Column(modifier = Modifier.weight(1f).clickable(onClick = onProblemClick)) {
-                Text(
-                    text = problem.title,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = if (isCompleted) Color.Gray else Color.White,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = problem.difficulty,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = difficultyColor
-                )
-            }
-
-            // 3. Solve Action
-            IconButton(onClick = onSolve, modifier = Modifier.size(32.dp)) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = "Solve",
-                    tint = Color.Gray,
-                    modifier = Modifier.size(20.dp)
-                )
+                IconButton(onClick = onSolve, modifier = Modifier.size(32.dp)) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = "Solve",
+                        tint = Color.Gray.copy(alpha = 0.3f),
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
             }
         }
     }
