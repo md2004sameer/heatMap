@@ -365,6 +365,22 @@ class MainViewModel(
         }
     }
 
+    suspend fun getPreference(key: String): String? {
+        return withContext(Dispatchers.IO) {
+            db.preferenceDao().getPreference(key)
+        }
+    }
+
+    fun applyWallpaperNow(target: Int) {
+        val state = _uiState.value
+        if (state is UiState.Success) {
+            viewModelScope.launch {
+                setPreference("wallpaper_target", target.toString())
+                WallpaperUtils.applyWallpaper(getApplication(), state.data, target)
+            }
+        }
+    }
+
     // Training Plan Operations
     private suspend fun checkOnboarding() {
         val lastUsername = withContext(Dispatchers.IO) {

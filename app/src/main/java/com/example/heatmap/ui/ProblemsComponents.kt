@@ -1,13 +1,9 @@
 package com.example.heatmap.ui
 
-import android.content.Intent
-import android.net.Uri
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.animation.*
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,7 +16,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -139,7 +134,7 @@ fun ProblemItem(problem: Problem, onClick: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
-    val context = LocalContext.current
+    var showBrowser by remember { mutableStateOf(false) }
     
     Dialog(
         onDismissRequest = onDismiss,
@@ -181,8 +176,7 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                 ) {
                     Button(
                         onClick = {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://leetcode.com/problems/${problem.slug}/"))
-                            context.startActivity(intent)
+                            showBrowser = true
                         },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -334,5 +328,12 @@ fun ProblemDetailDialog(problem: Problem, onDismiss: () -> Unit) {
                 )
             }
         }
+    }
+
+    if (showBrowser) {
+        BrowserDialog(
+            url = "https://leetcode.com/problems/${problem.slug}/",
+            onDismiss = { showBrowser = false }
+        )
     }
 }

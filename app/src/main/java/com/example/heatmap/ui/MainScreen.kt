@@ -433,7 +433,7 @@ fun WallpaperModule(viewModel: MainViewModel) {
             onDismiss = { showWallpaperOptions.value = false },
             onApply = { flag: Int ->
                 showWallpaperOptions.value = false
-                viewModel.setPreference("wallpaper_target", flag.toString())
+                viewModel.applyWallpaperNow(flag)
             }
         )
     }
@@ -445,15 +445,18 @@ fun WallpaperModule(viewModel: MainViewModel) {
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Daily Wallpaper", style = MaterialTheme.typography.titleMedium, color = Color.White)
-            Text("Update your home screen with daily stats.", color = Color.Gray, fontSize = 12.sp)
-            Spacer(Modifier.height(12.dp))
+            Text("Keep your progress on your home screen.", color = Color.Gray, fontSize = 12.sp)
+            Spacer(Modifier.height(16.dp))
+            
             Button(
                 onClick = { showWallpaperOptions.value = true },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("Setup Wallpaper", color = Color.Black)
+                Icon(Icons.Default.Wallpaper, null, modifier = Modifier.size(18.dp), tint = Color.Black)
+                Spacer(Modifier.width(8.dp))
+                Text("Set Wallpaper Now", color = Color.Black)
             }
         }
     }
@@ -463,13 +466,43 @@ fun WallpaperModule(viewModel: MainViewModel) {
 fun WallpaperSelectionDialog(onDismiss: () -> Unit, onApply: (Int) -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Select Target") },
-        text = { Text("Where do you want to apply the wallpaper?") },
-        confirmButton = {
-            TextButton(onClick = { onApply(1) }) { Text("Home Screen") }
+        title = { Text("Where to apply?") },
+        text = {
+            Column {
+                Text("Select target screen:")
+                Spacer(Modifier.height(16.dp))
+                
+                OutlinedButton(
+                    onClick = { onApply(1) }, // FLAG_SYSTEM
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text("Home Screen")
+                }
+                Spacer(Modifier.height(8.dp))
+                
+                OutlinedButton(
+                    onClick = { onApply(2) }, // FLAG_LOCK
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text("Lock Screen")
+                }
+                Spacer(Modifier.height(8.dp))
+                
+                Button(
+                    onClick = { onApply(3) }, // Both
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text("Both", color = Color.Black)
+                }
+            }
         },
+        confirmButton = {},
         dismissButton = {
-            TextButton(onClick = { onApply(2) }) { Text("Both") }
+            TextButton(onClick = onDismiss) { Text("Cancel") }
         }
     )
 }
