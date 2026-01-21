@@ -38,7 +38,6 @@ interface GfgDao {
 @Database(
     entities = [
         CachedLeetCodeData::class,
-        Folder::class,
         Note::class,
         ProblemEntity::class,
         GfgPotdEntity::class,
@@ -49,7 +48,7 @@ interface GfgDao {
         PatternProgressEntity::class,
         TaskEntity::class
     ],
-    version = 8,
+    version = 9,
     exportSchema = false
 )
 abstract class LeetCodeDatabase : RoomDatabase() {

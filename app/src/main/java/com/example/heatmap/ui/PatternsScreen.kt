@@ -26,19 +26,22 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.heatmap.domain.Problem
 import com.example.heatmap.ui.theme.LeetCodeGreen
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.LeetCodeRed
 import com.example.heatmap.ui.theme.LeetCodeYellow
+import java.util.Locale
 
 @Composable
 fun PatternsScreen(
     viewModel: MainViewModel,
-    onProblemClick: (String) -> Unit
+    onProblemClick: (Problem) -> Unit
 ) {
     val patterns by viewModel.patterns.collectAsStateWithLifecycle()
     val completedLinks by viewModel.patternCompletedLinks.collectAsStateWithLifecycle()
     val stats by viewModel.patternStats.collectAsStateWithLifecycle()
+    val allProblems by viewModel.problems.collectAsStateWithLifecycle()
     
     var expandedPatternId by remember { mutableStateOf<Int?>(null) }
     var isSlidingWindowExpanded by remember { mutableStateOf(true) }
@@ -50,7 +53,6 @@ fun PatternsScreen(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // 1. Overall Progress Tracker
         item {
             PatternProgressHeader(stats)
         }
@@ -78,7 +80,20 @@ fun PatternsScreen(
                         onToggle = {
                             expandedPatternId = if (expandedPatternId == pattern.id) null else pattern.id
                         },
-                        onProblemClick = onProblemClick,
+                        onProblemClick = { link ->
+                            val slug = link.substringAfter("/problems/").substringBefore("/")
+                            val problem = allProblems.find { it.slug == slug } ?: Problem(
+                                id = "",
+                                frontendId = "",
+                                title = slug.replace("-", " ").replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() },
+                                slug = slug,
+                                difficulty = "Unknown",
+                                isPaidOnly = false,
+                                acRate = 0.0,
+                                tags = emptyList()
+                            )
+                            onProblemClick(problem)
+                        },
                         onToggleProblem = { viewModel.togglePatternProblem(it) }
                     )
                 }
@@ -98,7 +113,6 @@ private fun PatternProgressHeader(stats: PatternStats) {
         border = BorderStroke(1.dp, Color(0xFF30363d))
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
-            // Subtle Background Gradient
             Box(
                 modifier = Modifier
                     .matchParentSize()

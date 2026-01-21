@@ -8,6 +8,7 @@ import com.example.heatmap.domain.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -128,20 +129,14 @@ class MainViewModel(
     val gfgPotdList: StateFlow<List<GfgPotdEntity>> = _gfgPotdList.asStateFlow()
 
     // Notes State
-    private val notesDao = db.notesDao()
-    private val _folders = MutableStateFlow<List<Folder>>(emptyList())
-    val folders: StateFlow<List<Folder>> = _folders.asStateFlow()
-
-    private val _currentNotes = MutableStateFlow<List<Note>>(emptyList())
-    val currentNotes: StateFlow<List<Note>> = _currentNotes.asStateFlow()
-
-    private val _selectedFolderId = MutableStateFlow<String?>(null)
-    val selectedFolderId: StateFlow<String?> = _selectedFolderId.asStateFlow()
+    val allNotes: StateFlow<List<Note>> = db.notesDao().getAllNotesFlow()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     // Minimalist To-Do State
     private val _todoFilter = MutableStateFlow("All")
     val todoFilter: StateFlow<String> = _todoFilter.asStateFlow()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val allTasks: StateFlow<List<TaskEntity>> = _todoFilter.flatMapLatest { filter ->
         when (filter) {
             "Active" -> db.taskDao().selectActive()
@@ -172,7 +167,6 @@ class MainViewModel(
         viewModelScope.launch {
             checkOnboarding()
             launch { loadTrainingPlan() }
-            launch { loadFolders() }
             launch { loadProblems() }
             launch { loadStriverSheet() }
             launch { loadGfgPotd() }
@@ -352,78 +346,28 @@ class MainViewModel(
         _selectedProblem.value = null
     }
 
-    private fun loadFolders() {
+    // Minimalist Note Operations
+    fun insertNote(note: Note) {
         viewModelScope.launch {
-            try {
-                val folderList = withContext(Dispatchers.IO) {
-                    notesDao.getAllFolders()
-                }
-                if (folderList.isEmpty()) {
-                    val defaultFolder = Folder(UUID.randomUUID().toString(), "All Notes")
-                    withContext(Dispatchers.IO) {
-                        notesDao.insertFolder(defaultFolder)
-                    }
-                    _folders.value = listOf(defaultFolder)
-                    selectFolder(defaultFolder.id)
-                } else {
-                    _folders.value = folderList
-                    selectFolder(folderList.first().id)
-                }
-            } catch (_: Exception) {
-            }
-        }
-    }
-
-    fun selectFolder(folderId: String) {
-        _selectedFolderId.value = folderId
-        viewModelScope.launch {
-            _currentNotes.value = withContext(Dispatchers.IO) {
-                notesDao.getNotesInFolder(folderId)
-            }
-        }
-    }
-
-    fun createFolder(name: String) {
-        viewModelScope.launch {
-            val newFolder = Folder(UUID.randomUUID().toString(), name)
             withContext(Dispatchers.IO) {
-                notesDao.insertFolder(newFolder)
+                db.notesDao().insertNote(note)
             }
-            loadFolders()
-        }
-    }
-
-    fun createNote(folderId: String, title: String = "New Note", body: String = "") {
-        viewModelScope.launch {
-            val newNote = Note(
-                id = UUID.randomUUID().toString(),
-                folderId = folderId,
-                title = title,
-                body = body,
-                tags = ""
-            )
-            withContext(Dispatchers.IO) {
-                notesDao.insertNote(newNote)
-            }
-            selectFolder(folderId)
         }
     }
 
     fun updateNote(note: Note) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                notesDao.insertNote(note.copy(updatedAt = System.currentTimeMillis()))
+                db.notesDao().updateNote(note)
             }
-            selectFolder(note.folderId)
         }
     }
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                notesDao.deleteNote(note)
+                db.notesDao().deleteNote(note)
             }
-            selectFolder(note.folderId)
         }
     }
 

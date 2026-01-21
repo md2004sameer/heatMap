@@ -4,6 +4,8 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -20,13 +22,34 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.heatmap.*
 import com.example.heatmap.ui.theme.LeetCodeOrange
 import com.example.heatmap.ui.theme.Typography
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val currentScreen by viewModel.currentScreen.collectAsStateWithLifecycle()
+    val scope = rememberCoroutineScope()
     
+    val allScreens = Screen.all
+    val pagerState = rememberPagerState(pageCount = { allScreens.size })
+
+    // Sync pager state with currentScreen from ViewModel
+    LaunchedEffect(currentScreen) {
+        val targetPage = allScreens.indexOf(currentScreen)
+        if (targetPage != -1 && pagerState.currentPage != targetPage) {
+            pagerState.animateScrollToPage(targetPage)
+        }
+    }
+
+    // Sync currentScreen in ViewModel with pager state
+    LaunchedEffect(pagerState.currentPage) {
+        val newScreen = allScreens[pagerState.currentPage]
+        if (newScreen != currentScreen) {
+            viewModel.navigateTo(newScreen)
+        }
+    }
+
     val onNavigate = remember(viewModel) { { screen: Screen -> viewModel.navigateTo(screen) } }
 
     Scaffold(
@@ -68,7 +91,20 @@ fun MainScreen(viewModel: MainViewModel) {
                     }
                 }
                 is UiState.Success -> {
-                    ContentSwitcher(state.data, currentScreen, viewModel)
+                    HorizontalPager(
+                        state = pagerState,
+                        modifier = Modifier.fillMaxSize(),
+                        beyondViewportPageCount = 1
+                    ) { page ->
+                        val screen = allScreens[page]
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            when (screen) {
+                                is Screen.Profile -> ProfileContent(state.data, screen.section, viewModel)
+                                is Screen.Problems -> ProblemsHubContent(viewModel, screen.section)
+                                is Screen.Productivity -> ProductivityHubContent(screen.section, viewModel, state.data)
+                            }
+                        }
+                    }
                 }
                 else -> {}
             }
@@ -89,12 +125,12 @@ fun DualBottomNavigation(
             .padding(bottom = 8.dp)
     ) {
         // Top Bar: Dynamic Sub-sections
-        AnimatedVisibility(visible = currentScreen is Screen.Profile || currentScreen is Screen.Problems) {
+        AnimatedVisibility(visible = currentScreen is Screen.Profile || currentScreen is Screen.Problems || currentScreen is Screen.Productivity) {
             val tabs = remember(currentScreen) {
                 when (currentScreen) {
                     is Screen.Profile -> ProfileSection.all.map { it.title to { onNavigate(Screen.Profile(it)) } }
                     is Screen.Problems -> ProblemsSection.all.map { it.title to { onNavigate(Screen.Problems(it)) } }
-                    else -> emptyList()
+                    is Screen.Productivity -> ProductivitySection.all.map { it.title to { onNavigate(Screen.Productivity(it)) } }
                 }
             }
             
@@ -103,7 +139,7 @@ fun DualBottomNavigation(
                     when (currentScreen) {
                         is Screen.Profile -> ProfileSection.all.indexOfFirst { currentScreen.section == it }
                         is Screen.Problems -> ProblemsSection.all.indexOfFirst { currentScreen.section == it }
-                        else -> 0
+                        is Screen.Productivity -> ProductivitySection.all.indexOfFirst { currentScreen.section == it }
                     }.coerceAtLeast(0)
                 }
             }
@@ -120,7 +156,7 @@ fun DualBottomNavigation(
                     when (currentScreen) {
                         is Screen.Profile -> ProfileSection.all.map { it.icon }
                         is Screen.Problems -> ProblemsSection.all.map { it.icon }
-                        else -> emptyList()
+                        is Screen.Productivity -> ProductivitySection.all.map { it.icon }
                     }
                 }
 
@@ -238,25 +274,6 @@ fun NavigationItem(
 }
 
 @Composable
-fun ContentSwitcher(data: LeetCodeData, currentScreen: Screen, viewModel: MainViewModel) {
-    AnimatedContent(
-        targetState = currentScreen,
-        transitionSpec = {
-            fadeIn() togetherWith fadeOut()
-        },
-        label = "ContentTransition"
-    ) { screen ->
-        Column(modifier = Modifier.fillMaxSize()) {
-            when (screen) {
-                is Screen.Profile -> ProfileContent(data, screen.section, viewModel)
-                is Screen.Problems -> ProblemsHubContent(viewModel, screen.section)
-                is Screen.Productivity -> ProductivityHubContent(screen.section, viewModel, data)
-            }
-        }
-    }
-}
-
-@Composable
 fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
     val problems by viewModel.problems.collectAsStateWithLifecycle()
     val striverProblems by viewModel.striverProblems.collectAsStateWithLifecycle()
@@ -292,7 +309,7 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
             ProblemsSection.Patterns -> {
                 PatternsScreen(
                     viewModel = viewModel,
-                    onProblemClick = { url -> viewingUrl.value = url }
+                    onProblemClick = onProblemClick
                 )
             }
         }
@@ -314,23 +331,8 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
 fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         // Sub-tabs for Productivity
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ProductivitySection.all.forEach { s ->
-                val isSelected = section == s
-                FilterChip(
-                    selected = isSelected,
-                    onClick = { viewModel.navigateTo(Screen.Productivity(s)) },
-                    label = { Text(s.title) },
-                    colors = FilterChipDefaults.filterChipColors(
-                        selectedContainerColor = LeetCodeOrange.copy(alpha = 0.2f),
-                        selectedLabelColor = LeetCodeOrange
-                    )
-                )
-            }
-        }
+        Text(section.title, style = Typography.headlineMedium, color = Color.White)
+        Spacer(Modifier.height(16.dp))
 
         when (section) {
             ProductivitySection.Todo -> {

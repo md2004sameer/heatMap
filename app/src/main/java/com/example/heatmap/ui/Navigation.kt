@@ -45,4 +45,15 @@ sealed class Screen {
     data class Profile(val section: ProfileSection) : Screen()
     data class Problems(val section: ProblemsSection) : Screen()
     data class Productivity(val section: ProductivitySection) : Screen()
+
+    companion object {
+        // Use lazy initialization with a safer approach to avoid circular dependency or race conditions
+        val all: List<Screen> by lazy {
+            val list = mutableListOf<Screen>()
+            list.addAll(ProfileSection.all.map { Profile(it) })
+            list.addAll(ProblemsSection.all.map { Problems(it) })
+            list.addAll(ProductivitySection.all.map { Productivity(it) })
+            list
+        }
+    }
 }

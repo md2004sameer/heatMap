@@ -1,14 +1,12 @@
 package com.example.heatmap.ui
 
-import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.NoteAdd
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -29,114 +27,61 @@ import java.util.*
 
 @Composable
 fun NotesModuleSection(viewModel: MainViewModel) {
-    val folders by viewModel.folders.collectAsStateWithLifecycle()
-    val notes by viewModel.currentNotes.collectAsStateWithLifecycle()
-    val selectedFolderId by viewModel.selectedFolderId.collectAsStateWithLifecycle()
-    
+    val notes by viewModel.allNotes.collectAsStateWithLifecycle()
     var showEditorByNote by remember { mutableStateOf<Note?>(null) }
-    var showFolderDialog by remember { mutableStateOf(false) }
 
-    if (showEditorByNote != null) {
+    showEditorByNote?.let { selectedNote ->
         NoteEditorDialog(
-            note = showEditorByNote!!,
+            note = selectedNote,
             onDismiss = { showEditorByNote = null },
             onSave = { updatedNote -> 
                 viewModel.updateNote(updatedNote)
-                showEditorByNote = null
             }
         )
     }
 
-    if (showFolderDialog) {
-        CreateFolderDialog(
-            onDismiss = { showFolderDialog = false },
-            onConfirm = { name ->
-                viewModel.createFolder(name)
-                showFolderDialog = false
+    Scaffold(
+        topBar = {
+            Text(
+                "Notes",
+                modifier = Modifier.padding(16.dp),
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Black,
+                color = Color.White
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    val newNote = Note(id = UUID.randomUUID().toString(), title = "", content = "")
+                    viewModel.insertNote(newNote)
+                    showEditorByNote = newNote
+                },
+                containerColor = LeetCodeOrange,
+                contentColor = Color.Black
+            ) {
+                Icon(Icons.Default.Add, contentDescription = "Add Note")
             }
-        )
-    }
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Header
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column {
-                Text("Notebook", fontSize = 24.sp, fontWeight = FontWeight.Black, color = Color.White)
-                Text("${notes.size} notes in ${folders.find { it.id == selectedFolderId }?.name ?: "folder"}", 
-                    fontSize = 12.sp, color = Color.Gray)
-            }
-            
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Surface(
-                    onClick = { showFolderDialog = true },
-                    color = Color(0xFF161b22),
-                    shape = CircleShape,
-                    modifier = Modifier.size(40.dp)
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(Icons.Default.CreateNewFolder, null, tint = Color.Gray, modifier = Modifier.size(20.dp))
-                    }
-                }
-                
-                Surface(
-                    onClick = { selectedFolderId?.let { viewModel.createNote(it) } },
-                    color = LeetCodeOrange,
-                    shape = CircleShape,
-                    modifier = Modifier.size(40.dp)
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(Icons.Default.Add, null, tint = Color.Black, modifier = Modifier.size(24.dp))
-                    }
-                }
-            }
-        }
-
-        // Horizontal Folders List - Minimalist
-        Row(
-            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(bottom = 20.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            folders.forEach { folder ->
-                val isSelected = selectedFolderId == folder.id
-                Column(
-                    modifier = Modifier.clickable { viewModel.selectFolder(folder.id) },
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = folder.name,
-                        color = if (isSelected) LeetCodeOrange else Color.Gray,
-                        fontSize = 14.sp,
-                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
-                    )
-                    AnimatedVisibility(visible = isSelected) {
-                        Box(Modifier.padding(top = 4.dp).size(4.dp).background(LeetCodeOrange, CircleShape))
-                    }
-                }
-            }
-        }
-
-        // Notes List - High Level Design
+        },
+        containerColor = Color.Transparent
+    ) { paddingValues ->
         if (notes.isEmpty()) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(Icons.AutoMirrored.Filled.NoteAdd, null, tint = Color(0xFF21262d), modifier = Modifier.size(64.dp))
-                    Spacer(Modifier.height(12.dp))
-                    Text("Capture your thoughts", color = Color.Gray, fontSize = 14.sp)
-                }
+            Box(
+                modifier = Modifier.fillMaxSize().padding(paddingValues),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Zero notes. Tap + to start.", color = Color.Gray)
             }
         } else {
             LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxSize().padding(paddingValues),
+                contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(notes, key = { it.id }) { note ->
                     MinimalistNoteItem(
-                        note = note, 
-                        onClick = { showEditorByNote = note }, 
+                        note = note,
+                        onClick = { showEditorByNote = note },
                         onDelete = { viewModel.deleteNote(note) }
                     )
                 }
@@ -146,7 +91,7 @@ fun NotesModuleSection(viewModel: MainViewModel) {
 }
 
 @Composable
-fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
+private fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
     Surface(
         onClick = onClick,
         color = Color(0xFF161b22),
@@ -159,7 +104,7 @@ fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = note.title.ifBlank { "Untitled Note" },
+                    text = note.title.ifBlank { note.content.lineSequence().firstOrNull() ?: "Untitled Note" },
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
@@ -167,14 +112,6 @@ fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(Modifier.height(4.dp))
-                Text(
-                    text = note.body.ifBlank { "No additional text" },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = Color.Gray,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Spacer(Modifier.height(8.dp))
                 val date = remember(note.updatedAt) {
                     SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date(note.updatedAt))
                 }
@@ -191,7 +128,14 @@ fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
 @Composable
 fun NoteEditorDialog(note: Note, onDismiss: () -> Unit, onSave: (Note) -> Unit) {
     var title by remember { mutableStateOf(note.title) }
-    var body by remember { mutableStateOf(note.body) }
+    var content by remember { mutableStateOf(note.content) }
+
+    // Auto-save logic
+    LaunchedEffect(title, content) {
+        if (title != note.title || content != note.content) {
+            onSave(note.copy(title = title, content = content, updatedAt = System.currentTimeMillis()))
+        }
+    }
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -202,22 +146,16 @@ fun NoteEditorDialog(note: Note, onDismiss: () -> Unit, onSave: (Note) -> Unit) 
             color = Color(0xFF0d1117)
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
-                // Editor Toolbar
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = onDismiss) {
-                        Icon(Icons.Default.Close, null, tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White)
                     }
-                    Button(
-                        onClick = { onSave(note.copy(title = title, body = body)) },
-                        colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
-                        shape = RoundedCornerShape(8.dp)
-                    ) {
-                        Text("Save", color = Color.Black, fontWeight = FontWeight.Bold)
-                    }
+                    Text("Editor", color = Color.Gray, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.width(48.dp)) // Balance the layout
                 }
 
                 Column(modifier = Modifier.padding(horizontal = 24.dp)) {
@@ -240,9 +178,9 @@ fun NoteEditorDialog(note: Note, onDismiss: () -> Unit, onSave: (Note) -> Unit) 
                     HorizontalDivider(color = Color(0xFF30363d), modifier = Modifier.padding(vertical = 8.dp))
 
                     TextField(
-                        value = body,
-                        onValueChange = { body = it },
-                        placeholder = { Text("Start writing your mastery insights...", color = Color.Gray) },
+                        value = content,
+                        onValueChange = { content = it },
+                        placeholder = { Text("Start typing...", color = Color.Gray) },
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent,
@@ -258,40 +196,4 @@ fun NoteEditorDialog(note: Note, onDismiss: () -> Unit, onSave: (Note) -> Unit) 
             }
         }
     }
-}
-
-@Composable
-fun CreateFolderDialog(onDismiss: () -> Unit, onConfirm: (String) -> Unit) {
-    var name by remember { mutableStateOf("") }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        containerColor = Color(0xFF161b22),
-        title = { Text("New Folder", color = Color.White, fontWeight = FontWeight.Bold) },
-        text = {
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                placeholder = { Text("Enter folder name", color = Color.Gray) },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = LeetCodeOrange,
-                    unfocusedBorderColor = Color(0xFF30363d),
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
-                ),
-                shape = RoundedCornerShape(12.dp),
-                singleLine = true
-            )
-        },
-        confirmButton = {
-            Button(
-                onClick = { if (name.isNotBlank()) onConfirm(name) },
-                colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange)
-            ) { 
-                Text("Create", color = Color.Black, fontWeight = FontWeight.Bold) 
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel", color = Color.Gray) }
-        }
-    )
 }
