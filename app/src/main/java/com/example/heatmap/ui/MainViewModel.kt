@@ -138,6 +138,18 @@ class MainViewModel(
     private val _selectedFolderId = MutableStateFlow<String?>(null)
     val selectedFolderId: StateFlow<String?> = _selectedFolderId.asStateFlow()
 
+    // Minimalist To-Do State
+    private val _todoFilter = MutableStateFlow("All")
+    val todoFilter: StateFlow<String> = _todoFilter.asStateFlow()
+
+    val allTasks: StateFlow<List<TaskEntity>> = _todoFilter.flatMapLatest { filter ->
+        when (filter) {
+            "Active" -> db.taskDao().selectActive()
+            "Completed" -> db.taskDao().selectCompleted()
+            else -> db.taskDao().selectAll()
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     val submissionByDate: StateFlow<Map<LocalDate, Int>> = uiState
         .map { state ->
             if (state is UiState.Success) {
@@ -436,6 +448,39 @@ class MainViewModel(
             viewModelScope.launch {
                 setPreference("wallpaper_target", target.toString())
                 WallpaperUtils.applyWallpaper(getApplication(), state.data, target)
+            }
+        }
+    }
+
+    // To-Do Logic
+    fun setTodoFilter(filter: String) {
+        _todoFilter.value = filter
+    }
+
+    fun addTask(title: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                db.taskDao().insert(TaskEntity(title = title))
+            }
+        }
+    }
+
+    fun toggleTask(task: TaskEntity) {
+        viewModelScope.launch {
+            val completed = !task.isCompleted
+            withContext(Dispatchers.IO) {
+                db.taskDao().update(task.copy(
+                    isCompleted = completed,
+                    completedAt = if (completed) System.currentTimeMillis() else null
+                ))
+            }
+        }
+    }
+
+    fun deleteTask(task: TaskEntity) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                db.taskDao().delete(task)
             }
         }
     }

@@ -46,9 +46,10 @@ interface GfgDao {
         TrainingPlanEntity::class,
         TrainingTaskEntity::class,
         AppPreferenceEntity::class,
-        PatternProgressEntity::class
+        PatternProgressEntity::class,
+        TaskEntity::class
     ],
-    version = 7,
+    version = 8,
     exportSchema = false
 )
 abstract class LeetCodeDatabase : RoomDatabase() {
@@ -60,6 +61,7 @@ abstract class LeetCodeDatabase : RoomDatabase() {
     abstract fun trainingDao(): TrainingDao
     abstract fun preferenceDao(): PreferenceDao
     abstract fun patternProgressDao(): PatternProgressDao
+    abstract fun taskDao(): TaskDao
 
     companion object {
         @Volatile

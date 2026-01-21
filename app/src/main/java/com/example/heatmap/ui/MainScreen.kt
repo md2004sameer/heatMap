@@ -312,9 +312,6 @@ fun ProblemsHubContent(viewModel: MainViewModel, section: ProblemsSection) {
 
 @Composable
 fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewModel, data: LeetCodeData) {
-    val gfgPotdList by viewModel.gfgPotdList.collectAsStateWithLifecycle()
-    val trainingPlan by viewModel.trainingPlan.collectAsStateWithLifecycle()
-
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         // Sub-tabs for Productivity
         Row(
@@ -337,18 +334,7 @@ fun ProductivityHubContent(section: ProductivitySection, viewModel: MainViewMode
 
         when (section) {
             ProductivitySection.Todo -> {
-                TrainingPlanSection(
-                    plan = trainingPlan,
-                    onGenerate = { viewModel.generateTrainingPlan(data) },
-                    onToggleTask = { taskId -> viewModel.toggleTaskCompletion(taskId) },
-                    onAddTask = { title, desc, cat, time -> viewModel.addCustomTask(title, desc, cat, time) },
-                    onDeleteTask = { taskId -> viewModel.removeTask(taskId) }
-                )
-                Spacer(Modifier.height(24.dp))
-                DailyChallengeContent(
-                    leetCodeData = data,
-                    gfgPotdList = gfgPotdList
-                )
+                MinimalistTodoScreen(viewModel)
             }
             ProductivitySection.Notes -> {
                 NotesModuleSection(viewModel)
@@ -385,12 +371,7 @@ fun ProfileContent(data: LeetCodeData, section: ProfileSection, viewModel: MainV
                     val today = remember { LocalDate.now().toString() }
                     val todayGfg = remember(gfgPotdList, today) { gfgPotdList.find { it.date == today } }
                     todayGfg?.let { potd ->
-                        GfgPotdCard(
-                            potd = potd,
-                            onOpenLink = {
-                                viewingUrl.value = potd.problemUrl
-                            }
-                        )
+
                     }
                 }
 
@@ -457,7 +438,7 @@ fun WallpaperModule(viewModel: MainViewModel) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Daily Wallpaper", style = MaterialTheme.typography.titleMedium, color = Color.White)
             Text("Keep your progress on your home screen.", color = Color.Gray, fontSize = 12.sp)
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(12.dp))
             
             Button(
                 onClick = { showWallpaperOptions.value = true },

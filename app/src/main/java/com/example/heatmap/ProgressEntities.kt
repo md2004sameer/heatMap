@@ -66,6 +66,15 @@ data class PatternProgressEntity(
     val lastSolvedAt: Long = System.currentTimeMillis()
 )
 
+@Entity(tableName = "minimalist_tasks")
+data class TaskEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val title: String,
+    val isCompleted: Boolean = false,
+    val createdAt: Long = System.currentTimeMillis(),
+    val completedAt: Long? = null
+)
+
 @Dao
 interface StriverDao {
     @Query("SELECT * FROM striver_problems ORDER BY id ASC")
@@ -129,7 +138,7 @@ interface PreferenceDao {
     suspend fun setPreference(pref: AppPreferenceEntity)
 
     @Query("SELECT value FROM app_prefs WHERE `key` = :key")
-    suspend fun getIntPreference(key: String): String? // Room returns String, parse manually
+    suspend fun getIntPreference(key: String): String?
 }
 
 @Dao
@@ -145,4 +154,25 @@ interface PatternProgressDao {
 
     @Query("SELECT isCompleted FROM pattern_progress WHERE link = :link")
     suspend fun isCompleted(link: String): Boolean?
+}
+
+@Dao
+interface TaskDao {
+    @Query("SELECT * FROM minimalist_tasks ORDER BY createdAt DESC")
+    fun selectAll(): Flow<List<TaskEntity>>
+
+    @Query("SELECT * FROM minimalist_tasks WHERE isCompleted = 0 ORDER BY createdAt DESC")
+    fun selectActive(): Flow<List<TaskEntity>>
+
+    @Query("SELECT * FROM minimalist_tasks WHERE isCompleted = 1 ORDER BY createdAt DESC")
+    fun selectCompleted(): Flow<List<TaskEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(task: TaskEntity)
+
+    @Update
+    suspend fun update(task: TaskEntity)
+
+    @Delete
+    suspend fun delete(task: TaskEntity)
 }

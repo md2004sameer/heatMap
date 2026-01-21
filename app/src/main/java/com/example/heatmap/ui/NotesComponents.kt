@@ -1,9 +1,14 @@
 package com.example.heatmap.ui
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.NoteAdd
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -14,12 +19,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.heatmap.Note
-import com.example.heatmap.ui.theme.BorderDark
 import com.example.heatmap.ui.theme.LeetCodeOrange
-import com.example.heatmap.ui.theme.SurfaceDark
-import com.example.heatmap.ui.theme.Typography
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun NotesModuleSection(viewModel: MainViewModel) {
@@ -51,69 +57,88 @@ fun NotesModuleSection(viewModel: MainViewModel) {
         )
     }
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = Modifier.fillMaxSize()) {
+        // Header
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("My Study Notes", style = Typography.titleMedium, color = Color.White)
+            Column {
+                Text("Notebook", fontSize = 24.sp, fontWeight = FontWeight.Black, color = Color.White)
+                Text("${notes.size} notes in ${folders.find { it.id == selectedFolderId }?.name ?: "folder"}", 
+                    fontSize = 12.sp, color = Color.Gray)
+            }
             
-            Row {
-                IconButton(onClick = { showFolderDialog = true }) {
-                    Icon(Icons.Default.Create, contentDescription = "New Folder", tint = Color.Gray, modifier = Modifier.size(20.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Surface(
+                    onClick = { showFolderDialog = true },
+                    color = Color(0xFF161b22),
+                    shape = CircleShape,
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(Icons.Default.CreateNewFolder, null, tint = Color.Gray, modifier = Modifier.size(20.dp))
+                    }
                 }
-                IconButton(onClick = { selectedFolderId?.let { viewModel.createNote(it) } }) {
-                    Icon(Icons.Default.Add, contentDescription = "New Note", tint = LeetCodeOrange)
+                
+                Surface(
+                    onClick = { selectedFolderId?.let { viewModel.createNote(it) } },
+                    color = LeetCodeOrange,
+                    shape = CircleShape,
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(Icons.Default.Add, null, tint = Color.Black, modifier = Modifier.size(24.dp))
+                    }
                 }
             }
         }
 
-        // Folders Row
+        // Horizontal Folders List - Minimalist
         Row(
-            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(bottom = 20.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             folders.forEach { folder ->
                 val isSelected = selectedFolderId == folder.id
-                FilterChip(
-                    selected = isSelected,
-                    onClick = { viewModel.selectFolder(folder.id) },
-                    label = { Text(folder.name) },
-                    colors = FilterChipDefaults.filterChipColors(
-                        containerColor = Color(0xFF2d333b),
-                        selectedContainerColor = LeetCodeOrange.copy(alpha = 0.2f),
-                        labelColor = Color.Gray,
-                        selectedLabelColor = LeetCodeOrange
-                    ),
-                    border = FilterChipDefaults.filterChipBorder(
-                        enabled = true,
-                        selected = isSelected,
-                        borderColor = BorderDark,
-                        selectedBorderColor = LeetCodeOrange,
-                        borderWidth = 1.dp,
-                        selectedBorderWidth = 1.dp
+                Column(
+                    modifier = Modifier.clickable { viewModel.selectFolder(folder.id) },
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = folder.name,
+                        color = if (isSelected) LeetCodeOrange else Color.Gray,
+                        fontSize = 14.sp,
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
                     )
-                )
+                    AnimatedVisibility(visible = isSelected) {
+                        Box(Modifier.padding(top = 4.dp).size(4.dp).background(LeetCodeOrange, CircleShape))
+                    }
+                }
             }
         }
 
-        Spacer(Modifier.height(8.dp))
-
-        // Notes Previews
+        // Notes List - High Level Design
         if (notes.isEmpty()) {
-            Box(Modifier.fillMaxWidth().height(100.dp).background(SurfaceDark, RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) {
-                Text("No notes in this folder", style = Typography.labelMedium, color = Color.Gray)
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Icon(Icons.AutoMirrored.Filled.NoteAdd, null, tint = Color(0xFF21262d), modifier = Modifier.size(64.dp))
+                    Spacer(Modifier.height(12.dp))
+                    Text("Capture your thoughts", color = Color.Gray, fontSize = 14.sp)
+                }
             }
         } else {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                notes.take(3).forEach { note ->
-                    NotePreviewItem(note, onClick = { showEditorByNote = note }, onDelete = { viewModel.deleteNote(note) })
-                }
-                if (notes.size > 3) {
-                    TextButton(onClick = { /* Could open full notes list */ }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                        Text("View All ${notes.size} Notes", color = LeetCodeOrange, style = Typography.labelMedium)
-                    }
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(notes, key = { it.id }) { note ->
+                    MinimalistNoteItem(
+                        note = note, 
+                        onClick = { showEditorByNote = note }, 
+                        onDelete = { viewModel.deleteNote(note) }
+                    )
                 }
             }
         }
@@ -121,21 +146,43 @@ fun NotesModuleSection(viewModel: MainViewModel) {
 }
 
 @Composable
-fun NotePreviewItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
-    Card(
+fun MinimalistNoteItem(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
+    Surface(
         onClick = onClick,
-        colors = CardDefaults.cardColors(containerColor = SurfaceDark),
-        border = BorderStroke(1.dp, BorderDark),
-        shape = RoundedCornerShape(12.dp),
-        modifier = Modifier.fillMaxWidth()
+        color = Color(0xFF161b22),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.dp, Color(0xFF30363d).copy(alpha = 0.5f))
     ) {
-        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(note.title, style = Typography.bodyLarge, color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                Text(note.body.ifBlank { "No content" }, style = Typography.bodySmall, color = Color.Gray, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(
+                    text = note.title.ifBlank { "Untitled Note" },
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = note.body.ifBlank { "No additional text" },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.Gray,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Spacer(Modifier.height(8.dp))
+                val date = remember(note.updatedAt) {
+                    SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault()).format(Date(note.updatedAt))
+                }
+                Text(date, fontSize = 10.sp, color = Color.Gray.copy(alpha = 0.6f), fontWeight = FontWeight.Bold)
             }
-            IconButton(onClick = onDelete, modifier = Modifier.size(24.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = null, tint = Color.Gray.copy(alpha = 0.5f), modifier = Modifier.size(16.dp))
+            
+            IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+                Icon(Icons.Default.DeleteOutline, null, tint = Color.Gray.copy(alpha = 0.3f), modifier = Modifier.size(18.dp))
             }
         }
     }
@@ -146,54 +193,71 @@ fun NoteEditorDialog(note: Note, onDismiss: () -> Unit, onSave: (Note) -> Unit) 
     var title by remember { mutableStateOf(note.title) }
     var body by remember { mutableStateOf(note.body) }
 
-    AlertDialog(
+    Dialog(
         onDismissRequest = onDismiss,
-        containerColor = Color(0xFF0d1117),
-        properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false),
-        modifier = Modifier.fillMaxSize().padding(16.dp),
-        title = {
-            TextField(
-                value = title,
-                onValueChange = { title = it },
-                placeholder = { Text("Title", color = Color.Gray) },
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
-                ),
-                textStyle = Typography.titleLarge,
-                modifier = Modifier.fillMaxWidth()
-            )
-        },
-        text = {
-            TextField(
-                value = body,
-                onValueChange = { body = it },
-                placeholder = { Text("Start typing your insights...", color = Color.Gray) },
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
-                ),
-                textStyle = Typography.bodyLarge,
-                modifier = Modifier.fillMaxSize()
-            )
-        },
-        confirmButton = {
-            Button(onClick = { onSave(note.copy(title = title, body = body)) }, colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange)) {
-                Text("Save", color = Color.Black, fontWeight = FontWeight.Bold)
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = Color(0xFF0d1117)
+        ) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                // Editor Toolbar
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = onDismiss) {
+                        Icon(Icons.Default.Close, null, tint = Color.White)
+                    }
+                    Button(
+                        onClick = { onSave(note.copy(title = title, body = body)) },
+                        colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text("Save", color = Color.Black, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                Column(modifier = Modifier.padding(horizontal = 24.dp)) {
+                    TextField(
+                        value = title,
+                        onValueChange = { title = it },
+                        placeholder = { Text("Title", fontSize = 28.sp, fontWeight = FontWeight.Black, color = Color.Gray) },
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White
+                        ),
+                        textStyle = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Black),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    
+                    HorizontalDivider(color = Color(0xFF30363d), modifier = Modifier.padding(vertical = 8.dp))
+
+                    TextField(
+                        value = body,
+                        onValueChange = { body = it },
+                        placeholder = { Text("Start writing your mastery insights...", color = Color.Gray) },
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            focusedTextColor = Color.White,
+                            unfocusedTextColor = Color.White
+                        ),
+                        textStyle = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Close", color = Color.Gray) }
         }
-    )
+    }
 }
 
 @Composable
@@ -201,24 +265,30 @@ fun CreateFolderDialog(onDismiss: () -> Unit, onConfirm: (String) -> Unit) {
     var name by remember { mutableStateOf("") }
     AlertDialog(
         onDismissRequest = onDismiss,
-        containerColor = SurfaceDark,
-        title = { Text("New Folder", style = Typography.titleLarge, color = Color.White) },
+        containerColor = Color(0xFF161b22),
+        title = { Text("New Folder", color = Color.White, fontWeight = FontWeight.Bold) },
         text = {
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
-                placeholder = { Text("Folder Name", color = Color.Gray) },
+                placeholder = { Text("Enter folder name", color = Color.Gray) },
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = LeetCodeOrange,
-                    unfocusedBorderColor = BorderDark,
+                    unfocusedBorderColor = Color(0xFF30363d),
                     focusedTextColor = Color.White,
                     unfocusedTextColor = Color.White
                 ),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true
             )
         },
         confirmButton = {
-            TextButton(onClick = { if (name.isNotBlank()) onConfirm(name) }) { Text("Create", color = LeetCodeOrange, fontWeight = FontWeight.Bold) }
+            Button(
+                onClick = { if (name.isNotBlank()) onConfirm(name) },
+                colors = ButtonDefaults.buttonColors(containerColor = LeetCodeOrange)
+            ) { 
+                Text("Create", color = Color.Black, fontWeight = FontWeight.Bold) 
+            }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) { Text("Cancel", color = Color.Gray) }

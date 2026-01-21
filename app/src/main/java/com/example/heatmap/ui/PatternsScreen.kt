@@ -320,7 +320,7 @@ fun PatternAccordion(
                         .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         .fillMaxWidth()
                 ) {
-                    Divider(color = Color(0xFF30363d), thickness = 0.5.dp, modifier = Modifier.padding(bottom = 12.dp))
+                    HorizontalDivider(color = Color(0xFF30363d), thickness = 0.5.dp, modifier = Modifier.padding(bottom = 12.dp))
                     
                     if (pattern.practiceProblems.isNotEmpty()) {
                         SectionHeader("Practice Set", LeetCodeOrange)
